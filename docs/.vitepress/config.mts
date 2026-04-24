@@ -1,9 +1,6 @@
 import {defineConfig} from 'vitepress'
 import {getCategoryItems} from "./utils/SidebarUtils";
 
-
-
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
 
     base: '/PersonalKnowledgeBase/',
@@ -15,24 +12,50 @@ export default defineConfig({
     description: "一个使用VitePress搭建的个人知识库",
 
     themeConfig: {
-        // https://vitepress.dev/reference/default-theme-config
+        // 搜索功能
+        search: {
+            provider: 'local',
+            options: {
+                translations: {
+                    button: {
+                        buttonText: '搜索文档',
+                        buttonAriaLabel: '搜索文档'
+                    },
+                    modal: {
+                        noResultsText: '无法找到相关结果',
+                        resetButtonTitle: '清除查询条件',
+                        footer: {
+                            selectText: '选择',
+                            navigateText: '切换',
+                            closeText: '关闭'
+                        }
+                    }
+                }
+            }
+        },
         // 导航栏
         nav: [
             {text: '主页', link: '/'},
             {
+                text: '前端',
+                items: [
+                ]
+            },
+            {
                 text: '后端',
                 items: [
                     {text: 'Spring', link: '/Spring/Spring'},
-                    {text: 'SpringBoot', link: '/SpringBoot/SpringBoot'}
+                    {text: 'SpringBoot', link: '/SpringBoot/SpringBoot'},
+                    {text: 'JakartaEE-Servlet', link: '/JakartaEE-Servlet/BS与CS系统结构解析'}
                 ]
-            }
+            },
         ],
         // sidebar: getSidebar(),
         sidebar: {
             // Spring 下的页面，只显示 Spring 侧边栏
             '/Spring/': [
                 {
-                    text: 'Spring 文档',
+                    text: 'Spring 目录',
                     items: getCategoryItems('Spring')
                 }
             ],
@@ -40,17 +63,23 @@ export default defineConfig({
             // SpringBoot 下的页面，只显示 SpringBoot 侧边栏
             '/SpringBoot/': [
                 {
-                    text: 'SpringBoot 文档',
+                    text: 'SpringBoot 目录',
                     items: [
                         { text: 'SpringBoot 主页', link: '/SpringBoot/SpringBoot' }
                     ]
                 }
-            ]
+            ],
+            '/JakartaEE-Servlet/': [
+                {
+                    text: 'JakartaEE-Servlet 目录',
+                    items: getCategoryItems('JakartaEE-Servlet')
+                }
+            ],
         },
-        // 右侧大纲 - 显示二级和三级标题
+        // 右侧大纲 - deep - 显示所有标题(不支持一级标题)
         outline: {
-            level: [2, 3],
-            label: '页面导航'
+            level: "deep",
+            label: '大纲'
         },
 
         socialLinks: [

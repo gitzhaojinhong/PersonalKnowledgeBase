@@ -26,3 +26,6 @@ yarn-error.log*
 
 # 系统文件
 Thumbs.db
+
+# 文本文件
+*.txt

@@ -3,7 +3,7 @@ import * as path from 'path'
 
 /**
  * 根据分类目录自动生成侧边栏的 items 数组
- * 功能：扫描目录下的 md 文件 → 读取 order.json 排序 → 返回标准 sidebar 结构
+ * 功能：扫描目录下的 md 文件 → 读取 aorder.json 排序 → 返回标准 sidebar 结构
  * @param category 分类文件夹名称（如 Spring、SpringBoot）
  */
 export function getCategoryItems(category: string) {
@@ -22,7 +22,7 @@ export function getCategoryItems(category: string) {
     let order: string[] = []
     try {
         // 读取 order.json 文件内容
-        const orderFileContent = fs.readFileSync(path.join(dir, 'order.json'), 'utf8')
+        const orderFileContent = fs.readFileSync(path.join(dir, 'aorder.json'), 'utf8')
         // 把 JSON 字符串转成数组
         order = JSON.parse(orderFileContent)
     } catch (e) {
