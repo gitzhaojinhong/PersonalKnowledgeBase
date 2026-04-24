@@ -77,7 +77,7 @@ destroy 方法只会被调用一次，该方法没有任何参数。该方法被
 启动服务器，查看控制台输出：
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748931153917-fa192a4b-c8f4-44cb-9fca-cc1387db3b8d.png)
+![1](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748931153917-fa192a4b-c8f4-44cb-9fca-cc1387db3b8d.png)
 
 可以看到，服务器启动的时候会调用 `LifecycleServlet`的无参数构造方法，完成 Servlet 对象的实例化。
 

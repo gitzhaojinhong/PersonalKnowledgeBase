@@ -10,11 +10,11 @@ hero:
   tagline: My great project tagline  # 标语/口号(可选)
   actions:  # 操作按钮配置(最多两个)
     - theme: brand  # 主题样式: brand(品牌色) 或 alt(次要样式)
-      text: Markdown Examples  # 按钮文字
-      link: /markdown-examples  # 点击跳转的链接路径
+      text:  暂不能点击 # 按钮文字
+      link: /  # 点击跳转的链接路径
     - theme: alt  # 第二个按钮使用次要样式
-      text: API Examples
-      link: /api-examples
+      text: 暂不能点击
+      link: /
 
 # 特性列表配置 - 展示项目的核心功能特点(最多3个)
 features:

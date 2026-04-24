@@ -310,7 +310,7 @@ public class WelcomeServlet extends GenericServlet {
 启动服务器，打开浏览器，输入 URL：http://localhost:8080/web01/wel
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748937624855-09f37e67-5dc8-4227-8d77-872897bd0019.png)
+![1](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748937624855-09f37e67-5dc8-4227-8d77-872897bd0019.png)
 
 
 

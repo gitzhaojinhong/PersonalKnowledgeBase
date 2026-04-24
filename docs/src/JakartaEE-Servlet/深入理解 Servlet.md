@@ -3,14 +3,14 @@
 **<font style="color:#DF2A3F;">详细图：</font>**
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748698438324-7379061b-2b64-4a15-b633-8be0a994a1d3.png)
+![1](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748698438324-7379061b-2b64-4a15-b633-8be0a994a1d3.png)
 
 
 
 **<font style="color:#DF2A3F;">简略图：</font>**
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748591918933-62254fe4-fd52-4fd3-a83f-76da1d33a44e.png)
+![1](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748591918933-62254fe4-fd52-4fd3-a83f-76da1d33a44e.png)
 
 ****
 

@@ -91,7 +91,7 @@ public class GenericServlet {
 参考 `Jakarta EE 10`的 API 帮助文档。
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748942339581-080b5545-db57-4cdd-86a7-6c37b0817f5d.png)
+![1](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748942339581-080b5545-db57-4cdd-86a7-6c37b0817f5d.png)
 
 #### 获取 Servlet 初始化参数
 获取初始化参数的配置信息，可以通过以下两个方法：
@@ -167,7 +167,7 @@ public class FileUploadServlet extends GenericServlet {
 执行结果如下：
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748942936246-2c844ed4-5ce9-4bd5-9579-02e5eeb39296.png)
+![1](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748942936246-2c844ed4-5ce9-4bd5-9579-02e5eeb39296.png)
 
 
 
@@ -249,7 +249,7 @@ out.println("<h1>" + servletName + "</h1>");
 运行结果如下：
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748949233575-eb3fed25-4c5f-48d0-b450-4431fc78a1de.png)
+![1](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748949233575-eb3fed25-4c5f-48d0-b450-4431fc78a1de.png)
 
 
 
@@ -282,7 +282,7 @@ out.print("<h1>ServletContext = " + application + "</h1>");
 执行结果如下：
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748949548947-5b9c0e12-620f-426d-9952-e892e443f504.png)
+![1](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748949548947-5b9c0e12-620f-426d-9952-e892e443f504.png)
 
 
 

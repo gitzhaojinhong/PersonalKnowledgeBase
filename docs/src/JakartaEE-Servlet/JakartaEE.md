@@ -43,14 +43,14 @@ JavaEE包含以下关键规范（不同版本略有增减）：
 主站点：[https://jakarta.ee/](https://jakarta.ee/)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748517409207-2a63a763-250c-4865-a198-45ebdfd839b7.png)
+![1](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748517409207-2a63a763-250c-4865-a198-45ebdfd839b7.png)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748517430492-f15eb52f-d438-4f09-a05c-936999b2fc38.png)
+![1](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748517430492-f15eb52f-d438-4f09-a05c-936999b2fc38.png)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748517450193-caa56071-c089-4a6e-bd68-a6952689c741.png)
+![1](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748517450193-caa56071-c089-4a6e-bd68-a6952689c741.png)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748517469779-84ab0fdf-559f-41a4-b726-4b4543fb56df.png)
+![1](https://cdn.nlark.com/yuque/0/2025/png/21376908/1748517469779-84ab0fdf-559f-41a4-b726-4b4543fb56df.png)
 
