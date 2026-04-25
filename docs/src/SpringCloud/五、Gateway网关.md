@@ -1,3 +1,4 @@
+:::v-pre
 <!-- 这是一张图片，ocr 内容为： -->
 ![](images/20.png)
 
@@ -51,6 +52,8 @@ spring:
     include: route #使用路由规则yaml
 server:
   port: 80
+```
+```yaml
 # 路由规则yaml
 spring:
   cloud:
@@ -395,3 +398,4 @@ spring:
 ```
 
 之后在请求的 Response Headers 中会增加一些允许跨域的信息。
+:::
