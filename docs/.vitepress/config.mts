@@ -95,10 +95,15 @@ export default defineConfig({
             {icon: 'github', link: 'https://github.com/vuejs/vitepress'}
         ]
     },
+    // 忽略死链接比如localhost:8080/xxx
+    ignoreDeadLinks: true,
+    //
     markdown: {
+        // 禁用 Markdown 属性语法解析（如 {.class #id}）
         attrs: {
             disable: true
         },
+        // 禁用 HTML 标签渲染，纯 Markdown 更安全
         html: false,
     }
 
