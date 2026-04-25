@@ -95,18 +95,5 @@ export default defineConfig({
             {icon: 'github', link: 'https://github.com/vuejs/vitepress'}
         ]
     },
-    // ===================================================================================================================
-    markdown: {
-        html: true // 允许 HTML，不做严格检查
-    },
 
-    // 核心：关闭 Vue 对 Markdown 内 HTML 标签的编译检查
-    vue: {
-        template: {
-            compilerOptions: {
-                // 把所有 HTML 标签当成自定义元素 → 不检查闭合、不报错
-                isCustomElement: (tag) => true
-            }
-        }
-    }
 })
