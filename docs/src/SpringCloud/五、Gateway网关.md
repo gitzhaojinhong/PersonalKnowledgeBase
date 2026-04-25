@@ -9,7 +9,7 @@
 
 服务A → 注册中心(Nacos)拉取服务B实例列表 → 直连服务B，全程不经过网关
 
-## 路由
+## 1.路由
 **建立gateway微服务**
 
 **改pom**
@@ -51,6 +51,8 @@ spring:
     include: route #使用路由规则yaml
 server:
   port: 80
+```
+```yaml
 # 路由规则yaml
 spring:
   cloud:
@@ -76,7 +78,7 @@ spring:
           order: 2
 ```
 
-## 断言
+## 2.断言
 官方文档：[Route Predicate Factories](https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/request-predicates-factories.html)
 
 断言的两种书写方式：
@@ -226,7 +228,7 @@ public class VipRoutePredicateFactory extends AbstractRoutePredicateFactory<VipR
 
 
 
-## 过滤器
+## 3.过滤器
 官方文档：[GatewayFilter Factories](https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/gatewayfilter-factories.html)
 
 <!-- 这是一张图片，ocr 内容为： -->
@@ -373,7 +375,7 @@ spring:
 
  
 
-## 全局跨域
+## 4.全局跨域
 如果需要配置跨域，可以在 Controller 的类上添加 `@CrossOrigin` 注解。
 
 如果有许多 Controller，逐一添加注解太麻烦，可以在项目的配置类中添加 `CorsFilter` 类型的 Bean。

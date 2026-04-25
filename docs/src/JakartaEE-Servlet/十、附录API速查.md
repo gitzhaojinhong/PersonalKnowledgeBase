@@ -1,6 +1,5 @@
-## 十、附录：API速查
 
-### 10.1 HttpServletRequest常用方法
+## 10.1 HttpServletRequest常用方法
 
 ```java
 // 获取请求参数
@@ -39,7 +38,7 @@ HttpSession getSession(boolean create);
 RequestDispatcher getRequestDispatcher(String path);
 ```
 
-### 10.2 HttpServletResponse常用方法
+## 10.2 HttpServletResponse常用方法
 
 ```java
 // 设置响应类型
@@ -68,7 +67,7 @@ void sendRedirect(String location);
 void addCookie(Cookie cookie);
 ```
 
-### 10.3 HttpSession常用方法
+## 10.3 HttpSession常用方法
 
 ```java
 // 属性操作
@@ -88,7 +87,7 @@ void invalidate();
 boolean isNew();
 ```
 
-### 10.4 Cookie常用方法
+## 10.4 Cookie常用方法
 
 ```java
 // 构造方法
@@ -108,7 +107,7 @@ int getMaxAge();
 String getPath();
 ```
 
-### 10.5 开发避坑指南
+## 10.5 开发避坑指南
 
 | 问题 | 原因 | 解决方案 |
 |------|------|----------|
@@ -121,7 +120,7 @@ String getPath();
 | 线程安全问题 | Servlet中使用成员变量 | 使用局部变量或同步机制 |
 | 过滤器不生效 | 配置错误或顺序问题 | 检查@WebFilter和urlPatterns |
 
-### 10.6 路径写法规范（7条必记）
+## 10.6 路径写法规范（7条必记）
 
 不同场景下路径是否需要加项目名，是开发中最常踩的坑：
 
@@ -137,7 +136,7 @@ String getPath();
 
 > **记忆口诀：** 前端发请求、重定向，都要带项目名。服务器内部（web.xml、转发、getRealPath），不带项目名。
 
-### 10.7 response编码 vs HTML meta charset
+## 10.7 response编码 vs HTML meta charset
 
 `response.setCharacterEncoding("UTF-8")` 和 HTML 中的 `<meta charset="UTF-8">` 不是一回事：
 
@@ -152,7 +151,7 @@ response.setContentType("text/html;charset=UTF-8");
 PrintWriter out = response.getWriter();
 ```
 
-### 10.8 Tomcat标准输出流乱码（System.out中文乱码）
+## 10.8 Tomcat标准输出流乱码（System.out中文乱码）
 
 **现象：** IDEA + Tomcat 环境下，`System.out.println("中文")` 在控制台输出乱码。
 

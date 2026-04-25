@@ -1,4 +1,4 @@
-## 工作原理
+## 1.工作原理
 随着微服务的流行，服务和服务之间的稳定性变得越来越重要。Spring Cloud Alibaba Sentinel 以流量为切入点，从流量控制、流量路由、熔断降级、系统自适应过载保护、热点流量防护等多个维度保护服务的稳定性。
 
 <!-- 这是一张图片，ocr 内容为： -->
@@ -12,7 +12,7 @@
 + 来源访问控制（AuthorityRule）
 + 热点参数（ParamFlowRule）
 
-## 项目整合
+## 2.项目整合
 > 启动 Dashboard
 >
 >
@@ -63,7 +63,7 @@ spring:
 2. <font style="color:rgb(51, 51, 51);">声明式 Sphu API(不常用)</font>
 3. <font style="color:rgb(51, 51, 51);">声明式：@SentinelResource</font>
 
-## 异常处理
+## 3.异常处理
 <!-- 这是一张图片，ocr 内容为： -->
 ![](images/5.png)
 
@@ -184,7 +184,7 @@ public Order createOrderFallback(Long productId, Long userId, BlockException e) 
 
 当 Feign 接口作为资源并被流控时，如果调用的 Feign 接口指定了 `fallback`，那么就会使用 Feign 接口的 `fallback` 进行异常处理，否则由 SpringBoot 进行全局异常处理。
 
-## 流控规则
+## 4.流控规则
 流控，即流量控制（FlowRule），用于限制多余请求，从而保护系统资源不被耗尽。
 
 <!-- 这是一张图片，ocr 内容为： -->
@@ -257,7 +257,7 @@ Sentinel 的流控阈值规则有两种：
 | 排队等待 | 匀速处理请求 | 服务处理均匀，避免突发压力 | 固定阈值 | 均匀的流量 |
 
 
-## 熔断规则
+## 5.熔断规则
 熔断规则，即 DegradeRule。
 
 使用熔断规则可以配置熔断降级，用于：
@@ -336,7 +336,7 @@ Sentinel 的流控阈值规则有两种：
 
 
 
-## 热点规则
+## 6.热点规则
 所谓热点，即经常访问的数据。很多时候希望统计某个热点数据中访问频次最高的 Top K 数据，并对其访问进行限制。比如：
 
 + 商品 ID 为参数，统计一段时间内最常购买的商品 ID 并进行限制

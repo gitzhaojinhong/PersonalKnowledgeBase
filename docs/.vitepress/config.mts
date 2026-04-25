@@ -7,12 +7,18 @@ export default defineConfig({
     base: '/PersonalKnowledgeBase/',
     // 源码目录
     srcDir: './src',
+    // 语言
+    lang: 'zh-CN',
     //网站标题
     title: "个人知识库",
     //网站描述
     description: "一个使用VitePress搭建的个人知识库",
+    head: [
+        ['link',{ rel: 'icon', href: '/logo.png'}],
+    ],
 
     themeConfig: {
+        logo: '/logo.svg',
         // 搜索功能
         search: {
             provider: 'local',
@@ -34,19 +40,24 @@ export default defineConfig({
                 }
             }
         },
+        /**
+         * ================================= 添 加 文 档 后 修 改 处 ======================================================
+          */
         // 导航栏
         nav: [
             {text: '主页', link: '/'},
             {
                 text: '前端',
                 items: [
+                    {text: 'CSS', link: '/CSS/一、CSS基础'},
+                    {text: 'HTML', link: '/HTML/一、Web开发基础'},
                 ]
             },
             {
                 text: '后端',
                 items: [
                     {text: 'JakartaEE-Servlet', link: '/JakartaEE-Servlet/一、Web基础概念'},
-                    {text: 'Spring', link: '/Spring/第一章 Spring 概述'},
+                    {text: 'Spring', link: '/Spring/一、Spring 概述'},
                     {text: 'SpringBoot', link: '/SpringBoot/SpringBoot'},
                     {text: 'SpringCloud', link: '/SpringCloud/一、分布式基础'},
                 ]
@@ -54,6 +65,20 @@ export default defineConfig({
         ],
         // sidebar: getSidebar(),
         sidebar: {
+            //===========================前 端 导 航================================
+            '/CSS/': [
+                {
+                    text: '目录',
+                    items: getCategoryItems('CSS')
+                }
+            ],
+            '/HTML/': [
+                {
+                    text: '目录',
+                    items: getCategoryItems('HTML')
+                }
+            ],
+            //===========================后 端 导 航================================
             '/JakartaEE-Servlet/': [
                 {
                     text: '目录',
@@ -82,7 +107,9 @@ export default defineConfig({
                     items: getCategoryItems('SpringCloud')
                 }
             ],
-
+            /**
+             * =========================================================================================================
+             */
 
         },
         // 右侧大纲 - deep - 显示所有标题(不支持一级标题)

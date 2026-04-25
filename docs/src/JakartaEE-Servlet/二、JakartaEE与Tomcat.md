@@ -1,6 +1,6 @@
-## 二、JakartaEE与Tomcat
 
-### 2.1 JakartaEE概述
+
+## 2.1 JakartaEE概述
 
 JakartaEE（原JavaEE）是一套企业级Java应用开发规范，由Eclipse基金会维护。
 
@@ -18,7 +18,7 @@ JakartaEE（原JavaEE）是一套企业级Java应用开发规范，由Eclipse基
 - JakartaEE 9（2020年）：包名从`javax.*`改为`jakarta.*`
 - JakartaEE 10（2022年）：Servlet 6.0、支持Java 17+
 
-### 2.2 Tomcat服务器
+## 2.2 Tomcat服务器
 
 Tomcat是Apache开源的Servlet容器，实现了JakartaEE的Servlet、JSP等规范。
 
@@ -28,7 +28,7 @@ Tomcat是Apache开源的Servlet容器，实现了JakartaEE的Servlet、JSP等规
 - 处理请求分发和响应
 - 提供连接池、线程池等基础设施
 
-#### Tomcat目录结构
+### Tomcat目录结构
 
 ```
 apache-tomcat-10.x.x/
@@ -52,7 +52,7 @@ apache-tomcat-10.x.x/
 └── work/                   # JSP编译后的工作目录
 ```
 
-#### server.xml核心配置
+### server.xml核心配置
 
 ```xml
 <!-- 服务配置 -->
@@ -91,7 +91,7 @@ apache-tomcat-10.x.x/
 | `acceptCount` | 等待队列长度 | 100 |
 | `connectionTimeout` | 连接超时时间（毫秒） | 20000 |
 
-#### IDEA集成Tomcat配置
+### IDEA集成Tomcat配置
 
 **步骤：**
 1. Edit Configurations → Add New Configuration → Tomcat Server → Local

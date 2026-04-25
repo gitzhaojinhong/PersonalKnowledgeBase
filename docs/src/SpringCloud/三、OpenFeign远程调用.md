@@ -1,4 +1,4 @@
-## 声明式远程调用
+## 1.声明式远程调用
 OpenFeign，是一种 Declarative REST Client，即声明式 Rest 客户端，与之对应的是编程式 Rest 客户端，比如 RestTemplate。
 
 OpenFeign 由注解驱动：
@@ -44,7 +44,7 @@ public interface ProductFeignClient {
 }
 ```
 
-## 远程调用第三方API
+## 2.远程调用第三方API
 **使用示例：**
 
 ```java
@@ -57,7 +57,7 @@ public interface WeatherFeignClient {
 }
 ```
 
-## 日志
+## 3.日志
 在配置文件中指定 feign 接口所在包的日志级别：
 
 ```yaml
@@ -77,7 +77,7 @@ public Logger.Level feignlogLevel() {
 }
 ```
 
-## 超时控制
+## 4.超时控制
 连接超时（connectTimeout），默认 10 秒。
 
 读取超时（readTimeout），默认 60 秒。
@@ -104,7 +104,7 @@ spring:
             read-timeout: 5000
 ```
 
-## 重试机制
+## 5。重试机制
 远程调用超时失败后，还可以进行多次尝试，如果某次成功则返回 ok，如果多次尝试后依然失败则结束调用，返回错误。
 
 OpenFeign 底层默认使用 `NEVER_RETRY`，即从不重试策略。
@@ -132,7 +132,7 @@ OpenFeign 的重试规则是：
 + 最大重试间隔 1s。新一次重试间隔是上一次重试间隔的 1.5 倍，但不能超过最大重试间隔。
 + 最多重试 5 次
 
-## 拦截器
+## 6。拦截器
 <!-- 这是一张图片，ocr 内容为： -->
 ![](images/3.png)  
  以请求拦截器为例，自定义的请求拦截器需要实现 `RequestInterceptor` 接口，并重写 `apply()` 方法：
@@ -180,7 +180,7 @@ public class XTokenRequestInterceptor implements RequestInterceptor {
 }
 ```
 
-## <font style="color:rgb(79, 79, 79);">fallback - 兜底返回</font>
+## 7.fallback - 兜底返回
 注意，此功能需要整合 Sentinel 才能实现。
 
 因此需要先导入 Sentinel 依赖：
