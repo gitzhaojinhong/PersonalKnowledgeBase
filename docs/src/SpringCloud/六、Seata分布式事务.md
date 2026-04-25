@@ -53,7 +53,7 @@ service {
 最后在最顶端的方法入口上使用 `@GlobalTransactional` 注解，由此开启全局事务。
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](images/26svg.svg)
+![](images/26.svg)
 
 
 

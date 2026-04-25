@@ -51,8 +51,6 @@ spring:
     include: route #使用路由规则yaml
 server:
   port: 80
-```
-```yaml
 # 路由规则yaml
 spring:
   cloud:

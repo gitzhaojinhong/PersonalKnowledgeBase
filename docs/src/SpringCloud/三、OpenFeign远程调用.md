@@ -134,7 +134,7 @@ OpenFeign 的重试规则是：
 
 ## 拦截器
 <!-- 这是一张图片，ocr 内容为： -->
-![](images/3png.png)  
+![](images/3.png)  
  以请求拦截器为例，自定义的请求拦截器需要实现 `RequestInterceptor` 接口，并重写 `apply()` 方法：
 
 ```java

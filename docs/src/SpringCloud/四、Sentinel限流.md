@@ -2,7 +2,7 @@
 随着微服务的流行，服务和服务之间的稳定性变得越来越重要。Spring Cloud Alibaba Sentinel 以流量为切入点，从流量控制、流量路由、熔断降级、系统自适应过载保护、热点流量防护等多个维度保护服务的稳定性。
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](images/4png.png)
+![](images/4.png)
 
 定义资源：
 
@@ -65,7 +65,7 @@ spring:
 
 ## 异常处理
 <!-- 这是一张图片，ocr 内容为： -->
-![](images/5png.png)
+![](images/5.png)
 
 
 
@@ -194,7 +194,7 @@ public Order createOrderFallback(Long productId, Long userId, BlockException e) 
 >
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](images/7svg.svg)
+![](images/7.png)
 
 Sentinel 的流控阈值规则有两种：
 
