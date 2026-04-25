@@ -6,8 +6,8 @@ layout: home
 # Hero 区域配置 - 页面顶部的主要展示区域
 hero:
   name: "个人知识库"  # 网站名称(大标题)
-  text: "一个使用VitePress搭建的个人知识库"  # 副标题/描述文本
-  tagline: My great project tagline  # 标语/口号(可选)
+  text: "纽币克拉斯"  # 副标题/描述文本
+  tagline: "持续更新中"  # 标语/口号(可选)
   actions:  # 操作按钮配置(最多两个)
     - theme: brand  # 主题样式: brand(品牌色) 或 alt(次要样式)
       text:  暂不能点击 # 按钮文字

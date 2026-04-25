@@ -3,8 +3,9 @@ import {getCategoryItems} from "./utils/SidebarUtils";
 
 export default defineConfig({
 
+    // 部署
     base: '/PersonalKnowledgeBase/',
-
+    // 源码目录
     srcDir: './src',
     //网站标题
     title: "个人知识库",
@@ -44,37 +45,45 @@ export default defineConfig({
             {
                 text: '后端',
                 items: [
-                    {text: 'Spring', link: '/Spring/Spring'},
+                    {text: 'JakartaEE-Servlet', link: '/JakartaEE-Servlet/一、Web基础概念'},
+                    {text: 'Spring', link: '/Spring/第一章 Spring 概述'},
                     {text: 'SpringBoot', link: '/SpringBoot/SpringBoot'},
-                    {text: 'JakartaEE-Servlet', link: '/JakartaEE-Servlet/BS与CS系统结构解析'}
+                    {text: 'SpringCloud', link: '/SpringCloud/一、分布式基础'},
                 ]
             },
         ],
         // sidebar: getSidebar(),
         sidebar: {
-            // Spring 下的页面，只显示 Spring 侧边栏
+            '/JakartaEE-Servlet/': [
+                {
+                    text: '目录',
+                    items: getCategoryItems('JakartaEE-Servlet')
+                }
+            ],
+
             '/Spring/': [
                 {
-                    text: 'Spring 目录',
+                    text: '目录',
                     items: getCategoryItems('Spring')
                 }
             ],
 
-            // SpringBoot 下的页面，只显示 SpringBoot 侧边栏
             '/SpringBoot/': [
                 {
-                    text: 'SpringBoot 目录',
+                    text: '目录',
                     items: [
                         { text: 'SpringBoot 主页', link: '/SpringBoot/SpringBoot' }
                     ]
                 }
             ],
-            '/JakartaEE-Servlet/': [
+            '/SpringCloud/': [
                 {
-                    text: 'JakartaEE-Servlet 目录',
-                    items: getCategoryItems('JakartaEE-Servlet')
+                    text: '目录',
+                    items: getCategoryItems('SpringCloud')
                 }
             ],
+
+
         },
         // 右侧大纲 - deep - 显示所有标题(不支持一级标题)
         outline: {
