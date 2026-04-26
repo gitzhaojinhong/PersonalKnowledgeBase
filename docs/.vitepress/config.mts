@@ -14,7 +14,7 @@ export default defineConfig({
     //网站描述
     description: "一个使用VitePress搭建的个人知识库",
     head: [
-        ['link',{ rel: 'icon', href: '/logo.png'}],
+        ['link',{ rel: 'icon', href: '/logo.svg'}],
     ],
 
     themeConfig: {
