@@ -45,6 +45,7 @@
 @import "blur.css";
 @import "vp-code.css";
 @import "vp-code-group.css";
+@import "hero.css";
 :root {
   --vp-c-default-1: var(--vp-c-gray-1);
   --vp-c-default-2: var(--vp-c-gray-2);

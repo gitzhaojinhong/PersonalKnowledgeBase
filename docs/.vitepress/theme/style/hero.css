@@ -1,0 +1,37 @@
+/* 修改主标题样式 */
+.VPHero .name {
+    font-size: 3.2rem !important;
+    font-weight: 800 !important;
+    background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    margin-bottom: 1.5rem !important;
+    /* 正楷字体栈 */
+    font-family: "KaiTi", "STKaiti", "SimKai", "FangSong", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif !important;
+
+}
+
+/* 修改副标题样式 */
+.VPHero .text {
+    font-size: 2.8rem !important;
+    line-height: 1 !important;
+    font-weight: 500 !important;
+    margin-bottom: 1rem !important;
+    white-space: pre-line !important;
+    /* 行楷字体栈 */
+    font-family: "STXingkai", "Xingkai SC", "KaiTi", serif !important;
+
+}
+/* 修改标语样式 */
+.VPHero .tagline {
+    font-size: 1.1rem !important;
+    color: #6b7280 !important;
+    font-weight: 400 !important;
+    margin-bottom: 2rem !important;
+}
+
+/* 优化按钮区域间距 */
+.VPHero .actions {
+    gap: 1rem !important;
+}
