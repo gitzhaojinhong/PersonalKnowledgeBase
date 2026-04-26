@@ -15,10 +15,10 @@ hero:
   actions:  # 操作按钮配置(最多两个)
     - theme: brand  # 主题样式: brand(品牌色) 或 alt(次要样式)
       text: 开始探索
-      link: /docs/
+      link: /
     - theme: alt  # 第二个按钮使用次要样式
       text: 知识归档
-      link: /archive/
+      link: /
 
 # 特性列表配置 - 展示项目的核心功能特点(最多3个)
 features:
