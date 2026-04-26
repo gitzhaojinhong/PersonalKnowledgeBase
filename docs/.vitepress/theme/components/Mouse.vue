@@ -12,7 +12,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 // 背景网格或波纹颜色和透明度
-const rgba = 'rgba(255, 255, 255, 0.01)'
+const rgba = 'rgba(255,255,255,0.03)'
 
 const canvas = ref(null);
 let ctx = null;
