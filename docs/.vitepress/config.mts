@@ -47,6 +47,9 @@ export default defineConfig({
         nav: [
             {text: '主页', link: '/'},
             {
+                text: '后端速查',link: '/后端开发速查/首页'
+            },
+            {
                 text: '前端',
                 items: [
                     {text: 'CSS', link: '/CSS/一、CSS基础'},
@@ -62,9 +65,22 @@ export default defineConfig({
                     {text: 'SpringCloud', link: '/SpringCloud/一、分布式基础'},
                 ]
             },
+            {
+                text: '项目',
+                items: [
+                    {text: '天机学堂', link: '/天机学堂/首页'},
+                ]
+            },
         ],
         // sidebar: getSidebar(),
         sidebar: {
+            //===========================开 发 速 查================================
+            '/后端开发速查/': [
+                {
+                    text: '目录',
+                    items: getCategoryItems('后端开发速查')
+                }
+            ],
             //===========================前 端 导 航================================
             '/CSS/': [
                 {
