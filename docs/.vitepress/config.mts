@@ -13,6 +13,7 @@ export default defineConfig({
     title: "个人知识库",
     //网站描述
     description: "一个使用VitePress搭建的个人知识库",
+    // 头部
     head: [
         ['link',{ rel: 'icon', href: '/logo.svg'}],
     ],
@@ -47,6 +48,9 @@ export default defineConfig({
         nav: [
             {text: '主页', link: '/'},
             {
+                text: 'VitePress搭建',link: '/VitePress搭建/首页'
+            },
+            {
                 text: '后端速查',link: '/后端开发速查/首页'
             },
             {
@@ -74,6 +78,13 @@ export default defineConfig({
         ],
         // sidebar: getSidebar(),
         sidebar: {
+            //===========================VitePress 搭 建================================
+            '/VitePress搭建/':[
+                {
+                    text: '目录',
+                    items: getCategoryItems('VitePress搭建')
+                }
+            ],
             //===========================开 发 速 查================================
             '/后端开发速查/': [
                 {
@@ -123,6 +134,13 @@ export default defineConfig({
                     items: getCategoryItems('SpringCloud')
                 }
             ],
+            //===========================项 目 导 航================================
+            '/天机学堂/': [
+                {
+                    text: '目录',
+                    items: getCategoryItems('天机学堂')
+                }
+            ]
             /**
              * =========================================================================================================
              */
@@ -140,7 +158,7 @@ export default defineConfig({
     },
     // 忽略死链接比如localhost:8080/xxx
     ignoreDeadLinks: true,
-    //
+    // 禁用 Markdown 属性语法
     markdown: {
         // 禁用 Markdown 属性语法解析（如 {.class #id}）
         attrs: {
@@ -148,6 +166,6 @@ export default defineConfig({
         },
         // 禁用 HTML 标签渲染，纯 Markdown 更安全
         html: false,
-    }
+    },
 
 })
