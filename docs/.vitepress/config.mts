@@ -123,9 +123,7 @@ export default defineConfig({
             '/SpringBoot/': [
                 {
                     text: '目录',
-                    items: [
-                        { text: 'SpringBoot 主页', link: '/SpringBoot/SpringBoot' }
-                    ]
+                    items: getCategoryItems('SpringBoot')
                 }
             ],
             '/SpringCloud/': [
