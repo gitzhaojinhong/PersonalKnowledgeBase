@@ -65,7 +65,7 @@ export default defineConfig({
                 items: [
                     {text: 'JakartaEE-Servlet', link: '/JakartaEE-Servlet/一、Web基础概念'},
                     {text: 'Spring', link: '/Spring/一、Spring 概述'},
-                    {text: 'SpringBoot', link: '/SpringBoot/SpringBoot'},
+                    {text: 'SpringBoot', link: '/SpringBoot/首页'},
                     {text: 'SpringCloud', link: '/SpringCloud/一、分布式基础'},
                 ]
             },
