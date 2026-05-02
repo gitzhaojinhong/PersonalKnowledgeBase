@@ -58,7 +58,7 @@ export default defineConfig({
                 items: [
                     {text: 'CSS', link: '/前端/CSS/首页'},
                     {text: 'HTML', link: '/前端/HTML/首页'},
-                    {text: 'Vue', link: '/前端/Vue/首页'},
+                    {text: 'Vue临时', link: '/前端/Vue/首页'},
                 ]
             },
             {
@@ -68,6 +68,7 @@ export default defineConfig({
                     {text: 'Spring', link: '/后端/Spring/首页'},
                     {text: 'SpringBoot', link: '/后端/SpringBoot/首页'},
                     {text: 'SpringCloud', link: '/后端/SpringCloud/首页'},
+                    {text: 'Redis', link: '/后端/Redis/首页'},
                 ]
             },
             {
@@ -137,6 +138,12 @@ export default defineConfig({
                 {
                     text: '目录',
                     items: getCategoryItems('后端/SpringCloud')
+                }
+            ],
+            '/后端/Redis/': [
+                {
+                    text: '目录',
+                    items: getCategoryItems('后端/Redis')
                 }
             ],
             //===========================项 目 导 航================================

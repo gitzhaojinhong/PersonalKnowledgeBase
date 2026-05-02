@@ -1,5 +1,7 @@
 [
   "首页",
+  "Lambda表达式",
+  "StreamAPI",
   "Bean生命周期",
   "Bean循环依赖",
   "拦截器",
