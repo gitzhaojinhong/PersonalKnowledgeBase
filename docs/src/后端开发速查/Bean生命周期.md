@@ -1,8 +1,5 @@
-# Bean生命周期
 
-> Spring Boot中Bean生命周期的完整指南，生产常用内容前置，原理拓展后置。
-
-## 一、快速查询：生命周期执行顺序与实现方式
+## 1. 快速查询：生命周期执行顺序与实现方式
 
 ### 1.1 完整十步流程
 
@@ -238,7 +235,7 @@ public class BeanConfig {
 
 ---
 
-## 二、完整生命周期演示
+## 2. 完整生命周期演示
 
 ### 2.1 BeanPostProcessor
 
@@ -354,7 +351,7 @@ public class LifeCycleBean implements
 
 ---
 
-## 三、生产常用：初始化与销毁用法对比
+## 3. 生产常用：初始化与销毁用法对比
 
 ### 3.1 三种方式对比
 
@@ -449,7 +446,7 @@ public class MyService {
 
 ---
 
-## 四、手动关闭容器触发销毁
+## 4.手动关闭容器触发销毁
 
 Spring Boot中：
 
@@ -472,7 +469,7 @@ public class Application {
 
 ---
 
-## 五、Bean作用域与生命周期差异
+## 5. Bean作用域与生命周期差异
 
 ### 5.1 singleton作用域（默认）
 
@@ -512,15 +509,15 @@ public class OrderService {
 
 ---
 
-## 七、手动将对象交给Spring管理（registerSingleton）
+## 6. 手动将对象交给Spring管理（registerSingleton）
 
-### 7.1 这个功能是干什么的
+### 6.1 这个功能是干什么的
 
 正常情况下，Spring通过`@Component`、`@Bean`等方式自动创建和管理Bean。
 
 但有时候，对象可能是**外部创建好的**（比如从数据库查出来的、从配置文件读取的、第三方库给的），这时需要**手动把这个对象注册到Spring容器中**，让它也能被`@Autowired`注入使用。
 
-### 7.2 核心代码
+### 6.2 核心代码
 
 ```java
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -540,7 +537,7 @@ UserService bean = factory.getBean("myUserService", UserService.class);
 System.out.println(bean.getName());  // 输出：张三
 ```
 
-### 7.3 实际使用场景
+### 6.3 实际使用场景
 
 **场景1：Spring Boot启动后动态注册Bean**
 
@@ -628,15 +625,15 @@ public void testService() {
 }
 ```
 
-### 7.4 注意事项
+### 6.4 注意事项
 
 - registerSingleton注册的Bean**不走正常的生命周期流程**（没有实例化→属性填充→初始化这些步骤）
 - 如果需要完整生命周期，可以用`registerBean()`方法替代
 - 注册后的Bean是singleton，后续获取都是同一个对象
 
-## 八、Aware接口：获取容器内部信息
+## 7. Aware接口：获取容器内部信息
 
-### 8.1 常用Aware接口速查
+### 7.1 常用Aware接口速查
 
 | 接口 | 方法 | 获取内容 | 使用场景 |
 |------|------|----------|----------|
@@ -644,7 +641,7 @@ public void testService() {
 | BeanFactoryAware | setBeanFactory() | BeanFactory实例 | 编程式访问容器 |
 | ApplicationContextAware | setApplicationContext() | ApplicationContext实例 | 获取其他Bean、发布事件 |
 
-### 8.2 使用示例
+### 7.2 使用示例
 
 ```java
 @Component
@@ -672,11 +669,11 @@ public class AwareBean implements BeanNameAware, ApplicationContextAware {
 
 ---
 
-## 九、BeanPostProcessor（进阶）
+## 8. BeanPostProcessor（进阶）
 
 > 以下为进阶内容，如只需日常开发可跳过此章。
 
-### 9.1 作用与原理
+### 8.1 作用与原理
 
 BeanPostProcessor允许在Bean初始化前后进行统一拦截处理，是Spring框架的核心扩展机制。
 
@@ -685,7 +682,7 @@ BeanPostProcessor允许在Bean初始化前后进行统一拦截处理，是Sprin
 - postProcessBeforeInitialization：第4步，初始化方法执行前调用
 - postProcessAfterInitialization：第6步，初始化方法执行后调用
 
-### 9.2 基本用法
+### 8.2 基本用法
 
 ```java
 @Component
@@ -705,13 +702,13 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
 }
 ```
 
-### 9.3 重要特性
+### 8.3 重要特性
 
 - 作用于容器内所有Bean，而非单个Bean
 - 可通过beanName或类型判断实现针对性处理
 - 可以返回代理对象替换原始对象（Spring AOP基于此机制）
 
-### 9.4 常见应用场景
+### 8.4 常见应用场景
 
 - AOP代理生成（Spring AOP在此生成代理对象）
 - @Autowired处理（AutowiredAnnotationBeanPostProcessor）

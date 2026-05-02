@@ -56,23 +56,24 @@ export default defineConfig({
             {
                 text: '前端',
                 items: [
-                    {text: 'CSS', link: '/CSS/一、CSS基础'},
-                    {text: 'HTML', link: '/HTML/一、Web开发基础'},
+                    {text: 'CSS', link: '/前端/CSS/首页'},
+                    {text: 'HTML', link: '/前端/HTML/首页'},
+                    {text: 'Vue', link: '/前端/Vue/首页'},
                 ]
             },
             {
                 text: '后端',
                 items: [
-                    {text: 'JakartaEE-Servlet', link: '/JakartaEE-Servlet/一、Web基础概念'},
-                    {text: 'Spring', link: '/Spring/一、Spring 概述'},
-                    {text: 'SpringBoot', link: '/SpringBoot/首页'},
-                    {text: 'SpringCloud', link: '/SpringCloud/一、分布式基础'},
+                    {text: 'JakartaEE-Servlet', link: '/后端/JakartaEE-Servlet/首页'},
+                    {text: 'Spring', link: '/后端/Spring/首页'},
+                    {text: 'SpringBoot', link: '/后端/SpringBoot/首页'},
+                    {text: 'SpringCloud', link: '/后端/SpringCloud/首页'},
                 ]
             },
             {
                 text: '项目',
                 items: [
-                    {text: '天机学堂', link: '/天机学堂/首页'},
+                    {text: '天机学堂', link: '/项目/天机学堂/首页'},
                 ]
             },
         ],
@@ -93,50 +94,56 @@ export default defineConfig({
                 }
             ],
             //===========================前 端 导 航================================
-            '/CSS/': [
+            '/前端/CSS/': [
                 {
                     text: '目录',
-                    items: getCategoryItems('CSS')
+                    items: getCategoryItems('前端/CSS')
                 }
             ],
-            '/HTML/': [
+            '/前端/HTML/': [
                 {
                     text: '目录',
-                    items: getCategoryItems('HTML')
+                    items: getCategoryItems('前端/HTML')
+                }
+            ],
+            '/前端/Vue/': [
+                {
+                    text: '目录',
+                    items: getCategoryItems('前端/Vue')
                 }
             ],
             //===========================后 端 导 航================================
-            '/JakartaEE-Servlet/': [
+            '/后端/JakartaEE-Servlet/': [
                 {
                     text: '目录',
-                    items: getCategoryItems('JakartaEE-Servlet')
+                    items: getCategoryItems('后端/JakartaEE-Servlet')
                 }
             ],
 
-            '/Spring/': [
+            '/后端/Spring/': [
                 {
                     text: '目录',
-                    items: getCategoryItems('Spring')
+                    items: getCategoryItems('后端/Spring')
                 }
             ],
 
-            '/SpringBoot/': [
+            '/后端/SpringBoot/': [
                 {
                     text: '目录',
-                    items: getCategoryItems('SpringBoot')
+                    items: getCategoryItems('后端/SpringBoot')
                 }
             ],
-            '/SpringCloud/': [
+            '/后端/SpringCloud/': [
                 {
                     text: '目录',
-                    items: getCategoryItems('SpringCloud')
+                    items: getCategoryItems('后端/SpringCloud')
                 }
             ],
             //===========================项 目 导 航================================
-            '/天机学堂/': [
+            '/项目/天机学堂/': [
                 {
                     text: '目录',
-                    items: getCategoryItems('天机学堂')
+                    items: getCategoryItems('项目/天机学堂')
                 }
             ]
             /**
