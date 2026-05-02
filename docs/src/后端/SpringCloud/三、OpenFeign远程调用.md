@@ -199,9 +199,9 @@ feign:
   sentinel:
     enabled: true
 ```
+## 7.1 方式一：简单 Fallback（不获取异常信息）
 
-现在需要对 Feign 客户端 `ProductFeignClient` 配置 Fallback，那么需要先实现 `ProductFeignClient` 编写兜底返回逻辑，并将其交由 Spring 管理：
-
+直接实现 Feign 接口，编写降级逻辑：
 ```java
 @Component
 public class ProductFeignClientFallback implements ProductFeignClient {
@@ -217,14 +217,74 @@ public class ProductFeignClientFallback implements ProductFeignClient {
     }
 }
 ```
-
-之后回到对应的 Feign 客户端，配置 Fallback：
-
+Feign 接口配置：
 ```java
 @FeignClient(value = "service-product", fallback = ProductFeignClientFallback.class)
 public interface ProductFeignClient {
-
     @GetMapping("/product/{id}")
     Product getProductById(@PathVariable("id") Long id);
 }
 ```
+
+## 7.2 方式二：FallbackFactory（推荐 可获取异常）
+
+步骤 1：编写降级工厂
+```java
+@Slf4j
+@Component
+public class ProductFeignClientFallbackFactory implements FallbackFactory<ProductFeignClient> {
+
+    @Override
+    public ProductFeignClient create(Throwable cause) {
+        log.error("商品服务调用失败，已降级", cause);
+        
+        // 返回降级逻辑
+        return new ProductFeignClient() {
+            @Override
+            public Product getProductById(Long id) {
+                Product product = new Product();
+                product.setId(id);
+                product.setPrice(new BigDecimal("0"));
+                product.setProductName("服务降级-未知商品");
+                product.setNum(0);
+                return product;
+            }
+        };
+    }
+}
+```
+步骤 2：Feign 接口绑定工厂
+```java
+@FeignClient(
+value = "service-product",
+fallbackFactory = ProductFeignClientFallbackFactory.class
+)
+public interface ProductFeignClient {
+    @GetMapping("/product/{id}")
+    Product getProductById(@PathVariable("id") Long id);
+}
+```
+为什么推荐 FallbackFactory？
+- 能拿到异常原因（超时？宕机？限流？）
+- 日志更清晰
+- Spring Cloud 最新版标准用法
+- 兼容性最好
+- 不会出现MD 文档构建报错（最关键！）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
