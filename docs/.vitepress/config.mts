@@ -171,6 +171,15 @@ export default defineConfig({
         },
         // 禁用 HTML 标签渲染，纯 Markdown 更安全
         html: false,
+        config: (md) => {
+            const fence = md.renderer.rules.fence
+            md.renderer.rules.fence = (...args) => {
+                const [tokens, idx] = args
+                const token = tokens[idx]
+                // 强制所有代码块加上 v-pre，彻底禁止 Vue 解析
+                return `<div v-pre>${fence(...args)}</div>`
+            }
+        }
     },
 
 
