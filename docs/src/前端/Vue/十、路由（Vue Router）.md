@@ -1,4 +1,4 @@
-# 十、路由（Vue Router）
+<ClientOnly>
 
 ## 10.1 路由概述
 
@@ -582,3 +582,4 @@ const router = createRouter({
   ]
 })
 ```
+</ClientOnly>

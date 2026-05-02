@@ -1,4 +1,4 @@
-# 四、Composition API 核心
+<ClientOnly>
 
 ## 4.1 选项式 API vs 组合式 API
 
@@ -252,3 +252,4 @@ export default defineConfig({
     import Person from './components/Person.vue';
 </script>
 ```
+</ClientOnly>

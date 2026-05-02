@@ -1,4 +1,4 @@
-# 一、Vue3 概述
+<ClientOnly>
 
 ## 1.1 基本信息
 
@@ -54,3 +54,4 @@ npm show vue version
 
 - 支持现代浏览器（IE11 需 polyfill）。
 - 提供迁移构建（`@vue/compat`）帮助从 Vue 2 平滑升级。
+  </ClientOnly>

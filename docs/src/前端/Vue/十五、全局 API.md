@@ -1,4 +1,4 @@
-# 十五、全局 API
+<ClientOnly>
 
 ## 15.1 app.component()
 
@@ -117,3 +117,4 @@ const app = createApp(App)
 app.use(createPinia())
 app.mount('#app')
 ```
+</ClientOnly>

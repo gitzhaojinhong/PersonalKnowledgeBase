@@ -1,4 +1,4 @@
-# 十三、其他 API
+<ClientOnly>
 
 ## 13.1 shallowRef 与 shallowReactive
 
@@ -154,3 +154,4 @@
 ## 13.4 customRef
 
 `customRef` 可以自定义 ref 的响应式效果，详见第十一章 Hooks 部分。
+</ClientOnly>
