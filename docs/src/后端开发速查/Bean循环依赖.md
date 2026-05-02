@@ -1,5 +1,5 @@
 
-## 一、快速查询：循环依赖场景判断
+## 1. 快速查询：循环依赖场景判断
 
 ### 1.1 一句话结论
 
@@ -34,7 +34,7 @@ public class Wife {
 
 ---
 
-## 二、实战建议
+## 2. 实战建议
 
 ### 2.1 避免循环依赖的设计原则
 
@@ -76,7 +76,7 @@ public String toString() {
 
 ---
 
-## 三、各种场景测试
+## 3. 各种场景测试
 
 ### 3.1 singleton（单例） + setter注入（能解决）
 
@@ -164,7 +164,7 @@ Is there an unresolvable circular reference?
 
 ---
 
-## 四、三级缓存机制（原理）
+## 4. 三级缓存机制（原理）
 
 > 以下为原理性内容，理解三级缓存有助于解决复杂问题。
 
@@ -247,7 +247,7 @@ protected Object getSingleton(String beanName, boolean allowEarlyReference) {
 
 ---
 
-## 五、为什么需要三级缓存（原理）
+## 5. 为什么需要三级缓存（原理）
 
 ### 5.1 两级缓存的问题
 
@@ -275,7 +275,7 @@ protected Object getSingleton(String beanName, boolean allowEarlyReference) {
 
 ---
 
-## 六、面试要点
+## 6. 面试要点
 
 ### 6.1 核心口诀
 
