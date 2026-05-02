@@ -1,4 +1,3 @@
-<ClientOnly>
 
 ## 14.1 Teleport
 
@@ -80,4 +79,3 @@
 ```
 
 **注意：** 顶层 await 需要配合 Suspense 使用，否则组件可能无法渲染。如果不想用 Suspense，改用 onMounted 生命周期钩子发起请求。
-</ClientOnly>

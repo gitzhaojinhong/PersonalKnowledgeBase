@@ -1,4 +1,3 @@
-<ClientOnly>
 
 > **什么时候使用 Pinia？当数据需要在多个不相关的组件间共享时。**
 >
@@ -582,4 +581,3 @@ import ShoppingCart from './components/ShoppingCart.vue'
 3. **响应式**：组件会自动响应 store 中状态的变化
 4. **模块化**：购物车逻辑与组件分离，易于维护和测试
 5. **Devtools 支持**：Pinia 与 Vue Devtools 集成，方便调试
-   </ClientOnly>

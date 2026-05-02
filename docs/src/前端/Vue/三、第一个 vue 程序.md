@@ -1,4 +1,4 @@
-<ClientOnly>
+
 
 ## 3.1 分析入口文件
 
@@ -79,4 +79,3 @@ npm run dev
 ```
 
 打开浏览器访问 `http://localhost:5173/`，即可看到渲染结果。
-</ClientOnly>

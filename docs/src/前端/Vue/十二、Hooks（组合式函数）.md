@@ -1,4 +1,3 @@
-<ClientOnly>
 
 > Hooks 是 Vue 3 组合式 API 的一种应用模式，用于封装和复用有状态的逻辑。
 
@@ -163,4 +162,3 @@ export function useMousePosition() {
     <p>鼠标位置: {{ x }}, {{ y }}</p>
 </template>
 ```
-</ClientOnly>

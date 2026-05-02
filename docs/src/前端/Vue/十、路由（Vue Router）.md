@@ -1,4 +1,3 @@
-<ClientOnly>
 
 ## 10.1 路由概述
 
@@ -582,4 +581,3 @@ const router = createRouter({
   ]
 })
 ```
-</ClientOnly>
