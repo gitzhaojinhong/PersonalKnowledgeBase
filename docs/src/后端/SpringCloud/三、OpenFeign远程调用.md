@@ -199,7 +199,7 @@ feign:
   sentinel:
     enabled: true
 ```
-## 7.1 方式一：简单 Fallback（不获取异常信息）
+### 7.1 方式一：简单 Fallback（不获取异常信息）
 
 直接实现 Feign 接口，编写降级逻辑：
 ```java
@@ -226,7 +226,7 @@ public interface ProductFeignClient {
 }
 ```
 
-## 7.2 方式二：FallbackFactory（推荐 可获取异常）
+### 7.2 方式二：FallbackFactory（推荐 可获取异常）
 
 步骤 1：编写降级工厂
 ```java
