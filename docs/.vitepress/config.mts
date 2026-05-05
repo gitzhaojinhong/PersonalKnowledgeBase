@@ -68,6 +68,7 @@ export default defineConfig({
                     {text: 'Spring', link: '/后端/Spring/首页'},
                     {text: 'SpringBoot', link: '/后端/SpringBoot/首页'},
                     {text: 'SpringCloud', link: '/后端/SpringCloud/首页'},
+                    {text: 'MyBatisPlus', link: '/后端/MyBatisPlus/首页'},
                     {text: 'Redis', link: '/后端/Redis/首页'},
                 ]
             },
@@ -138,6 +139,12 @@ export default defineConfig({
                 {
                     text: '目录',
                     items: getCategoryItems('后端/SpringCloud')
+                }
+            ],
+            '/后端/MyBatisPlus/': [
+                {
+                    text: '目录',
+                    items: getCategoryItems('后端/MyBatisPlus')
                 }
             ],
             '/后端/Redis/': [
