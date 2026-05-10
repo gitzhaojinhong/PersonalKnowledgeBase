@@ -28,5 +28,9 @@ features:
     details: 梳理知识脉络，分类清晰条理分明，让学习从此简单高效
   - title: 共享闻道
     details: 以文会友分享真知，打破认知边界，与同路人共赴知识山海
+    
+  - title: Hutool
+    details: 小而全的Java工具类库,使Java拥有函数式语言般的优雅
+    link: https://www.hutool.cn/docs/#/
 ---
 
