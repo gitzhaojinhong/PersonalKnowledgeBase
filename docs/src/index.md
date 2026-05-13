@@ -26,9 +26,9 @@ features:
     details: 汇聚干货笔记、技术心得与生活学识，点滴积累，终成星河
   - title: 极简求知
     details: 梳理知识脉络，分类清晰条理分明，让学习从此简单高效
-  - title: 共享闻道
-    details: 以文会友分享真知，打破认知边界，与同路人共赴知识山海
-    
+  - title: 环境搭建
+    details: 提供详细的环境配置指南，从零开始快速搭建开发环境
+    link: /环境安装/首页
   - title: Hutool
     details: 小而全的Java工具类库,使Java拥有函数式语言般的优雅
     link: https://www.hutool.cn/docs/#/
