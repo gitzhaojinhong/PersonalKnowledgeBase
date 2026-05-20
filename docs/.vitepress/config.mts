@@ -64,6 +64,7 @@ export default defineConfig({
             {
                 text: '后端',
                 items: [
+                    {text: '设计模式', link: '/后端/设计模式/首页'},
                     {text: 'JUC', link: '/后端/JUC/首页'},
                     {text: 'JakartaEE-Servlet', link: '/后端/JakartaEE-Servlet/首页'},
                     {text: 'Spring', link: '/后端/Spring/首页'},
@@ -116,6 +117,13 @@ export default defineConfig({
                 }
             ],
             //===========================后 端 导 航================================
+            '/后端/设计模式/': [
+                {
+                    text: '目录',
+                    items: getCategoryItems('后端/设计模式')
+                }
+            ],
+
             '/后端/JUC/': [
                 {
                     text: '目录',

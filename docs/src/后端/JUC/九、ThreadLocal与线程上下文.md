@@ -159,10 +159,12 @@ public class InheritableThreadLocalDemo {
         child.join();
 
         // 反过来不行：父线程无法读取子线程的值
-        new Thread(() -> {
+                Thread child2 = new Thread(() -> {
             inheritable.set(200);
             System.out.println("子线程设置: 200");
-        }).start().join();
+        });
+        child2.start();
+        child2.join();
 
         System.out.println("父线程读取: " + inheritable.get()); // 100
     }

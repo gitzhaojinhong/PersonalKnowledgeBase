@@ -85,8 +85,8 @@ public class ReorderingDemo {
     public static void main(String[] args) throws InterruptedException {
         // 线程1执行: a=1; x=b;
         // 线程2执行: b=1; y=a;
-        // 在单线程视角下，a=1,b=1,x=0,y=0 或 a=1,b=1,x=1,y=1 都不可能
-        // 但多线程下由于指令重排序，可能出现 x=0,y=1 或 x=1,y=0
+        // 在单线程视角下，x=0 且 y=0 这种结果是不可能出现的
+        // 但多线程下，由于指令重排序，x=0 且 y=0 这种“不可能结果”就可能出现了
         // 加上 volatile 或 synchronized 可以禁止重排序，保证有序性
     }
 }
