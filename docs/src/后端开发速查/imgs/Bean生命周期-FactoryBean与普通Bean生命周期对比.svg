@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 810" font-family="Microsoft YaHei, SimHei, sans-serif">
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748B"/>
+    </marker>
+  </defs>
+  <rect width="680" height="810" fill="#F8FAFC"/>
+
+  <text x="340" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">FactoryBean vs 普通 Bean 生命周期对比</text>
+
+  <!-- LEFT: 普通 Bean -->
+  <rect x="12" y="50" width="318" height="420" rx="8" fill="#FFF" stroke="#BBF7D0" stroke-width="1.5"/>
+  <rect x="12" y="50" width="318" height="30" rx="8" fill="#F0FDF4"/>
+  <rect x="12" y="66" width="318" height="14" fill="#F0FDF4"/>
+  <text x="171" y="69" text-anchor="middle" font-size="13" font-weight="bold" fill="#15803D">普通 Bean（完整生命周期）</text>
+
+  <rect x="32" y="92" width="278" height="32" rx="6" fill="#16A34A"/>
+  <text x="171" y="113" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">1. 实例化（构造方法）</text>
+
+  <line x1="171" y1="124" x2="171" y2="144" stroke="#86EFAC" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="32" y="144" width="278" height="32" rx="6" fill="#16A34A"/>
+  <text x="171" y="165" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">2. 属性填充（依赖注入）</text>
+
+  <line x1="171" y1="176" x2="171" y2="196" stroke="#86EFAC" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="32" y="196" width="278" height="32" rx="6" fill="#16A34A"/>
+  <text x="171" y="217" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">3. Aware 接口回调</text>
+
+  <line x1="171" y1="228" x2="171" y2="248" stroke="#86EFAC" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="32" y="248" width="278" height="32" rx="6" fill="#16A34A"/>
+  <text x="171" y="269" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">4. BPP: beforeInitialization</text>
+
+  <line x1="171" y1="280" x2="171" y2="300" stroke="#86EFAC" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="32" y="300" width="278" height="32" rx="6" fill="#16A34A"/>
+  <text x="171" y="321" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">5. 初始化方法</text>
+
+  <line x1="171" y1="332" x2="171" y2="352" stroke="#86EFAC" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="32" y="352" width="278" height="32" rx="6" fill="#16A34A"/>
+  <text x="171" y="373" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">6. BPP: afterInitialization</text>
+
+  <line x1="171" y1="384" x2="171" y2="404" stroke="#86EFAC" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="32" y="404" width="278" height="32" rx="6" fill="#166534"/>
+  <text x="171" y="425" text-anchor="middle" font-size="12" font-weight="bold" fill="#DCFCE7">Bean 就绪 → 放入单例池</text>
+
+  <text x="171" y="458" text-anchor="middle" font-size="10" fill="#94A3B8">getBean("name") 获取</text>
+
+  <!-- Divider -->
+  <line x1="342" y1="56" x2="342" y2="486" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="8,4"/>
+
+  <!-- RIGHT: FactoryBean -->
+  <rect x="350" y="50" width="318" height="420" rx="8" fill="#FFF" stroke="#BFDBFE" stroke-width="1.5"/>
+  <rect x="350" y="50" width="318" height="30" rx="8" fill="#EFF6FF"/>
+  <rect x="350" y="66" width="318" height="14" fill="#EFF6FF"/>
+  <text x="509" y="69" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">FactoryBean（两条路径）</text>
+
+  <!-- Path 1: Self -->
+  <rect x="370" y="92" width="278" height="140" rx="6" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1"/>
+  <text x="509" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#1D4ED8">路径一：FactoryBean 自身</text>
+  <line x1="390" y1="122" x2="628" y2="122" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="509" y="142" text-anchor="middle" font-size="10" fill="#334155">走正常 Bean 生命周期（同左侧流程）</text>
+  <rect x="385" y="152" width="248" height="26" rx="4" fill="#DBEAFE"/>
+  <text x="509" y="170" text-anchor="middle" font-size="10" fill="#1D4ED8">实例化 → 属性填充 → 初始化 → 就绪</text>
+  <rect x="385" y="182" width="248" height="26" rx="4" fill="#FEF3C7"/>
+  <text x="509" y="200" text-anchor="middle" font-size="10" fill="#B45309">getBean("&amp;name") → 获取自身</text>
+
+  <!-- Arrow -->
+  <line x1="509" y1="236" x2="509" y2="264" stroke="#60A5FA" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="534" y="253" font-size="10" fill="#3B82F6">调用 getObject()</text>
+
+  <!-- Path 2: Product -->
+  <rect x="370" y="264" width="278" height="140" rx="6" fill="#EFF6FF" stroke="#FCD34D" stroke-width="1"/>
+  <text x="509" y="284" text-anchor="middle" font-size="12" font-weight="bold" fill="#B45309">路径二：getObject() 产品</text>
+  <line x1="390" y1="294" x2="628" y2="294" stroke="#FDE68A" stroke-width="1"/>
+  <text x="509" y="314" text-anchor="middle" font-size="10" fill="#334155">由 FactoryBean 自行创建（new / 反射 / 代理...）</text>
+  <rect x="385" y="324" width="248" height="26" rx="4" fill="#FEE2E2"/>
+  <text x="509" y="342" text-anchor="middle" font-size="10" fill="#DC2626">不走容器的属性填充和初始化！</text>
+  <rect x="385" y="354" width="248" height="26" rx="4" fill="#DBEAFE"/>
+  <text x="509" y="372" text-anchor="middle" font-size="10" fill="#1D4ED8">getBean("name") → 获取产品</text>
+
+  <text x="509" y="410" text-anchor="middle" font-size="10" fill="#94A3B8">isSingleton()=true 时缓存 getObject() 结果</text>
+
+  <!-- Bottom: Comparison Table -->
+  <rect x="12" y="492" width="656" height="300" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.5"/>
+
+  <text x="35" y="520" font-size="13" font-weight="bold" fill="#0F172A">关键差异对比</text>
+
+  <!-- Table header -->
+  <rect x="25" y="534" width="630" height="32" rx="6" fill="#E2E8F0"/>
+  <text x="130" y="555" text-anchor="middle" font-size="11" font-weight="bold" fill="#334155">维度</text>
+  <text x="300" y="555" text-anchor="middle" font-size="11" font-weight="bold" fill="#334155">普通 Bean</text>
+  <text x="520" y="555" text-anchor="middle" font-size="11" font-weight="bold" fill="#334155">FactoryBean</text>
+
+  <!-- Rows -->
+  <text x="130" y="590" text-anchor="middle" font-size="10" fill="#334155">创建方式</text>
+  <text x="300" y="590" text-anchor="middle" font-size="10" fill="#475569">容器自动调用构造器创建</text>
+  <text x="520" y="590" text-anchor="middle" font-size="10" fill="#475569">getObject() 自定义创建</text>
+
+  <text x="130" y="618" text-anchor="middle" font-size="10" fill="#334155">属性填充</text>
+  <text x="300" y="618" text-anchor="middle" font-size="10" fill="#475569">容器自动注入依赖</text>
+  <text x="520" y="618" text-anchor="middle" font-size="10" fill="#475569">跳过（由代码控制）</text>
+
+  <text x="130" y="646" text-anchor="middle" font-size="10" fill="#334155">初始化回调</text>
+  <text x="300" y="646" text-anchor="middle" font-size="10" fill="#475569">@PostConstruct / afterPropertiesSet</text>
+  <text x="520" y="646" text-anchor="middle" font-size="10" fill="#475569">跳过（由代码控制）</text>
+
+  <text x="130" y="674" text-anchor="middle" font-size="10" fill="#334155">获取方式</text>
+  <text x="300" y="674" text-anchor="middle" font-size="10" fill="#475569">getBean("name")</text>
+  <text x="520" y="674" text-anchor="middle" font-size="10" fill="#475569">产品：getBean("name")</text>
+  <text x="520" y="690" text-anchor="middle" font-size="9" fill="#94A3B8">自身：getBean("&amp;name")</text>
+
+  <text x="130" y="720" text-anchor="middle" font-size="10" fill="#334155">单例缓存</text>
+  <text x="300" y="720" text-anchor="middle" font-size="10" fill="#475569">放入 singletonObjects</text>
+  <text x="520" y="720" text-anchor="middle" font-size="10" fill="#475569">isSingleton()=true 时缓存 product</text>
+
+  <text x="35" y="750" font-size="12" font-weight="bold" fill="#0F172A">Spring 内部的典型使用：</text>
+  <rect x="35" y="760" width="145" height="24" rx="5" fill="#DBEAFE"/>
+  <text x="107" y="777" text-anchor="middle" font-size="9" fill="#1D4ED8">ProxyFactoryBean (AOP)</text>
+  <rect x="188" y="760" width="155" height="24" rx="5" fill="#DBEAFE"/>
+  <text x="265" y="777" text-anchor="middle" font-size="9" fill="#1D4ED8">MapperFactoryBean (MyBatis)</text>
+  <rect x="351" y="760" width="155" height="24" rx="5" fill="#DBEAFE"/>
+  <text x="428" y="777" text-anchor="middle" font-size="9" fill="#1D4ED8">JndiObjectFactoryBean</text>
+  <rect x="514" y="760" width="140" height="24" rx="5" fill="#DBEAFE"/>
+  <text x="584" y="777" text-anchor="middle" font-size="9" fill="#1D4ED8">TransactionProxyFactoryBean</text>
+</svg>

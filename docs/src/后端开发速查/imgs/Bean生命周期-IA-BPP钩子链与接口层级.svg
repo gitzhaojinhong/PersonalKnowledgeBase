@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 720" font-family="Microsoft YaHei, SimHei, sans-serif">
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748B"/>
+    </marker>
+  </defs>
+  <rect width="680" height="720" fill="#F8FAFC"/>
+
+  <text x="340" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">InstantiationAwareBeanPostProcessor 钩子链</text>
+  <text x="340" y="50" text-anchor="middle" font-size="11" fill="#64748B">实例化前后的精确拦截点 + 接口层级关系</text>
+
+  <!-- LEFT: Flow -->
+  <rect x="12" y="66" width="410" height="600" rx="8" fill="#FFF" stroke="#BFDBFE" stroke-width="1.5"/>
+  <text x="35" y="92" font-size="13" font-weight="bold" fill="#1D4ED8">钩子执行流程</text>
+
+  <!-- Hook 1 -->
+  <rect x="35" y="108" width="362" height="52" rx="8" fill="#3B82F6"/>
+  <text x="216" y="128" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">1. postProcessBeforeInstantiation()</text>
+  <text x="216" y="148" text-anchor="middle" font-size="9" fill="#BFDBFE">返回非 null → 短路整个 Bean 创建，返回的对象直接作为 Bean</text>
+
+  <line x1="216" y1="160" x2="216" y2="184" stroke="#64748B" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="236" y="175" font-size="9" fill="#3B82F6">return null</text>
+
+  <rect x="70" y="184" width="292" height="32" rx="8" fill="#FFF" stroke="#93C5FD" stroke-width="2"/>
+  <text x="216" y="205" text-anchor="middle" font-size="12" font-weight="bold" fill="#1D4ED8">构造方法实例化</text>
+
+  <line x1="216" y1="216" x2="216" y2="240" stroke="#64748B" stroke-width="2" marker-end="url(#ar)"/>
+
+  <!-- Hook 2 -->
+  <rect x="35" y="240" width="362" height="52" rx="8" fill="#3B82F6"/>
+  <text x="216" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">2. postProcessAfterInstantiation()</text>
+  <text x="216" y="280" text-anchor="middle" font-size="9" fill="#BFDBFE">返回 false → 跳过后续属性填充（依赖注入）</text>
+
+  <line x1="216" y1="292" x2="216" y2="316" stroke="#64748B" stroke-width="2" marker-end="url(#ar)"/>
+
+  <!-- Hook 3 -->
+  <rect x="35" y="316" width="362" height="52" rx="8" fill="#D97706"/>
+  <text x="216" y="336" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">3. postProcessProperties()</text>
+  <text x="216" y="356" text-anchor="middle" font-size="9" fill="#FEF3C7">@Autowired / @Value 实际注入发生在这里</text>
+
+  <line x1="216" y1="368" x2="216" y2="392" stroke="#64748B" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="70" y="392" width="292" height="32" rx="8" fill="#FFF" stroke="#93C5FD" stroke-width="2"/>
+  <text x="216" y="413" text-anchor="middle" font-size="12" font-weight="bold" fill="#1D4ED8">属性填充（依赖注入）</text>
+
+  <line x1="216" y1="424" x2="216" y2="452" stroke="#94A3B8" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#ar)"/>
+
+  <rect x="70" y="452" width="292" height="32" rx="8" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="216" y="473" text-anchor="middle" font-size="11" fill="#3B82F6">继续 Aware → BPP → 初始化 → Bean 就绪</text>
+
+  <!-- Hook 4 -->
+  <rect x="35" y="504" width="362" height="44" rx="8" fill="#059669"/>
+  <text x="216" y="522" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">4. getEarlyBeanReference()（SmartIA-BPP）</text>
+  <text x="216" y="540" text-anchor="middle" font-size="9" fill="#D1FAE5">循环依赖时从三级缓存触发 → 生成早期引用（可能含 AOP 代理）</text>
+
+  <!-- Divider -->
+  <line x1="434" y1="70" x2="434" y2="680" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="8,4"/>
+
+  <!-- RIGHT: Interface Hierarchy -->
+  <rect x="448" y="66" width="218" height="600" rx="8" fill="#FFF" stroke="#DDD6FE" stroke-width="1.5"/>
+  <text x="557" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#6D28D9">接口层级关系</text>
+
+  <!-- BPP -->
+  <rect x="460" y="108" width="194" height="60" rx="8" fill="#8B5CF6"/>
+  <text x="557" y="128" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">BeanPostProcessor</text>
+  <text x="557" y="146" text-anchor="middle" font-size="9" fill="#EDE9FE">postProcessBeforeInitialization()</text>
+  <text x="557" y="161" text-anchor="middle" font-size="9" fill="#EDE9FE">postProcessAfterInitialization()</text>
+
+  <line x1="557" y1="172" x2="557" y2="200" stroke="#7C3AED" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="580" y="188" font-size="9" fill="#7C3AED">extends</text>
+
+  <!-- IA-BPP -->
+  <rect x="460" y="200" width="194" height="90" rx="8" fill="#7C3AED"/>
+  <text x="557" y="220" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">InstantiationAware</text>
+  <text x="557" y="240" text-anchor="middle" font-size="8" fill="#DDD6FE">postProcessBeforeInstantiation()</text>
+  <text x="557" y="255" text-anchor="middle" font-size="8" fill="#DDD6FE">postProcessAfterInstantiation()</text>
+  <text x="557" y="270" text-anchor="middle" font-size="8" fill="#DDD6FE">postProcessProperties()</text>
+  <text x="557" y="284" text-anchor="middle" font-size="8" fill="#C4B5FD">-> @Autowired 在此注入</text>
+
+  <line x1="557" y1="294" x2="557" y2="322" stroke="#7C3AED" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="580" y="310" font-size="9" fill="#7C3AED">extends</text>
+
+  <!-- SmartIA-BPP -->
+  <rect x="460" y="322" width="194" height="64" rx="8" fill="#6D28D9"/>
+  <text x="557" y="342" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">SmartInstantiationAware</text>
+  <text x="557" y="360" text-anchor="middle" font-size="8" fill="#DDD6FE">getEarlyBeanReference()</text>
+  <text x="557" y="378" text-anchor="middle" font-size="8" fill="#C4B5FD">-> 循环依赖早期引用</text>
+
+  <!-- Key Impls -->
+  <rect x="460" y="404" width="194" height="26" rx="6" fill="#E2E8F0"/>
+  <text x="557" y="422" text-anchor="middle" font-size="11" font-weight="bold" fill="#334155">关键实现类</text>
+
+  <rect x="466" y="440" width="182" height="64" rx="6" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1"/>
+  <text x="557" y="460" text-anchor="middle" font-size="10" font-weight="bold" fill="#6D28D9">AbstractAutoProxyCreator</text>
+  <text x="557" y="476" text-anchor="middle" font-size="9" fill="#475569">AOP 代理创建（SmartIA-BPP）</text>
+  <text x="557" y="494" text-anchor="middle" font-size="8" fill="#94A3B8">getEarlyBeanReference() 在此实现</text>
+
+  <rect x="466" y="514" width="182" height="64" rx="6" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1"/>
+  <text x="557" y="534" text-anchor="middle" font-size="10" font-weight="bold" fill="#6D28D9">AutowiredAnnotationBPP</text>
+  <text x="557" y="550" text-anchor="middle" font-size="9" fill="#475569">@Autowired / @Value 注入</text>
+  <text x="557" y="568" text-anchor="middle" font-size="8" fill="#94A3B8">postProcessProperties() 中注入</text>
+
+  <!-- Bottom note -->
+  <rect x="460" y="594" width="194" height="56" rx="6" fill="#F1F5F9"/>
+  <text x="557" y="614" text-anchor="middle" font-size="9" fill="#64748B">日常开发很少直接使用</text>
+  <text x="557" y="630" text-anchor="middle" font-size="9" fill="#64748B">框架内部用于实现</text>
+  <text x="557" y="646" text-anchor="middle" font-size="9" fill="#64748B">@Autowired @Value AOP等</text>
+
+  <!-- Bottom line -->
+  <rect x="35" y="676" width="362" height="22" rx="4" fill="#F1F5F9"/>
+  <text x="216" y="692" text-anchor="middle" font-size="9" fill="#64748B">DefaultSingletonBeanRegistry — 三级缓存字段定义 + addSingletonFactory / getSingleton</text>
+</svg>

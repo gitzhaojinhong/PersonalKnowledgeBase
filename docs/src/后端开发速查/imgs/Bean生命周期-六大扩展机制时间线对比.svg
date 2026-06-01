@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 740" font-family="Microsoft YaHei, SimHei, sans-serif">
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748B"/>
+    </marker>
+  </defs>
+  <rect width="680" height="740" fill="#F8FAFC"/>
+
+  <text x="340" y="34" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">六大扩展机制时间线对比</text>
+  <text x="340" y="52" text-anchor="middle" font-size="11" fill="#64748B">按执行时机从左到右排列</text>
+
+  <!-- Timeline -->
+  <line x1="40" y1="78" x2="640" y2="78" stroke="#CBD5E1" stroke-width="3"/>
+  <circle cx="40" cy="78" r="5" fill="#7C3AED"/>
+  <circle cx="240" cy="78" r="5" fill="#2563EB"/>
+  <circle cx="440" cy="78" r="5" fill="#16A34A"/>
+  <circle cx="620" cy="78" r="5" fill="#0D9488"/>
+
+  <text x="140" y="72" text-anchor="middle" font-size="10" font-weight="bold" fill="#7C3AED">容器启动前</text>
+  <text x="340" y="72" text-anchor="middle" font-size="10" font-weight="bold" fill="#2563EB">Bean 创建过程</text>
+  <text x="530" y="72" text-anchor="middle" font-size="10" font-weight="bold" fill="#16A34A">所有Bean就绪后</text>
+
+  <!-- Mechanism 1 -->
+  <rect x="20" y="100" width="150" height="125" rx="8" fill="#FFF" stroke="#C4B5FD" stroke-width="1.5"/>
+  <rect x="20" y="100" width="150" height="30" rx="8" fill="#7C3AED"/>
+  <rect x="20" y="116" width="150" height="14" fill="#7C3AED"/>
+  <text x="95" y="120" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">Initializer</text>
+  <text x="95" y="150" text-anchor="middle" font-size="10" fill="#6D28D9">容器初始化前</text>
+  <text x="95" y="166" text-anchor="middle" font-size="10" fill="#6D28D9">最早阶段</text>
+  <text x="95" y="186" text-anchor="middle" font-size="9" fill="#7C3AED">环境变量</text>
+  <text x="95" y="202" text-anchor="middle" font-size="9" fill="#7C3AED">Profile 激活</text>
+  <text x="95" y="218" text-anchor="middle" font-size="9" fill="#7C3AED">上下文初始化</text>
+
+  <!-- Mechanism 2 -->
+  <rect x="188" y="100" width="150" height="125" rx="8" fill="#FFF" stroke="#C4B5FD" stroke-width="1.5"/>
+  <rect x="188" y="100" width="150" height="30" rx="8" fill="#7C3AED"/>
+  <rect x="188" y="116" width="150" height="14" fill="#7C3AED"/>
+  <text x="263" y="120" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">BDRPP / BFPP</text>
+  <text x="263" y="150" text-anchor="middle" font-size="10" fill="#6D28D9">容器刷新时</text>
+  <text x="263" y="166" text-anchor="middle" font-size="10" fill="#6D28D9">操作BeanDefinition</text>
+  <text x="263" y="186" text-anchor="middle" font-size="9" fill="#7C3AED">新增 / 修改</text>
+  <text x="263" y="202" text-anchor="middle" font-size="9" fill="#7C3AED">删除 Bean定义</text>
+  <text x="263" y="218" text-anchor="middle" font-size="9" fill="#7C3AED">全局仅1次</text>
+
+  <!-- Mechanism 3 -->
+  <rect x="356" y="100" width="150" height="125" rx="8" fill="#FFF" stroke="#93C5FD" stroke-width="1.5"/>
+  <rect x="356" y="100" width="150" height="30" rx="8" fill="#2563EB"/>
+  <rect x="356" y="116" width="150" height="14" fill="#2563EB"/>
+  <text x="431" y="120" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">IA-BPP</text>
+  <text x="431" y="150" text-anchor="middle" font-size="10" fill="#1D4ED8">实例化前后</text>
+  <text x="431" y="166" text-anchor="middle" font-size="10" fill="#1D4ED8">可短路创建</text>
+  <text x="431" y="186" text-anchor="middle" font-size="9" fill="#3B82F6">控制实例化</text>
+  <text x="431" y="202" text-anchor="middle" font-size="9" fill="#3B82F6">@Autowired注入</text>
+  <text x="431" y="218" text-anchor="middle" font-size="9" fill="#3B82F6">每Bean都执行</text>
+
+  <!-- Mechanism 4 -->
+  <rect x="524" y="100" width="140" height="125" rx="8" fill="#FFF" stroke="#93C5FD" stroke-width="1.5"/>
+  <rect x="524" y="100" width="140" height="30" rx="8" fill="#2563EB"/>
+  <rect x="524" y="116" width="140" height="14" fill="#2563EB"/>
+  <text x="594" y="120" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">BeanPostProcessor</text>
+  <text x="594" y="150" text-anchor="middle" font-size="10" fill="#1D4ED8">初始化前后</text>
+  <text x="594" y="166" text-anchor="middle" font-size="10" fill="#1D4ED8">before+after</text>
+  <text x="594" y="186" text-anchor="middle" font-size="9" fill="#3B82F6">AOP 代理</text>
+  <text x="594" y="202" text-anchor="middle" font-size="9" fill="#3B82F6">@PostConstruct</text>
+  <text x="594" y="218" text-anchor="middle" font-size="9" fill="#3B82F6">每Bean都执行</text>
+
+  <!-- === Comparison Table === -->
+  <text x="40" y="262" font-size="13" font-weight="bold" fill="#0F172A">六大扩展机制对比总览</text>
+
+  <!-- Header -->
+  <rect x="20" y="278" width="640" height="32" rx="6" fill="#E2E8F0"/>
+  <text x="95" y="299" text-anchor="middle" font-size="11" font-weight="bold" fill="#334155">机制</text>
+  <text x="215" y="299" text-anchor="middle" font-size="11" font-weight="bold" fill="#334155">执行时机</text>
+  <text x="320" y="299" text-anchor="middle" font-size="11" font-weight="bold" fill="#334155">作用对象</text>
+  <text x="420" y="299" text-anchor="middle" font-size="11" font-weight="bold" fill="#334155">执行次数</text>
+  <text x="555" y="299" text-anchor="middle" font-size="11" font-weight="bold" fill="#334155">核心能力</text>
+
+  <!-- Row data -->
+  <text x="95" y="335" text-anchor="middle" font-size="10" fill="#6D28D9">Initializer</text>
+  <text x="215" y="335" text-anchor="middle" font-size="10" fill="#334155">容器刷新前</text>
+  <text x="320" y="335" text-anchor="middle" font-size="10" fill="#334155">ApplicationContext</text>
+  <text x="420" y="335" text-anchor="middle" font-size="10" fill="#334155">1次</text>
+  <text x="555" y="335" text-anchor="middle" font-size="10" fill="#334155">环境配置、Profile、上下文</text>
+
+  <rect x="20" y="320" width="640" height="32" rx="0" fill="#FAF5FF"/>
+
+  <text x="95" y="367" text-anchor="middle" font-size="10" fill="#6D28D9">BDRPP / BFPP</text>
+  <text x="215" y="367" text-anchor="middle" font-size="10" fill="#334155">Bean 实例化前</text>
+  <text x="320" y="367" text-anchor="middle" font-size="10" fill="#334155">BeanDefinition</text>
+  <text x="420" y="367" text-anchor="middle" font-size="10" fill="#334155">1次</text>
+  <text x="555" y="367" text-anchor="middle" font-size="10" fill="#334155">新增/修改 Bean 定义</text>
+
+  <rect x="20" y="352" width="640" height="32" rx="0" fill="#EDE9FE"/>
+
+  <text x="95" y="399" text-anchor="middle" font-size="10" fill="#1D4ED8">IA-BPP</text>
+  <text x="215" y="399" text-anchor="middle" font-size="10" fill="#334155">实例化前后</text>
+  <text x="320" y="399" text-anchor="middle" font-size="10" fill="#334155">每个 Bean 实例</text>
+  <text x="420" y="399" text-anchor="middle" font-size="10" fill="#334155">N次</text>
+  <text x="555" y="399" text-anchor="middle" font-size="10" fill="#334155">短路创建、控制注入</text>
+
+  <rect x="20" y="384" width="640" height="32" rx="0" fill="#EFF6FF"/>
+
+  <text x="95" y="431" text-anchor="middle" font-size="10" fill="#1D4ED8">BeanPostProcessor</text>
+  <text x="215" y="431" text-anchor="middle" font-size="10" fill="#334155">初始化前后</text>
+  <text x="320" y="431" text-anchor="middle" font-size="10" fill="#334155">每个 Bean 实例</text>
+  <text x="420" y="431" text-anchor="middle" font-size="10" fill="#334155">N次</text>
+  <text x="555" y="431" text-anchor="middle" font-size="10" fill="#334155">拦截加工、AOP 代理</text>
+
+  <rect x="20" y="416" width="640" height="32" rx="0" fill="#DBEAFE"/>
+
+  <text x="95" y="463" text-anchor="middle" font-size="10" fill="#B45309">FactoryBean</text>
+  <text x="215" y="463" text-anchor="middle" font-size="10" fill="#334155">Bean 创建阶段</text>
+  <text x="320" y="463" text-anchor="middle" font-size="10" fill="#334155">getObject() 产品</text>
+  <text x="420" y="463" text-anchor="middle" font-size="10" fill="#334155">N次</text>
+  <text x="555" y="463" text-anchor="middle" font-size="10" fill="#334155">自定义创建逻辑</text>
+
+  <rect x="20" y="448" width="640" height="32" rx="0" fill="#FEF3C7"/>
+
+  <text x="95" y="495" text-anchor="middle" font-size="10" fill="#15803D">SmartLifecycle</text>
+  <text x="215" y="495" text-anchor="middle" font-size="10" fill="#334155">所有 Bean 就绪后</text>
+  <text x="320" y="495" text-anchor="middle" font-size="10" fill="#334155">组件启停</text>
+  <text x="420" y="495" text-anchor="middle" font-size="10" fill="#334155">1次</text>
+  <text x="555" y="495" text-anchor="middle" font-size="10" fill="#334155">有序启停（phase 控制）</text>
+
+  <rect x="20" y="480" width="640" height="32" rx="6" fill="#DCFCE7"/>
+
+  <!-- Bottom notes -->
+  <rect x="20" y="536" width="640" height="36" rx="6" fill="#F1F5F9"/>
+  <text x="40" y="558" font-size="11" fill="#334155">容器级（Initializer / BDRPP / BFPP）→ 1次</text>
+  <text x="320" y="558" font-size="11" fill="#334155">Bean 级（BPP / IA-BPP / FactoryBean）→ N次</text>
+
+  <rect x="20" y="586" width="640" height="70" rx="6" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1"/>
+  <text x="40" y="608" font-size="12" font-weight="bold" fill="#B91C1C">关键区分</text>
+  <text x="40" y="626" font-size="10" fill="#7F1D1D">容器级 vs Bean级：Initializer / BDRPP / BFPP 只执行 1 次（修改 BeanDefinition 元数据），其余每个 Bean 都执行</text>
+  <text x="40" y="644" font-size="10" fill="#7F1D1D">构造器注入 vs setter注入：构造器注入不受 BPP 影响；setter/field 注入可通过 IA-BPP 控制注入过程</text>
+
+  <!-- Phase indicators -->
+  <rect x="82" y="668" width="70" height="20" rx="4" fill="#F3E8FF"/>
+  <text x="117" y="682" text-anchor="middle" font-size="9" fill="#6D28D9">容器启动前</text>
+  <rect x="202" y="668" width="70" height="20" rx="4" fill="#DBEAFE"/>
+  <text x="237" y="682" text-anchor="middle" font-size="9" fill="#1D4ED8">Bean 创建</text>
+  <rect x="322" y="668" width="70" height="20" rx="4" fill="#DCFCE7"/>
+  <text x="357" y="682" text-anchor="middle" font-size="9" fill="#15803D">就绪后</text>
+  <rect x="442" y="668" width="70" height="20" rx="4" fill="#FFF7ED"/>
+  <text x="477" y="682" text-anchor="middle" font-size="9" fill="#C2410C">关闭</text>
+  <text x="537" y="682" font-size="9" fill="#94A3B8">→ 时间线</text>
+</svg>
