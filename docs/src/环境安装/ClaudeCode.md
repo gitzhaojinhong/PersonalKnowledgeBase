@@ -8,7 +8,7 @@
 
 由于Claude Code 官方明确**拒绝向中国大陆地区提供服务**，所以如果使用官方推荐的安装方式，就**必须**使用代理！！！
 
-7897端口 是我的电脑开启代理后所使用的端口，**请替换为自己代理端口**！！！
+7897端口 是我的电脑开启代理后所使用的端口（在自己的代理软件设置中查看），**请替换为自己代理端口**！！！
 
 ```powershell
 # 给当前 PowerShell 设置代理（立刻生效）
@@ -30,9 +30,9 @@ Remove-Item env:HTTPS_PROXY
 
 可以先进行**1.3验证**安装，如果验证成功则说明环境变量已经在安装过程中配置好了
 
-点 **高级** → **环境变量**，在上方「用户变量」找到 **Path** → 编辑 → **新建**，粘贴：
+点 **高级** → **环境变量**，在上方「系统变量」找到 **Path** → 编辑 → **新建**，粘贴：
 
-(该环境变量配的是ClaudeCode的安装目录，该目录下有一个claude.exe)安装方式不同环境变量的配置略有差异
+(该环境变量配的是ClaudeCode的安装目录，该目录下有一个claude.exe)，安装方式不同，环境变量的配置略有差异
 
 ```
 C:\Users\你的电脑用户名\.local\bin
@@ -103,9 +103,9 @@ notepad.exe .\.claude.json
 
 ![再次打开配置](./ClaudeCodeImages/img-07.png)
 
-文件里已经自动多出一些配置项，不用管。继续加入模型和 API 配置（以 Kimi K2.6 为例）：
+文件里已经自动多出一些配置项，不用管。继续加入模型和 API 配置：
 
-建议切换为次旗舰模型，这玩意使用起来太贵了，比如将kimi-2.6改为kimi-2.5
+Kimi配置参考：
 
 ```json
 "env": {
@@ -115,16 +115,29 @@ notepad.exe .\.claude.json
 },
 ```
 
+DeepSeek配置参考：
+
+```json
+"env": {
+    "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
+    "ANTHROPIC_AUTH_TOKEN": "你的开放平台Key",
+    "ANTHROPIC_MODEL": "deepseek-v4-pro"
+},
+```
+
 ![写入模型配置](./ClaudeCodeImages/img-08.png)
 
 ### 2.4 获取 API Key
 
-打开 Kimi 开放平台：https://platform.kimi.com/console/account
+Kimi 开放平台：[Kimi API 开放平台](https://platform.moonshot.cn/console/api-keys)
+
+DeepSeek开放平台：[DeepSeek 开放平台](https://platform.deepseek.com/usage)
 
 1. 登录开放平台
 2. 打开 API Key 管理页面
 3. 创建一个新的 API Key
 4. 复制，粘贴到前面的配置文件处
+5. 账户一定要有钱
 
 ![API Key 页面](./ClaudeCodeImages/img-09.png)
 
@@ -161,95 +174,9 @@ claude
 
 ---
 
-## 四、安装 Playwright MCP（控制浏览器）
+## 四、权限模式、上下文和记忆管理
 
-搜索 MCP 可以找到很多免费市场，例如：https://mcpmarket.com/
-
-### 4.1 安装 Playwright MCP
-
-```powershell
-#1. 用户范围（全局生效，推荐）
-claude mcp add --scope user playwright -- npx @playwright/mcp@latest
-
-#2. 项目范围（仅当前项目生效）
-claude mcp add --scope local playwright -- npx @playwright/mcp@latest
-
-```
-
-图片中的命令只是示例，并不是官方推荐的格式，官方推荐的格式参考上方命令
-
-![安装命令](./ClaudeCodeImages/img-12.png)
-
-安装完成后，重新启动 Claude Code。
-
-### 4.2 验证与排错
-
-进入 Claude Code 后，输入 `/mcp`：
-
-![查看 MCP 列表](./ClaudeCodeImages/img-13.png)
-
-如果能看到 `playwright`，说明安装成功。如果有 "failed"，不用自己排查，直接让 Claude Code 解决：
-
-```
-请帮我修复 Playwright MCP 的安装问题，直到它能正常使用。解决不了可以上网搜一搜
-```
-
-![自动修复](./ClaudeCodeImages/img-14.png)
-
-### 4.3 理解界面信息
-
-排错和执行任务时，不同颜色代表不同含义：
-
-- 你的输入：给 Claude Code 的任务
-- 白点内容：模型对你说的话
-- 灰色内容：模型读取了文件
-- 绿色内容：工具调用成功
-- 红色内容：工具调用报错
-- 底部橙色状态：Claude Code 正在工作（耗时、token 使用等）
-
-![界面示例](./ClaudeCodeImages/img-15.png)
-
-**它不是卡住了，而是在工作。**
-
-![权限确认](./ClaudeCodeImages/img-16.png)
-
-橙色提示表示它在询问你是否允许执行某个命令。
-
-### 4.4 恢复历史对话
-
-Claude Code 修复完 MCP 后会提示重启：
-
-![重启提示](./ClaudeCodeImages/img-17.png)
-
-重启后如果聊天记录不见了，输入：
-
-```
-/resume
-```
-
-用方向键选择之前的会话，Enter 确认即可回到原来的上下文。
-
-![恢复会话](./ClaudeCodeImages/img-18.png)
-
-### 4.5 控制浏览器执行任务
-
-测试一个完整任务：
-
-```
-请打开浏览器，到百度搜索"什么是 MCP"，选择两篇优质内容阅读，并整理成一个 markdown 文件保存在当前目录。
-```
-
-![浏览器任务](./ClaudeCodeImages/img-19.png)
-
-如果一切正常，它会：打开浏览器 → 搜索关键词 → 浏览网页 → 提取信息 → 生成 Markdown 文件。
-
-过程中会弹出几十次权限审批，先手动每次同意，后续会解决。
-
----
-
-## 五、权限模式、上下文和记忆管理
-
-### 5.1 权限模式
+### 4.1 权限模式
 
 默认情况下，Claude Code 执行很多动作都需要你批准（运行命令、安装工具、修改文件、调用外部能力）。所有支持的权限模式：
 
@@ -264,7 +191,7 @@ Claude Code 修复完 MCP 后会提示重启：
 
 > 如果使用最新模型，且清楚自己在做什么，没有使用不明来源的 skills 或 mcp，可以逐渐放宽权限。
 
-### 5.2 查看上下文占用
+### 4.2 查看上下文占用
 
 Claude Code 会把对话、MCP 信息、Skills 信息、文件内容、工具调用结果等装进上下文。上下文太长后模型会变笨（"上下文腐烂"）。
 
@@ -272,7 +199,7 @@ Claude Code 会把对话、MCP 信息、Skills 信息、文件内容、工具调
 
 ![上下文占用](./ClaudeCodeImages/img-20.png)
 
-### 5.3 压缩上下文
+### 4.3 压缩上下文
 
 完成阶段性任务后，前面的内容"还有一点价值但不需要保留全部细节"时，建议手动执行 `/compact`：
 
@@ -280,7 +207,7 @@ Claude Code 会把对话、MCP 信息、Skills 信息、文件内容、工具调
 
 它会对前面的上下文做压缩总结，释放大量空间。比等系统自动 compact 更可控。
 
-### 5.4 清空上下文
+### 4.4 清空上下文
 
 如果前面的上下文已经完全没用了，输入 `/clear`：
 
@@ -288,65 +215,7 @@ Claude Code 会把对话、MCP 信息、Skills 信息、文件内容、工具调
 
 **记住一个原则：上下文是临时记忆，文件才是长期记忆。** 真正重要的信息应该让 Claude Code 写进文件。
 
----
 
-## 六、安装 Skills（以 HyperFrames 为例）
-
-### 6.1 理解 Skills
-
-- MCP 更像是"连接工具"
-- Skills 更像是"现成的能力包"
-
-一个 Skill 不仅帮你接外部工具，还会顺带提供一整套适合该任务的提示词、流程和约束。
-
-### 6.2 安装 HyperFrames Skill
-
-安装命令：
-
-```
-npx skills add /-com/hyperframes
-```
-
-这次不自己运行命令，直接让 Claude Code 帮你安装即可。
-
-![Claude Code 安装 Skill](./ClaudeCodeImages/img-23.png)
-
-### 6.3 确认安装成功
-
-安装完成后，重启 Claude Code，输入 `/skills`：
-
-![查看 Skills 列表](./ClaudeCodeImages/img-24.png)
-
-如果列表里有 `hyperframes`，说明安装成功。
-
-### 6.4 使用 Skill 制作视频
-
-在 Claude Code 中，通过 `@` 选择当前工作目录下的文件：
-
-![@ 选择文件](./ClaudeCodeImages/img-25.png)
-
-1. 输入 `@`
-2. 选择前面生成的"什么是 MCP"的 Markdown 文件
-3. 给一个任务，例如：
-
-```
-请基于这个 markdown 内容，制作一个适合短视频传播的科普视频，要求节奏清晰、动画直观、适合新手理解。
-```
-
-![视频生成结果](./ClaudeCodeImages/img-26.png)
-
-还可以继续补充风格、时长、字幕、配音、画面参考截图等要求。
-
-### 6.5 迭代优化
-
-第一次生成的不一定完美，像带实习生一样继续提要求：
-
-- 画面不够震撼，请增加动态转场
-- 解释太抽象，请把"有 MCP / 没 MCP"的对比再直观一点
-- 字太多，请精简每页文案
-- 配色太平，请做得更有科技感
-
-一般 2 到 4 轮迭代后，效果会明显提升。
 
 ---
 
