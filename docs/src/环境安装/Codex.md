@@ -113,3 +113,14 @@ CC Switch开源下载地址：[Releases · farion1231/cc-switch](https://github.
 ![1](./ClaudeCodeImages/ccswitch_12.png)
 
 最后：如果配置过后仍不能使用codex，请更新CC Switch到最新版本。
+
+
+
+## 三、codex宠物商店
+
+只是有趣而已，没太大用处
+
+Codex Desktop->打开设置->外观-> 宠物
+
+宠物商店：[Petdex: 适用于 Codex 的动画伙伴](https://petdex.crafter.run/zh)
+

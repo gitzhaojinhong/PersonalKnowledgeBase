@@ -94,6 +94,8 @@ Claude Code 会问你是否信任当前目录，直接按 `Enter` 即可。
 
 ### 2.3 指定模型与 API 接入
 
+**注意**：也可以使用cc_switsh管理api key，道理都是一样的，最终都是修改配置文件。可参考`codex的安装配置`
+
 再次打开配置文件：
 
 ```powershell
