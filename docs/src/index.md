@@ -22,6 +22,9 @@ hero:
 
 # 特性列表配置 - 展示项目的核心功能特点(最多3个)
 features:
+  - title: VitePress个人网站搭建
+    details: 快速搭建一个自己的个人网站，快速开始你的知识构建
+    link: /VitePress搭建/首页
   - title: 环境搭建
     details: 提供详细的环境配置指南，从零开始快速搭建开发环境
     link: /环境安装/首页
@@ -29,6 +32,15 @@ features:
     details: 小而全的Java工具类库,使Java拥有函数式语言般的优雅
     link: https://www.hutool.cn/docs/#/
 
+  - title: 空
+    details: 还没有内容
+    link: /
+  - title: 空
+    details: 还没有内容
+    link: /
+  - title: 空
+    details: 还没有内容
+    link: /
 
 ---
 

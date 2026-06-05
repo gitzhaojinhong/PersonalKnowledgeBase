@@ -197,7 +197,7 @@ export default defineConfig({
         },
 
         socialLinks: [
-            {icon: 'github', link: 'https://github.com/vuejs/vitepress'}
+            {icon: 'github', link: 'https://github.com/gitzhaojinhong'}
         ]
     },
     // 忽略死链接比如localhost:8080/xxx

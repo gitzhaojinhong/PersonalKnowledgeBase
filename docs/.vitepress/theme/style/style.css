@@ -152,3 +152,15 @@
 .VPFeatures .items .item:hover {
   transform: translateY(-5px);
 }
+
+/* markdown中图片效果 */
+.vp-doc img {
+  border-radius: 8px; /* 可选：增加圆角使阴影更柔和 */
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.50);
+  transition: box-shadow 0.3s ease;
+}
+
+/* 鼠标悬停时加深阴影（可选） */
+.vp-doc img:hover {
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.60);
+}
