@@ -6,7 +6,7 @@
 
 ### 1.1 安装 Claude Code
 
-由于Claude Code 官方明确**拒绝向中国大陆地区提供服务**，所以如果使用官方推荐的安装方式，就**必须**使用代理！！！
+由于Claude Code 官方明确**拒绝向中国大陆地区提供服务**，所以如果使用官方推荐的安装方式，就**必须**使用"魔法"！！！
 
 7897端口 是我的电脑开启代理后所使用的端口（在自己的代理软件设置中查看），**请替换为自己代理端口**！！！
 
@@ -46,7 +46,7 @@ C:\Users\你的电脑用户名\.local\bin
 claude
 ```
 
-![验证安装](./ClaudeCodeImages/img-01.png)
+![验证安装](Images/img-01.png)
 
 
 如果看到 Claude Code 的界面，即使出现"当前国家或地区不被支持"的报错，也说明安装成功，只是还未完成后续配置。
@@ -62,17 +62,17 @@ cd ~
 notepad.exe .\.claude.json
 ```
 
-![打开配置文件](./ClaudeCodeImages/img-02.png)
+![打开配置文件](Images/img-02.png)
 
 这会打开 Claude Code 的配置文件：
 
-![配置文件内容](./ClaudeCodeImages/img-03.png)
+![配置文件内容](Images/img-03.png)
 
 ### 2.2 绕过地区检测
 
 在配置文件中，添加一行 `"hasCompletedOnboarding": true,`（注意别漏了逗号），然后保存并关闭。
 
-![添加配置](./ClaudeCodeImages/img-04.png)
+![添加配置](Images/img-04.png)
 
 **强烈建议：直接复制粘贴，不要手打。** 手动输入容易混进中文逗号、中文引号，导致配置报错。
 
@@ -84,17 +84,15 @@ claude
 
 Claude Code 会问你是否信任当前目录，直接按 `Enter` 即可。
 
-![信任目录](./ClaudeCodeImages/img-05.png)
+![信任目录](Images/img-05.png)
 
 如果不再出现地区报错，说明绕过成功：
 
-![绕过成功](./ClaudeCodeImages/img-06.png)
+![绕过成功](Images/img-06.png)
 
 退出 Claude Code：按两次 `Ctrl + C`。
 
 ### 2.3 指定模型与 API 接入
-
-**注意**：也可以使用cc_switsh管理api key，道理都是一样的，最终都是修改配置文件。可参考`codex的安装配置`
 
 再次打开配置文件：
 
@@ -103,7 +101,7 @@ cd ~
 notepad.exe .\.claude.json
 ```
 
-![再次打开配置](./ClaudeCodeImages/img-07.png)
+![再次打开配置](Images/img-07.png)
 
 文件里已经自动多出一些配置项，不用管。继续加入模型和 API 配置：
 
@@ -127,7 +125,9 @@ DeepSeek配置参考：
 },
 ```
 
-![写入模型配置](./ClaudeCodeImages/img-08.png)
+![写入模型配置](Images/img-08.png)
+
+**注意**：也可以使用cc_switsh管理api key，道理都是一样的，最终都是修改配置文件。可参考[codex的安装配置](./Codex.md)大纲中的`CC Switch接入国产API KEY`
 
 ### 2.4 获取 API Key
 
@@ -141,7 +141,7 @@ DeepSeek开放平台：[DeepSeek 开放平台](https://platform.deepseek.com/usa
 4. 复制，粘贴到前面的配置文件处
 5. 账户一定要有钱
 
-![API Key 页面](./ClaudeCodeImages/img-09.png)
+![API Key 页面](Images/img-09.png)
 
 ### 2.5 启动并验证
 
@@ -153,7 +153,7 @@ claude
 
 输入 `你好` 测试，如果能正常回复且显示为你设置的国产模型，说明接入成功。
 
-![接入成功](./ClaudeCodeImages/img-10.png)
+![接入成功](Images/img-10.png)
 
 ---
 
@@ -168,7 +168,7 @@ cd 你的项目目录
 claude
 ```
 
-![工作目录示例](./ClaudeCodeImages/img-11.png)
+![工作目录示例](Images/img-11.png)
 
 ### 3.2 为什么比普通聊天慢
 
@@ -199,13 +199,13 @@ Claude Code 会把对话、MCP 信息、Skills 信息、文件内容、工具调
 
 输入 `/context` 查看：
 
-![上下文占用](./ClaudeCodeImages/img-20.png)
+![上下文占用](Images/img-20.png)
 
 ### 4.3 压缩上下文
 
 完成阶段性任务后，前面的内容"还有一点价值但不需要保留全部细节"时，建议手动执行 `/compact`：
 
-![压缩上下文](./ClaudeCodeImages/img-21.png)
+![压缩上下文](Images/img-21.png)
 
 它会对前面的上下文做压缩总结，释放大量空间。比等系统自动 compact 更可控。
 
@@ -213,7 +213,7 @@ Claude Code 会把对话、MCP 信息、Skills 信息、文件内容、工具调
 
 如果前面的上下文已经完全没用了，输入 `/clear`：
 
-![清空上下文](./ClaudeCodeImages/img-22.png)
+![清空上下文](Images/img-22.png)
 
 **记住一个原则：上下文是临时记忆，文件才是长期记忆。** 真正重要的信息应该让 Claude Code 写进文件。
 
