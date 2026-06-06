@@ -50,8 +50,9 @@ codex --approval-mode full-auto  # 完全自动模式
 
 #### 1.2.1 安装方式
 
-- 关闭“魔法”，在国内若开启“魔法”，默认不能使用微软商店
+`关闭“魔法”，在国内若开启“魔法”，默认不能使用微软商店`
 
+两种安装方式如下：
 - Codex官网：[Codex | OpenAI 打造的 AI 编码助手 | OpenAI](https://openai.com/zh-Hans-CN/codex/)点击"下载Windows版"自动跳转到微软商店下载
 - 直接点击微软商店，搜索Codex进行下载
 
@@ -245,6 +246,8 @@ Codex内置插件：
 点击「添加服务器」后，你需要手动填写服务器的配置参数才能完成添加，对新手不太友好！
 
 这里使用docker desktop容器化部署`MCP`，如何安装docker desktop，请参考 ：[DockerDesktop环境安装](./DockerDesktop环境安装.md)
+
+`由于DockerDesktop下载和配置门槛较高，自行决定是否使用该功能`
 
 确保docker desktop已经登录，且设置中Enable Docker MCP Toolkit功能开启
 
