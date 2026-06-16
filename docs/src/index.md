@@ -23,24 +23,24 @@ hero:
 # 特性列表配置 - 展示项目的核心功能特点(最多3个)
 features:
   - title: VitePress个人网站搭建
-    details: 快速搭建一个自己的个人网站，快速开始你的知识构建
+    details: 从零搭建知识库，掌握配置与部署
     link: /VitePress搭建/首页
   - title: 环境搭建
-    details: 提供详细的环境配置指南，从零开始快速搭建开发环境
+    details: 开发环境规范指南，文件管理与变量配置
     link: /环境安装/首页
-  - title: Hutool文档跳转
-    details: 小而全的Java工具类库,使Java拥有函数式语言般的优雅
+  - title: Hutool官方文档跳转
+    details: Java全能工具库，简洁优雅的API
     link: https://www.hutool.cn/docs/#/
 
-  - title: 空
-    details: 还没有内容
-    link: /
-  - title: 空
-    details: 还没有内容
-    link: /
-  - title: 空
-    details: 还没有内容
-    link: /
+  - title: Git
+    details: 分布式版本控制系统，掌握分支管理与团队协作
+    link: /DevOps/Git/Git版本控制系统全面解析
+  - title: Maven
+    details: Java项目管理工具，依赖管理与自动化构建
+    link: /DevOps/Maven/Maven项目管理工具详解
+  - title: Docker
+    details: 容器化技术，实现环境一致性与快速部署
+    link: /DevOps/Docker/Docker容器技术核心概念
 
 ---
 
