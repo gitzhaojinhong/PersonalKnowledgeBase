@@ -41,6 +41,16 @@ features:
   - title: Docker
     details: 容器化技术，实现环境一致性与快速部署
     link: /DevOps/Docker/Docker容器技术核心概念
+    
+  - title: 学校
+    details: 河南美术类公办院校志愿填报分析
+    link: /临时/河南美术类公办院校志愿填报分析
+  - title: 
+    details: 
+    link: 
+  - title: 
+    details: 
+    link: 
 
 ---
 
