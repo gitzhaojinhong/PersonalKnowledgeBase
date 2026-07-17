@@ -72,6 +72,7 @@ export default defineConfig({
                     {text: 'SpringCloud', link: '/后端/SpringCloud/首页'},
                     {text: 'MyBatisPlus', link: '/后端/MyBatisPlus/首页'},
                     {text: 'Redis', link: '/后端/Redis/首页'},
+                    {text: 'MinIO', link: '/后端/MinIO/首页'},
                 ]
             },
             {
@@ -173,6 +174,12 @@ export default defineConfig({
                 {
                     text: '目录',
                     items: getCategoryItems('后端/Redis')
+                }
+            ],
+            '/后端/MinIO/':[
+                {
+                    text: '目录',
+                    items: getCategoryItems('后端/MinIO')
                 }
             ],
             //===========================数 据 库 导 航================================
