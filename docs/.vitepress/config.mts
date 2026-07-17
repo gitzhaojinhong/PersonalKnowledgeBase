@@ -75,6 +75,12 @@ export default defineConfig({
                 ]
             },
             {
+              text: '数据库',
+                items: [
+                    {text: 'ElasticSearch', link: '/数据库/ElasticSearch/首页'},
+                ]
+            },
+            {
                 text: '项目',
                 items: [
                     {text: '天机学堂', link: '/项目/天机学堂/首页'},
@@ -167,6 +173,13 @@ export default defineConfig({
                 {
                     text: '目录',
                     items: getCategoryItems('后端/Redis')
+                }
+            ],
+            //===========================数 据 库 导 航================================
+            '/数据库/ElasticSearch/': [
+                {
+                    text: '目录',
+                    items: getCategoryItems('数据库/ElasticSearch')
                 }
             ],
             //===========================项 目 导 航================================
