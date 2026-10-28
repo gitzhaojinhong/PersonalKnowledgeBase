@@ -109,7 +109,7 @@ export default defineConfig({
         },
         // 禁用 HTML 标签渲染false ，默认true
         // 为了index.md中能够使用vue标签，这里打开
-        html: true,
+        html: false,
     },
 
 
