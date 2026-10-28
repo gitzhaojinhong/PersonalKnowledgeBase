@@ -181,7 +181,3 @@ public DefaultErrorHandler errorHandler() {
 | `CommonLoggingErrorHandler` | 只记日志，不重试、不跳过，直接把剩余消息传给监听器 |
 | `CommonDelegatingErrorHandler` | 根据异常类型**委托到不同的处理器** |
 | `CommonMixedErrorHandler` | 给单条监听器和批量监听器分别配不同的处理器 |
-
-
-> 更新: 2026-09-21 15:47:05  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/dtbhcr/ddsgruuuomr3gw7n>

@@ -395,7 +395,3 @@ MyInterfaceType proxy = factory.getProxy();
 | `TargetSource` | 抽象目标对象的获取方式（如池化、热替换等） |
 
 [Spring AOP APIs文档跳转](https://docs.spring.io/spring-framework/reference/6.2/core/aop-api.html)
-
-
-> 更新: 2026-10-27 10:20:40  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/zmnzi9/segxbl8x6s2vnp3c>

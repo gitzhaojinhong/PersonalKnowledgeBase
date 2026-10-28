@@ -155,7 +155,3 @@ public class Config {
 ```
 
 每个容器 `concurrency=1`，一个容器一个监听器实例——彻底解决了共享问题，但代码比较啰嗦，生产环境很少这么用。
-
-
-> 更新: 2026-09-20 15:05:30  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/dtbhcr/we22e0br8eulm1my>

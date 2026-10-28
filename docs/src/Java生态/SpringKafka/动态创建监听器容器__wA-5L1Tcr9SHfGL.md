@@ -128,7 +128,3 @@ registry.unregisterListenerContainer("dynamic-listener-1");
 // 以后可以再创建一个同样 ID 的新容器
 
 ```
-
-
-> 更新: 2026-09-20 13:29:41  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/dtbhcr/yc2gh3pkmy6bia63>

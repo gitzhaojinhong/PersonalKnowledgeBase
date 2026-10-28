@@ -265,7 +265,3 @@ public ApplicationEventMulticaster applicationEventMulticaster() {
 ```
 
 如果改成异步，那么事件里携带的 `Consumer` 对象已经不归属于消费者线程了，不能再调用 `Consumer` 的任何方法（比如 `pause()`、`resume()`），否则会出线程安全问题。
-
-
-> 更新: 2026-09-20 13:57:03  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/dtbhcr/qfe9w8g84fu12dgr>

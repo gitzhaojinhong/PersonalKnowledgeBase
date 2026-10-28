@@ -842,7 +842,3 @@ public class AppConfig  {
 * 应用启动追踪（ApplicationStartup）
 
 [ApplicationContext功能文档跳转](https://docs.spring.io/spring-framework/reference/6.2/core/beans/context-introduction.html)
-
-
-> 更新: 2026-09-22 17:07:39  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/zmnzi9/xoqzu5hsvy8hzdtc>

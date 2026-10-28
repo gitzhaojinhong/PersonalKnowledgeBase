@@ -57,7 +57,3 @@ public class WebConfig implements WebMvcConfigurer {
 ```
 
 > `configureMessageConverters` 会覆盖掉 Spring 默认注册的所有转换器，`extendMessageConverters` 则是在默认列表的基础上再添加或修改。通常用 `extendMessageConverters` 更安全。
-
-
-> 更新: 2026-09-09 19:03:05  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/egdchb/uos2nrav11uu8vd7>

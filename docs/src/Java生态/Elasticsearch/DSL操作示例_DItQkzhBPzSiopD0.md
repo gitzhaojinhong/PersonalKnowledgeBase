@@ -515,7 +515,3 @@ POST /_esql
   """
 }
 ```
-
-
-> 更新: 2026-10-19 15:30:33  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/uetcbf/xwovmn88y24rlhxt>

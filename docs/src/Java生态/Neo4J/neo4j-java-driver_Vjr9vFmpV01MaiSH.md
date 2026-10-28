@@ -383,7 +383,3 @@ try (Session session = openSession()) {
     people.forEach(person -> System.out.println(person));
 }
 ```
-
-
-> 更新: 2026-10-21 18:50:32  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/msixvo/iwsrng0slqt4y3rn>

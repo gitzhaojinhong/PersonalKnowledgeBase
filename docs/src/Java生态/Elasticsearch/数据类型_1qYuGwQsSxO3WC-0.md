@@ -53,9 +53,3 @@
 | DECIMAL、FLOAT、DOUBLE | double 或 float | 根据精度需求选择，或使用 scaled_float |
 | DATE、DATETIME、TIMESTAMP | date | 所有日期时间类型统一映射为 date |
 | TINYINT(1) | boolean | MySQL 中常用 TINYINT (1) 表示布尔值 |
-
-
-
-
-> 更新: 2026-10-16 14:13:24  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/uetcbf/uhil6ymol3bguep1>

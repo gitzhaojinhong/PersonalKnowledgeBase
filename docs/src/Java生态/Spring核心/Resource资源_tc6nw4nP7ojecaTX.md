@@ -168,7 +168,3 @@ public class MyBean {
 ```java
 ctx.getResource("file:///absolute/path/to/file.txt");
 ```
-
-
-> 更新: 2026-09-03 14:27:34  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/zmnzi9/hke9figsgzglhw5h>

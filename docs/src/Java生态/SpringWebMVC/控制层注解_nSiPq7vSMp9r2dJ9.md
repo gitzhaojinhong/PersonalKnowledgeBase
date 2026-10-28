@@ -119,7 +119,3 @@ Handler Methods 就是 Spring MVC Controller 方法里，你能在参数列表�
 | `Callable<T>` / `WebAsyncTask` | 异步处理，Spring MVC 会把请求放到单独的线程中执行 |
 | `DeferredResult<T>` | 异步处理，由其他线程设置结果 |
 | `ListenableFuture<T>` / `CompletableFuture<T>` | 基于 Future 的异步处理 |
-
-
-> 更新: 2026-10-23 14:26:13  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/egdchb/tzsllk01nfugstln>

@@ -25,7 +25,3 @@ Seeking to a Specific Offset 就是在消费者运行过程中，强行把某个
 
 * 监听器所属类继承 `AbstractConsumerSeekAware`，调用里面的方法
 * [其他使用方法参考官方文档](https://docs.spring.io/spring-kafka/reference/3.3/kafka/seek.html)
-
-
-> 更新: 2026-09-21 21:20:11  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/dtbhcr/fkea29dkk4lbixry>

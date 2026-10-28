@@ -70,7 +70,3 @@
 **代价是需要引入第三方组件：**
 
 * 开启 binlog 有轻微性能开销、还要维护监听服务自身的高可用。在大规模场景下，通常演进为 **Canal + Kafka + ES** 架构，Kafka 负责削峰填谷和消息持久化，进一步提升可靠性与吞吐量。
-
-
-> 更新: 2026-10-16 16:48:42  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/uetcbf/qhcewxx4snxvgz5i>

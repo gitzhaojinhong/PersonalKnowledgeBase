@@ -174,7 +174,3 @@ public class FileController {
     }
 }
 ```
-
-
-> 更新: 2026-10-23 16:48:51  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/gmhmsp/ti8xsz9ix4p3lem4>

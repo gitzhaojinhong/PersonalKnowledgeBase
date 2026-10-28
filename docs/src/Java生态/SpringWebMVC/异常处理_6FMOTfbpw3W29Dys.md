@@ -317,7 +317,3 @@ problemDetail.detail.org.springframework.web.bind.MissingServletRequestParameter
 > * 异常处理场景直接用 `ProblemDetail` 就够了；
 > * 如果需要操作用户自定义响应头，再用 `ResponseEntity<ProblemDetail>` 包装一下。
 > * 正常业务返回还是继续用 `ResponseEntity<T>`，它俩各司其职，不冲突。
-
-
-> 更新: 2026-09-10 09:36:18  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/egdchb/orvtuag20azfaqp4>

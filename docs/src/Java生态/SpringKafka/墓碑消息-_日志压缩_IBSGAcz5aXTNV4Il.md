@@ -105,7 +105,3 @@ public void listen(
 ```
 
 > 因为 `required = false`，当消息 payload 为 null 时，`value` 参数就是 `null`。配合 `@Header(RECEIVED_KEY)` 拿到 key，就能知道"哪个 key 被删了"，然后执行对应的业务逻辑。
-
-
-> 更新: 2026-09-21 14:07:03  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/dtbhcr/tfn1udrno422r89y>

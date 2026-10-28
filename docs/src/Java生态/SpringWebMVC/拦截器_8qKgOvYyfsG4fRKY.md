@@ -58,7 +58,3 @@ public class WebConfig implements WebMvcConfigurer {
 
 * **Filter** 是 Servlet 规范里的东西，在请求到达 DispatcherServlet 之前就执行了，它不知道 Spring MVC 的 Controller 是什么，只看得见请求路径
 * **拦截器** 是 Spring MVC 层面的东西，在 HandlerMapping 匹配到特定处理器之后才执行，它能拿到具体的 Controller 方法和参数，能做的事情更精细
-
-
-> 更新: 2026-09-10 19:26:06  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/egdchb/vn14gd5rghfs4aqu>

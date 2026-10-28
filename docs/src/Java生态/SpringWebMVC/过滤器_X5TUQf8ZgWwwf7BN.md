@@ -97,7 +97,3 @@ public FilterRegistrationBean<MyOncePerRequestFilter> myFilterRegistration() {
 | 能拿到的信息 | 只能拿到原始的 request、response | 能拿到具体的 Controller 方法和参数 |
 | 典型用途 | 字符编码、请求包装、安全校验、ETag | 日志、权限校验、公共数据填充 |
 | 路径匹配 | 基于 URL 模式 | 基于 HandlerMapping 的匹配规则 |
-
-
-> 更新: 2026-09-10 19:25:48  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/egdchb/ldf0iso7ngkq7waz>

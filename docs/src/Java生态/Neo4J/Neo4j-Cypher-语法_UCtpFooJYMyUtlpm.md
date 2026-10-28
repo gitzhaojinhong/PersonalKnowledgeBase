@@ -611,7 +611,3 @@ SHOW FUNCTIONS;    // 查询可用函数
 | 返回值 | 单个值 | Java 8 `Stream`（简单对象，字段为 `public`） |
 | 只读性 | 只读 | 有 `mode` 属性：`READ` / `WRITE` / `DBMS` |
 | 结果列 | — | 对象的字段名自动转为 `YIELD` 可用的列 |
-
-
-> 更新: 2026-10-21 13:38:54  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/msixvo/gtrpnbnry0rl1yz2>

@@ -87,7 +87,3 @@ client.close();
 ```
 
 如果需要做比较复杂的 Topic 管理操作（比如列出所有 Topic、删除 Topic、查看消费者组信息），直接用 `AdminClient` 是最灵活的方式。
-
-
-> 更新: 2026-09-21 20:04:20  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/dtbhcr/xmaw8nrpdey6asv6>

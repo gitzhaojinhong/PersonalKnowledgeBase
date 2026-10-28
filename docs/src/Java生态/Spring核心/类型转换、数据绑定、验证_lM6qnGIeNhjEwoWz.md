@@ -337,7 +337,3 @@ public class UserCreateRequest {
 | 与 `@Valid`的关系 | 无关 | 无关（`@Valid`在反序列化后触发） |
 
 **在 `@RequestBody` 场景下，`@DateTimeFormat` 不生效，只能通过 `@JsonFormat` 控制日期格式。** 在 `@ModelAttribute` / `@RequestParam` 场景下，只能通过 `@DateTimeFormat` 控制日期格式，`@JsonFormat` 不生效。两者各自负责自己的处理路径，互不干扰，也互不替代。
-
-
-> 更新: 2026-09-09 16:34:34  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/zmnzi9/xilbf4imnw492v6r>

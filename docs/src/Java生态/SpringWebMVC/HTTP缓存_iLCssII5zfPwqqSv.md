@@ -111,7 +111,3 @@ public ResponseEntity<Book> showBook(@PathVariable Long id) {
             .body(book);
 }
 ```
-
-
-> 更新: 2026-09-10 10:25:27  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/egdchb/lsuutbol5tw5gvm5>

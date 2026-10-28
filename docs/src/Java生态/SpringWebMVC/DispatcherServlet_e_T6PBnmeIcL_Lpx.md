@@ -157,7 +157,3 @@ spring.mvc.log-request-details=true
 * 请求头（开启后）
 * 视图解析的过程
 * 异常处理路径
-
-
-> 更新: 2026-09-10 19:23:00  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/egdchb/hwgr8gpdl8galtcr>

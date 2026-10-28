@@ -707,7 +707,3 @@ public void handle(SimpMessageHeaderAccessor headerAccessor) {
 **测试 Spring STOMP 消息处理器，核心就是两条路：服务端切片测，端到端整盘测**
 
 > 纯单元测试对 STOMP 控制器基本没用——因为控制器的行为高度依赖它的注解（比如 `@MessageMapping`），你没法 mock 掉这些东西然后指望测出什么有意义的结果。所以 Spring 提供了两种正经的测试方式：一种是不启动容器的服务端测试，另一种是启动真实 WebSocket 服务器和客户端的端到端测试。两者不互斥，各有各的用处。
-
-
-> 更新: 2026-09-11 19:30:45  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/ys4xmo/kotmcyfgqkt0369k>

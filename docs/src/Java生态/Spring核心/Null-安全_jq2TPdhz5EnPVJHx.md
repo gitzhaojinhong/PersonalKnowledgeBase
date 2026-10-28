@@ -15,7 +15,3 @@ Spring Framework 在 `org.springframework.lang` 包中提供了一套注解体�
 * `@NonNullFields`：声明整个包中，所有字段**默认非空**。
 
 > 这两个包级别注解的价值在于规模化——你不需要在每个方法参数上写 `@NonNull`，只需在包级别声明一次，Spring 的整个 API 表面就默认被视为非空，只有真正需要 null 的地方才用 `@Nullable` 做例外标记。
-
-
-> 更新: 2026-09-05 15:10:49  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/zmnzi9/rl4gyymqx0z9luda>

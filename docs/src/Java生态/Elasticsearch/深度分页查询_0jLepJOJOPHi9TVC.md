@@ -180,7 +180,3 @@ GET /user_logs/_search
 ```
 
 search_after 数组包含上一页最后一条记录的排序值（对应 sort 字段）。
-
-
-> 更新: 2026-10-16 16:19:21  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/uetcbf/gt8hvvnwekqazzwi>

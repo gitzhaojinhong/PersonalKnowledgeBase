@@ -225,7 +225,3 @@ spring:
 >
 > * **Kafka 2.x 及更早客户端：默认 `acks=1`** 只等 leader 写入成功就返回，不等副本同步。
 > * **Kafka 3.0+ 客户端：默认 `acks=all`，同时默认开启 `enable.idempotence=true`（幂等生产者**）Confluent
-
-
-> 更新: 2026-09-21 21:11:30  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/dtbhcr/hawlpd5z0742dq1t>

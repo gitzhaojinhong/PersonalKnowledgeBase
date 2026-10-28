@@ -76,7 +76,3 @@ public class WebConfig implements WebMvcConfigurer {
 > **全局配置与局部配置的叠加规则**
 >
 > 全局配置（`CorsRegistry`）和局部配置（`@CrossOrigin`）可以同时存在，规则是*加法叠加*——比如全局允许来源A，局部允许来源B，那最终来源A和B都允许。但对于那些只能取单一值的属性（比如 `allowCredentials` 和 `maxAge`），局部配置会覆盖全局的。
-
-
-> 更新: 2026-09-10 08:50:21  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/egdchb/fwpobtibvlhq3201>

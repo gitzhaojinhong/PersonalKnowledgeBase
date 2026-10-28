@@ -74,7 +74,3 @@ UriComponents uriComponents = MvcUriComponentsBuilder
 ```
 
 > **注意**：`fromMethodCall` 对 Controller 方法的返回类型有限制，不能是 `final` 类型（比如 `String`），因为底层需要生成运行时代理。建议用 `ModelAndView` 或 `Object` 作为返回类型，或者直接用 `fromMethodName`。
-
-
-> 更新: 2026-09-10 08:20:22  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/egdchb/cgr3nid4mnq8m0nw>

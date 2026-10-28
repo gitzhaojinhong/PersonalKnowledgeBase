@@ -596,7 +596,3 @@ asyncClient.search(s -> s
         System.out.println(hit.source().getName()));
 });
 ```
-
-
-> 更新: 2026-10-19 14:40:47  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/uetcbf/vxl5prdsg1cxzuup>

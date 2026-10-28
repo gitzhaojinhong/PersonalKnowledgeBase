@@ -31,7 +31,3 @@ public class WebSocketConfiguration implements WebSocketConfigurer {
 
 }
 ```
-
-
-> 更新: 2026-09-11 14:52:20  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/ys4xmo/zi97ks0iy5zl6dol>

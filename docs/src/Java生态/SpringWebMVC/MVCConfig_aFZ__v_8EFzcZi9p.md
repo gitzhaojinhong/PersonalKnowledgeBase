@@ -145,7 +145,3 @@ public class WebConfiguration implements WebMvcConfigurer {
 * `addPathPrefix("/api", ...)` 给这些类里所有接口路径前面都加上 `/api`
 
 > 如果 Spring Boot 项目里已经通过 `server.servlet.context-path=/api` 配置了全局上下文路径，再用 `addPathPrefix` 加前缀，效果是**叠加**的。
-
-
-> 更新: 2026-09-10 19:47:53  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/egdchb/nep57ibzv6w0rdg8>

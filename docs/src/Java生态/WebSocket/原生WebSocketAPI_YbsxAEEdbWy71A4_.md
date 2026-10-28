@@ -98,7 +98,3 @@ public class WebSocketConfiguration implements WebSocketConfigurer {
 ```
 
 > 这个限制主要针对浏览器客户端，其他类型的客户端可以随意伪造 `Origin` 头，所以不能把它当作唯一的安全手段。
-
-
-> 更新: 2026-09-11 14:44:13  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/ys4xmo/if1fdf6xaaoo8epv>

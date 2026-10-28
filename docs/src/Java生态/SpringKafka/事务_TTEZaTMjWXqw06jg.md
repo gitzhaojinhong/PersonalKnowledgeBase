@@ -183,7 +183,3 @@ boolean result = kafkaTemplate.executeInTransaction(t -> {
     return true;  // 正常返回 → 提交事务
 });
 ```
-
-
-> 更新: 2026-09-21 15:35:40  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/dtbhcr/rm46xmgv88eoovef>

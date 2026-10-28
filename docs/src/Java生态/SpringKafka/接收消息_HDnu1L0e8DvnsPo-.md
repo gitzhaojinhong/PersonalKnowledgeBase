@@ -1180,7 +1180,3 @@ public ConcurrentMessageListenerContainer<String, String> manualContainer(
     return container;
 }
 ```
-
-
-> 更新: 2026-09-21 21:18:36  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/dtbhcr/ax3ve7pxahy3lemd>

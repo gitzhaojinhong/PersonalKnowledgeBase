@@ -24,7 +24,3 @@ spring:
 > `spring.json.value.default.type: com.example.YourEntity` 的作用是**指定反序列化的兜底目标类型**，当消息 Header 中没有类型信息时，用这个类型来反序列化。
 
 [序列化、反序列化和消息转换官方文档跳转](https://docs.spring.io/spring-kafka/reference/3.3/kafka/serdes.html)
-
-
-> 更新: 2026-09-20 16:56:58  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/dtbhcr/xm0obgmglsssgbtl>

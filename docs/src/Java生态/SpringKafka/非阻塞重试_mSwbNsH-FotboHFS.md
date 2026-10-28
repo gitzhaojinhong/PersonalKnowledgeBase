@@ -526,7 +526,3 @@ protected void configureCustomizers(CustomizersConfigurer customizersConfigurer)
                                                 defaultErrorHandler.setLogLevel(KafkaException.Level.WARN));
 }
 ```
-
-
-> 更新: 2026-09-21 19:47:38  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/dtbhcr/eqipqwdi614oa44k>

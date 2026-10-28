@@ -7,7 +7,3 @@ Spring 的 Ahead of Time（AOT）优化机制，其核心思想是在**构建时
 **启用AOT：**
 
 **Maven**：添加 `spring-boot-maven-plugin` 并执行 `native:compile` 目标，或直接使用 `mvn -Pnative native:compile`（Spring Boot 已预置 native profile）。
-
-
-> 更新: 2026-09-05 15:17:40  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/zmnzi9/syk30226duyf167t>

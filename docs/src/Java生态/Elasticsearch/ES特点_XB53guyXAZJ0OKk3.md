@@ -17,8 +17,3 @@
 **倒排索引查询流程：**
 
 ![99aecead898a82056dd3b1ed0bb61304.svg](./img/XB53guyXAZJ0OKk3/99aecead898a82056dd3b1ed0bb61304-480141.svg)
-
-
-
-> 更新: 2026-10-16 14:35:33  
-> 原文: <https://www.yuque.com/xiaoque-wqxrh/uetcbf/suipizgp5ebq062z>
