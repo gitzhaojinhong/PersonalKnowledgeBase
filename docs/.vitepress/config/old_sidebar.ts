@@ -29,12 +29,7 @@ export const old_sidebar={
             items: getCategoryItems('前端/HTML')
         }
     ],
-    '/前端/Vue/': [
-        {
-            text: '目录',
-            items: getCategoryItems('前端/Vue')
-        }
-    ],
+
     //===========================后 端 导 航================================
     '/后端/设计模式/': [
         {

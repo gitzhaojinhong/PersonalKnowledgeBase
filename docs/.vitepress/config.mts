@@ -59,7 +59,6 @@ export default defineConfig({
                 items: [
                     {text: 'CSS', link: '/前端/CSS/首页'},
                     {text: 'HTML', link: '/前端/HTML/首页'},
-                    {text: 'Vue临时', link: '/前端/Vue/首页'},
                 ]
             },
             {
