@@ -19,7 +19,7 @@ hero:
     - theme: alt  # 第二个按钮使用次要样式
       text: 知识归档
       link: /
-
+      
 # 特性列表配置 - 展示项目的核心功能特点(最多3个)
 features:
   - title: VitePress个人网站搭建
@@ -42,15 +42,30 @@ features:
     details: 容器化技术，实现环境一致性与快速部署
     link: /DevOps/Docker/Docker容器技术核心概念
     
-  - title: 
+  - title: Spring核心
     details: 
-    link: 
-  - title: 
+    link: /Java生态/Spring核心
+  - title: SpringWebMVC
+    details:
+    link: /Java生态/SpringWebMVC
+  - title: WebSocket
+    details:
+    link: /Java生态/WebSocket
+  - title: REST客户端
+    details:
+    link: /Java生态/REST客户端
+  - title: SpringKafka
+    details:
+    link: /Java生态/SpringKafka
+  - title: Elasticsearch
+    details: 分布式搜索和分析引擎，掌握全文检索与数据处理
+    link: /Java生态/Elasticsearch/
+  - title: MinIo
     details: 
-    link: 
-  - title: 
-    details: 
-    link: 
+    link: /Java生态/MinIO
+  - title: Neo4J
+    details: 图数据库，掌握关系型数据处理
+    link: /Java生态/Neo4J
+
 
 ---
-

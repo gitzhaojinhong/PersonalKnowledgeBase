@@ -1,0 +1,21 @@
+## Null-安全
+
+Spring Framework 在 `org.springframework.lang` 包中提供了一套注解体系，在不改变 Java 语言本身的前提下，为 API 的边界和字段声明了空值语义，从而将空安全从运行时检查前移到编译期和 IDE 检查阶段。
+
+**核心注解共四个，分为两个层级：**
+
+1. **成员级别注解**
+
+* `@Nullable`：标记特定参数、返回值或字段**可以**为 `null`。这是最基础的标注，表明调用方需要处理 null 情况。
+* `@NonNull`：标记特定参数、返回值或字段**不能**为 `null`。当所在包已经使用了 `@NonNullApi` 或 `@NonNullFields` 时，该注解不需要重复标注——它主要用于在默认非空的包中覆盖某个特定位置为可空。
+
+2. **包级别注解（需放置在 `package-info.java` 中）**
+
+* `@NonNullApi`：声明整个包中，所有方法的参数和返回值**默认非空**。
+* `@NonNullFields`：声明整个包中，所有字段**默认非空**。
+
+> 这两个包级别注解的价值在于规模化——你不需要在每个方法参数上写 `@NonNull`，只需在包级别声明一次，Spring 的整个 API 表面就默认被视为非空，只有真正需要 null 的地方才用 `@Nullable` 做例外标记。
+
+
+> 更新: 2026-09-05 15:10:49  
+> 原文: <https://www.yuque.com/xiaoque-wqxrh/zmnzi9/rl4gyymqx0z9luda>
