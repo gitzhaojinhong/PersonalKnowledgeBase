@@ -20,7 +20,7 @@ hero:
       text: 知识归档
       link: /
       
-# 特性列表配置 - 展示项目的核心功能特点(最多3个)
+# 特性列表配置 - 展示项目的核心功能特点
 features:
   - title: VitePress个人网站搭建
     details: 从零搭建知识库，掌握配置与部署
@@ -41,31 +41,43 @@ features:
   - title: Docker
     details: 容器化技术，实现环境一致性与快速部署
     link: /DevOps/Docker/Docker容器技术核心概念
-    
-  - title: Spring核心
-    details: 
-    link: /Java生态/Spring核心
-  - title: SpringWebMVC
-    details:
-    link: /Java生态/SpringWebMVC
-  - title: WebSocket
-    details:
-    link: /Java生态/WebSocket
-  - title: REST客户端
-    details:
-    link: /Java生态/REST客户端
-  - title: SpringKafka
-    details:
-    link: /Java生态/SpringKafka
-  - title: Elasticsearch
-    details: 分布式搜索和分析引擎，掌握全文检索与数据处理
-    link: /Java生态/Elasticsearch/
-  - title: MinIo
-    details: 
-    link: /Java生态/MinIO
-  - title: Neo4J
-    details: 图数据库，掌握关系型数据处理
-    link: /Java生态/Neo4J
 
 
+
+
+featureGroups:
+  - title: Java生态
+    items:
+      - title: Spring核心
+        details: Spring的基础容器与AOP机制
+        link: /Java生态/Spring核心
+      - title: SpringWebMVC
+        details: 基于MVC的Web请求处理框架
+        link: /Java生态/SpringWebMVC
+      - title: WebSocket
+        details: 全双工通信协议及Spring支持
+        link: /Java生态/WebSocket
+      - title: REST客户端
+        details: 调用REST服务的客户端抽象
+        link: /Java生态/REST客户端
+      - title: SpringKafka
+        details: Spring对Kafka的集成
+        link: /Java生态/SpringKafka
+      - title: Elasticsearch
+        details: 分布式搜索与分析引擎
+        link: /Java生态/Elasticsearch/
+      - title: MinIo
+        details: 兼容S3的对象存储
+        link: /Java生态/MinIO
+      - title: Neo4J
+        details: 图数据库与图数据模型
+        link: /Java生态/Neo4J
+  - title: Python生态
+    items:
+      - title: 组件嵌入
+        details: MD内直接写Vue组件
+        link: /Python生态/组件嵌入
 ---
+
+
+<FeatureGroups/>
