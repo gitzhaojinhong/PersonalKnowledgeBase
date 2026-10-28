@@ -72,7 +72,6 @@ export default defineConfig({
                     {text: 'SpringCloud', link: '/后端/SpringCloud/首页'},
                     {text: 'MyBatisPlus', link: '/后端/MyBatisPlus/首页'},
                     {text: 'Redis', link: '/后端/Redis/首页'},
-                    {text: 'MinIO', link: '/后端/MinIO/首页'},
                 ]
             },
             {
@@ -109,6 +108,7 @@ export default defineConfig({
             disable: true
         },
         // 禁用 HTML 标签渲染false ，默认true
+        // 为了index.md中能够使用vue标签，这里打开
         html: true,
     },
 

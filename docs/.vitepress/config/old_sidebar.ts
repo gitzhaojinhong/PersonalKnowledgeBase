@@ -83,12 +83,6 @@ export const old_sidebar={
             items: getCategoryItems('后端/Redis')
         }
     ],
-    '/后端/MinIO/':[
-        {
-            text: '目录',
-            items: getCategoryItems('后端/MinIO')
-        }
-    ],
     //===========================数 据 库 导 航================================
     '/数据库/ElasticSearch/': [
         {
