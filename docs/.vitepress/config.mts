@@ -110,7 +110,7 @@ export default defineConfig({
             disable: true
         },
         // 禁用 HTML 标签渲染false ，默认true
-        html: true,
+        html: false,
     },
 
 
