@@ -121,21 +121,20 @@ spring:
 
 
 
-| **<font style="color:rgb(240, 246, 252);">名称</font>** | **<font style="color:rgb(240, 246, 252);">参数（个数/类型）</font>** | **<font style="color:rgb(240, 246, 252);">作用</font>** |
-| --- | --- | --- |
-| <font style="color:rgb(240, 246, 252);">After</font> | <font style="color:rgb(240, 246, 252);">1/datetime</font> | <font style="color:rgb(240, 246, 252);">在指定时间之后</font> |
-| <font style="color:rgb(240, 246, 252);">Before</font> | <font style="color:rgb(240, 246, 252);">1/datetime</font> | <font style="color:rgb(240, 246, 252);">在指定时间之前</font> |
-| <font style="color:rgb(240, 246, 252);">Between</font> | <font style="color:rgb(240, 246, 252);">2/datetime</font> | <font style="color:rgb(240, 246, 252);">在指定时间区间内</font> |
-| <font style="color:rgb(240, 246, 252);">Cookie</font> | <font style="color:rgb(240, 246, 252);">2/string,regexp</font> | <font style="color:rgb(240, 246, 252);">包含 cookie 名且必须匹配指定值</font> |
-| <font style="color:rgb(240, 246, 252);">Header</font> | <font style="color:rgb(240, 246, 252);">2/string,regexp</font> | <font style="color:rgb(240, 246, 252);">包含请求头且必须匹配指定值</font> |
-| <font style="color:rgb(240, 246, 252);">Host</font> | <font style="color:rgb(240, 246, 252);">N/string</font> | <font style="color:rgb(240, 246, 252);">请求 host 必须是指定枚举值</font> |
-| <font style="color:rgb(240, 246, 252);">Method</font> | <font style="color:rgb(240, 246, 252);">N/string</font> | <font style="color:rgb(240, 246, 252);">请求方式必须是指定枚举值</font> |
-| <font style="color:rgb(240, 246, 252);">Path</font> | <font style="color:rgb(240, 246, 252);">2/List<String>,bool</font> | <font style="color:rgb(240, 246, 252);">请求路径满足规则，是否匹配最后的</font><font style="color:rgb(240, 246, 252);"> </font>`<font style="color:rgb(240, 246, 252);background-color:rgba(101, 108, 118, 0.2);">/</font>` |
-| <font style="color:rgb(240, 246, 252);">Query</font> | <font style="color:rgb(240, 246, 252);">2/string,regexp</font> | <font style="color:rgb(240, 246, 252);">包含指定请求参数</font> |
-| <font style="color:rgb(240, 246, 252);">RemoteAddr</font> | <font style="color:rgb(240, 246, 252);">1/List<String></font> | <font style="color:rgb(240, 246, 252);">请求来源于指定网络域（CIDR写法）</font> |
-| <font style="color:rgb(240, 246, 252);">Weight</font> | <font style="color:rgb(240, 246, 252);">2/string,int</font> | <font style="color:rgb(240, 246, 252);">按指定权重负载均衡</font> |
-| <font style="color:rgb(240, 246, 252);">XForwardedRemoteAddr</font> | <font style="color:rgb(240, 246, 252);">1/List<String></font> | <font style="color:rgb(240, 246, 252);">从</font><font style="color:rgb(240, 246, 252);"> </font>`<font style="color:rgb(240, 246, 252);background-color:rgba(101, 108, 118, 0.2);">X-Forwarded-For</font>`<br/><font style="color:rgb(240, 246, 252);"> </font><font style="color:rgb(240, 246, 252);">请求头中解析请求来源，并判断是否来源于指定网络域</font> |
-
+| 名称 | 参数（个数/类型） | 作用 |
+| ---- | ---------------- | ---- |
+| After | 1/datetime | 在指定时间之后 |
+| Before | 1/datetime | 在指定时间之前 |
+| Between | 2/datetime | 在指定时间区间内 |
+| Cookie | 2/string,regexp | 包含 cookie 名且必须匹配指定值 |
+| Header | 2/string,regexp | 包含请求头且必须匹配指定值 |
+| Host | N/string | 请求 host 必须是指定枚举值 |
+| Method | N/string | 请求方式必须是指定枚举值 |
+| Path | 2/List&lt;String>,bool | 请求路径满足规则，是否匹配最后的 `/` |
+| Query | 2/string,regexp | 包含指定请求参数 |
+| RemoteAddr | 1/List&lt;String> | 请求来源于指定网络域（CIDR写法） |
+| Weight | 2/string,int | 按指定权重负载均衡 |
+| XForwardedRemoteAddr | 1/List&lt;String> | 从 `X-Forwarded-For` 请求头中解析请求来源，并判断是否来源于指定网络域 |
 
 以 `Query` 为例：
 
