@@ -4,7 +4,7 @@
 
 ### 核心节点角色
 
-![1e0d050b757fae9746559285e22fbd0b.svg](./img/9QNApLE71wFTCPTB/1e0d050b757fae9746559285e22fbd0b-346261.svg)
+![1e0d050b757fae9746559285e22fbd0b.svg](img/9QNApLE71wFTCPTB/1e0d050b757fae9746559285e22fbd0b-346261.svg)
 
 #### Master 节点 - 集群大脑
 
@@ -105,7 +105,7 @@ node.roles: [ ingest ]
 
 从 Elasticsearch 7.10+ 版本开始，Data 节点根据数据的冷热程度进一步细分为四个层级，这是实现索引生命周期管理（ILM）的基础。
 
-![88745c357f14d26c4f8e484ee267823d.svg](./img/9QNApLE71wFTCPTB/88745c357f14d26c4f8e484ee267823d-235761.svg)
+![88745c357f14d26c4f8e484ee267823d.svg](img/9QNApLE71wFTCPTB/88745c357f14d26c4f8e484ee267823d-235761.svg)
 
 | 节点类型 | 数据状态 | 硬件配置 | 访问模式 | 主要目标 |
 | --- | --- | --- | --- | --- |
@@ -163,7 +163,7 @@ Hot-Warm-Cold 架构是 Elasticsearch 为应对数据生命周期管理和成本
 
 基于这一特点，Hot-Warm-Cold 架构应运而生：
 
-![2952e9bde7f24676e3d94153e59349bd.svg](./img/9QNApLE71wFTCPTB/2952e9bde7f24676e3d94153e59349bd-218249.svg)
+![2952e9bde7f24676e3d94153e59349bd.svg](img/9QNApLE71wFTCPTB/2952e9bde7f24676e3d94153e59349bd-218249.svg)
 
 #### 各层级详细说明
 ##### Hot 层 - 热数据层
@@ -260,9 +260,9 @@ node.roles: [ data_frozen ]
 
 配合索引生命周期管理（ILM），数据可以自动在各层之间流转：
 
-![331667e20224f8b9b3a62d706759d54a.svg](./img/9QNApLE71wFTCPTB/331667e20224f8b9b3a62d706759d54a-168201.svg)
+![331667e20224f8b9b3a62d706759d54a.svg](img/9QNApLE71wFTCPTB/331667e20224f8b9b3a62d706759d54a-168201.svg)
 
-![1792138495315-16f2669b-4b83-4120-b7f2-368831618309.png](./img/9QNApLE71wFTCPTB/1792138495315-16f2669b-4b83-4120-b7f2-368831618309-706637.png)
+![1792138495315-16f2669b-4b83-4120-b7f2-368831618309.png](img/9QNApLE71wFTCPTB/1792138495315-16f2669b-4b83-4120-b7f2-368831618309-706637.png)
 
 1. Hot 阶段：数据持续写入，当索引达到一定大小或时间后触发 rollover
 2. Warm 阶段：索引迁移到温节点，设为只读，执行段合并优化

@@ -16,4 +16,4 @@
 
 **倒排索引查询流程：**
 
-![99aecead898a82056dd3b1ed0bb61304.svg](./img/XB53guyXAZJ0OKk3/99aecead898a82056dd3b1ed0bb61304-480141.svg)
+![99aecead898a82056dd3b1ed0bb61304.svg](img/XB53guyXAZJ0OKk3/99aecead898a82056dd3b1ed0bb61304-480141.svg)

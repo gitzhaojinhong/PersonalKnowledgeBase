@@ -1,4 +1,4 @@
-## MinIO
+# minio-java
 
 ## MinIO 核心概念
 
@@ -18,7 +18,7 @@
 
 ## 完整示例
 
-#### 添加依赖
+### 添加依赖
 
 在 `pom.xml` 中引入 MinIO Java SDK 依赖（Spring Boot 3 建议使用 8.5.17 及以上版本）：
 
@@ -30,7 +30,7 @@
 </dependency>
 ```
 
-#### 配置连接参数
+### 配置连接参数
 
 在 `application.yml` 中添加 MinIO 连接信息：
 
@@ -44,7 +44,7 @@ minio:
 
 其中 `accessKey`、`secretKey` 和 `bucket` 可以在 MinIO Web 控制台（默认端口 9001）中创建和获取。
 
-#### 创建配置类，注入 MinioClient
+### 创建配置类，注入 MinioClient
 
 创建一个配置类，将 MinioClient 注入到 Spring 容器中：
 
@@ -92,7 +92,7 @@ public class MinioConfig {
 }
 ```
 
-#### 编写服务类，实现文件上传与下载
+### 编写服务类，实现文件上传与下载
 
 创建一个服务类封装核心操作：
 
@@ -147,7 +147,7 @@ public class MinioService {
 }
 ```
 
-#### 在 Controller 中调用
+### 在 Controller 中调用
 
 ```java
 @RestController

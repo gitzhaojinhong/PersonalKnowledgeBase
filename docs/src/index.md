@@ -63,15 +63,17 @@ featureGroups:
       - title: SpringKafka
         details: Spring对Kafka的集成
         link: /Java生态/SpringKafka
+  - title: 数据服务
+    items:
       - title: Elasticsearch
         details: 分布式搜索与分析引擎
-        link: /Java生态/Elasticsearch/
+        link: /数据服务/Elasticsearch/
       - title: MinIo
         details: 兼容S3的对象存储
-        link: /Java生态/MinIO
+        link: /数据服务/MinIO
       - title: Neo4J
         details: 图数据库与图数据模型
-        link: /Java生态/Neo4J
+        link: /数据服务/Neo4J
   - title: Python生态
     items:
       - title: 组件嵌入
