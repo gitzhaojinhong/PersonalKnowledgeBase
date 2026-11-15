@@ -7,7 +7,7 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "yvque:pull": "yuque-dl batch \"https://www.yuque.com/xiaoque-wqxrh/gmhmsp\" -t jK7lMKFZjjeZOJbSP_HaXw21JZKzcqKFhIzMLXd9tcJ-wPO1sXc5J5GUQZaUVD_xu_rnRbcDdl2M7c67FXj-Xw==  -d ./docs/src/Java生态/ --incremental --hideFooter "
+    "yvque:pull": "yuque-dl batch \"https://www.yuque.com/xiaoque-wqxrh/grai5n\" -t jK7lMKFZjjeZOJbSP_HaXw21JZKzcqKFhIzMLXd9tcJ-wPO1sXc5J5GUQZaUVD_xu_rnRbcDdl2M7c67FXj-Xw==  -d ./docs/src/Python生态/ --incremental --hideFooter "
   },
   "dependencies": {
     "medium-zoom": "^1.1.0",

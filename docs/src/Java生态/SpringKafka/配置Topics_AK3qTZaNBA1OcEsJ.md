@@ -1,4 +1,4 @@
-## 配置Topics
+# 配置Topics
 
 > Kafka Broker 本身就支持_自动创建 Topic_——当生产者或消费者尝试往一个不存在的 Topic 发消息或订阅时，Broker 会自动创建它。这个行为由 Broker 端的配置 `auto.create.topics.enable` 控制（默认是 `true`）。
 >

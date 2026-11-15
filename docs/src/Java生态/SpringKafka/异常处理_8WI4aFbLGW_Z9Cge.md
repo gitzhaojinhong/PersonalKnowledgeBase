@@ -1,6 +1,8 @@
+# 异常处理
+
 ## 异常处理
 
-## `DefaultErrorHandler`示例
+### `DefaultErrorHandler`默认场景
 
 ```java
 @Bean
@@ -15,7 +17,7 @@ public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerCont
 }
 ```
 
-## `AfterRollbackProcessor`事务场景
+### `AfterRollbackProcessor`事务场景
 
 如果开启了事务，监听器抛异常会导致事务回滚。默认情况下回滚后整批消息重新拉取重试。如果想控制重试次数或失败后发死信，用 `DefaultAfterRollbackProcessor`：
 
@@ -43,9 +45,9 @@ public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerCont
 }
 ```
 
-## 异常处理策略
+### 异常处理策略
 
-### 固定间隔退避策略
+#### 固定间隔退避策略
 
 _FixedBackOff（固定间隔）:_
 
@@ -57,7 +59,7 @@ new FixedBackOff(1000L, 2L);
 new FixedBackOff(1000L, FixedBackOff.UNLIMITED_ATTEMPTS);
 ```
 
-### 指数退避策略
+#### 指数退避策略
 
 _ExponentialBackOffWithMaxRetries（指数退避）:_
 
@@ -87,6 +89,7 @@ public DefaultErrorHandler errorHandler(DeadLetterPublishingRecoverer recoverer)
     FixedBackOff backOff = new FixedBackOff(1000L, 2L);
     return new DefaultErrorHandler(recoverer, backOff);
 }
+
 // 添加到 ConcurrentKafkaListenerContainerFactory 自定义工厂中
 factory.setCommonErrorHandler(errorHandler);
 ```
