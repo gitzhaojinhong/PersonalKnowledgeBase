@@ -63,6 +63,11 @@ featureGroups:
       - title: SpringKafka
         details: Spring对Kafka的集成
         link: /Java生态/SpringKafka
+  - title: Python生态
+    items:
+      - title: Python
+        details:  Python编程语言，简洁优雅的语法
+        link: /Python生态/Python
   - title: 数据服务
     items:
       - title: Elasticsearch
