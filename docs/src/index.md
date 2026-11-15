@@ -8,7 +8,7 @@ layout: home
 hero:
   name: "知识集"  # 网站名称(大标题)
   text: "沉淀山海学识\n收纳世间智慧\n以文字载道\n以知识前行"  # 副标题/描述文本
-  tagline: "深耕所学，不负求知"  # 标语/口号(可选)
+  tagline: "持续施工中......"  # 标语/口号(可选)
   image:
     src: /logo.svg  # 图片路径
     alt: 知识集-知识分享与沉淀
@@ -28,9 +28,6 @@ features:
   - title: 环境搭建
     details: 开发环境规范指南，文件管理与变量配置
     link: /环境安装/首页
-  - title: Hutool官方文档跳转
-    details: Java全能工具库，简洁优雅的API
-    link: https://www.hutool.cn/docs/#/
 
   - title: Git
     details: 分布式版本控制系统，掌握分支管理与团队协作
@@ -68,6 +65,12 @@ featureGroups:
       - title: Python
         details:  Python编程语言，简洁优雅的语法
         link: /Python生态/Python
+      - title: FastAPI
+        details:  Python Web框架，基于Starlette和Pydantic
+        link: /Python生态/FastAPI
+      - title: LangChain
+        details:  Python语言模型应用框架
+        link: /Python生态/LangChain
   - title: 数据服务
     items:
       - title: Elasticsearch
@@ -79,11 +82,14 @@ featureGroups:
       - title: Neo4J
         details: 图数据库与图数据模型
         link: /数据服务/Neo4J
-  - title: Python生态
+      - title: Kafka
+        details: 分布式事件处理平台
+        link: /数据服务/Kafka
+  - title: 项目架构
     items:
-      - title: 组件嵌入
-        details: MD内直接写Vue组件
-        link: /Python生态/组件嵌入
+      - title: 集成
+        details: Java项目集成
+        link: /项目架构/集成
 ---
 
 

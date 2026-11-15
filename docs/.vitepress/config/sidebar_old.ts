@@ -1,14 +1,7 @@
 import {getCategoryItems} from "../utils/SidebarUtil";
 
-export const old_sidebar={
-    //===========================VitePress 搭 建================================
-    '/VitePress搭建/':[
-        {
-            text: '目录1', //分组标题
-            collapsed: true, //true: 目录折叠起来
-            items: getCategoryItems('VitePress搭建')
-        }
-    ],
+export const sidebar_old={
+
     //===========================开 发 速 查================================
     '/后端开发速查/': [
         {

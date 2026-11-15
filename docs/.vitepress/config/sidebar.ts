@@ -1,7 +1,10 @@
-import {old_sidebar} from "./old_sidebar";
-import {yvque_sidebar} from "./yvque_sidebar";
+import {sidebar_old} from "./sidebar_old";
+import {sidebar_yvque} from "./sidebar_yvque";
+import {getCategoryItems} from "../utils/SidebarUtil";
 
 export const sidebar={
-    // ...old_sidebar,
-    ...yvque_sidebar
+    // ...sidebar_old,
+    ...sidebar_yvque,
+    //===========================VitePress 搭 建================================
+
 }
