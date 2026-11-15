@@ -6,5 +6,10 @@ export const sidebar={
     // ...sidebar_old,
     ...sidebar_yvque,
     //===========================VitePress 搭 建================================
-
+    '/VitePress搭建/': [
+        {
+            text: '目录',
+            items: getCategoryItems('VitePress搭建')
+        }
+    ],
 }
