@@ -71,6 +71,9 @@ featureGroups:
       - title: LangChain
         details:  Python语言模型应用框架
         link: /Python生态/LangChain
+      - title: RAG
+        details:  Python语言模型应用框架
+        link: /Python生态/RAG
   - title: 数据服务
     items:
       - title: Elasticsearch

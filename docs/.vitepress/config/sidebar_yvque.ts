@@ -9,6 +9,7 @@ export const sidebar_yvque = generateSidebarConfig([
     'Python生态/Python',
     'Python生态/FastAPI',
     'Python生态/LangChain',
+    'Python生态/RAG',
     '数据服务/Elasticsearch',
     '数据服务/MinIO',
     '数据服务/Neo4J',
