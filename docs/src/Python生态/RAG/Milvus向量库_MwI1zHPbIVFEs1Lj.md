@@ -1,10 +1,20 @@
 # Milvus向量库
 
+## 安装与连接
+
+### 安装项目依赖
+
+首先是安装依赖：
+
+```plain
+uv add pymilvus
+```
+
 ### 安装Milvus
 
 Milvus 提供三种部署模式，覆盖广泛的数据规模——从 Jupyter Notebook 中的本地原型设计，到管理数百亿向量的大型 Kubernetes 集群：
 
-* Milvus Lite 是一个 Python 库，可轻松集成到您的应用程序中。作为 Milvus 的轻量级版本，它非常适合在 Jupyter Notebook 中进行快速原型设计，或在资源有限的边缘设备上运行。[了解更多](https://milvus.io/docs/zh/milvus_lite.md)。
+* Milvus Lite 是一个 Python 库，可轻松集成应用程序中。作为 Milvus 的轻量级版本，它非常适合在 Jupyter Notebook 中进行快速原型设计，或在资源有限的边缘设备上运行。[了解更多](https://milvus.io/docs/zh/milvus_lite.md)。
 * Milvus Standalone 是一种单服务器部署方案，所有组件打包到单个 Docker 镜像中，便于部署。[了解更多](https://milvus.io/docs/zh/install_standalone-docker.md)。
 * Milvus Distributed 可部署在 Kubernetes 集群上，采用专为数十亿量级甚至更大规模场景设计的云原生架构。该架构确保了关键组件的冗余性。[了解更多](https://milvus.io/docs/zh/install_cluster-milvusoperator.md)。
 
@@ -130,23 +140,54 @@ docker compose up -d
 
 如图：
 
-![1794573310301-9352e189-218b-4946-a211-008923e45276.png](./img/MwI1zHPbIVFEs1Lj/1794573310301-9352e189-218b-4946-a211-008923e45276-457734.png)
+![1794573310301-9352e189-218b-4946-a211-008923e45276.png](./img/MwI1zHPbIVFEs1Lj/1794573310301-9352e189-218b-4946-a211-008923e45276-671332.png)
 
 ### Milvus连接
 
 Milvus有一个web控制台叫`attu`，端口是3000，在浏览器输入地址：<http://192.168.150.101:3000即可访问：>
 
-![1794573310425-6ac40af9-b951-4890-a291-b27fbdd357d3.png](./img/MwI1zHPbIVFEs1Lj/1794573310425-6ac40af9-b951-4890-a291-b27fbdd357d3-204449.png)
+![1794573310425-6ac40af9-b951-4890-a291-b27fbdd357d3.png](./img/MwI1zHPbIVFEs1Lj/1794573310425-6ac40af9-b951-4890-a291-b27fbdd357d3-135293.png)
 
 首次访问，需要注册一个管理员的用户名和密码，密码必须8位以上，且必须有大写、小写、数字、下划线中的3个类型。例如：admin/Admin123
 
 注册后即可登录：
 
-![1794573310498-41b01f17-b786-4342-b35f-155f4b400171.png](./img/MwI1zHPbIVFEs1Lj/1794573310498-41b01f17-b786-4342-b35f-155f4b400171-972321.png)
+![1794573310498-41b01f17-b786-4342-b35f-155f4b400171.png](./img/MwI1zHPbIVFEs1Lj/1794573310498-41b01f17-b786-4342-b35f-155f4b400171-310087.png)
 
 登录后，可以看到Milvus信息：
 
-![1794573310568-05f78c7f-9eca-483c-b703-f944cc44d85d.png](./img/MwI1zHPbIVFEs1Lj/1794573310568-05f78c7f-9eca-483c-b703-f944cc44d85d-183834.png)
+![1794573310568-05f78c7f-9eca-483c-b703-f944cc44d85d.png](./img/MwI1zHPbIVFEs1Lj/1794573310568-05f78c7f-9eca-483c-b703-f944cc44d85d-543141.png)
+
+### 向量模型
+
+**嵌入服务提供商**
+
+配置文件（milvus.yaml ）：
+
+```yaml
+credential:
+  apikey_dev: # 可自定义该名称
+    apikey: "sk-xxxxxxxxxxxxxxxxxxxx" # 这里填 dashscope sk
+
+function:
+  textEmbedding:
+    providers:
+      dashscope:  # 可替换为其他厂商
+        credential: apikey_dev
+
+```
+
+**如果使用**<code>**OllamaEmbedding**</code>**需先向量化再将向量化的数据添加到向量数据库中：**
+
+```python
+from langchain_ollama import OllamaEmbeddings
+
+# 1.初始化向量模型，可以把文档转稠密向量
+embeddings = OllamaEmbeddings(
+    model="qwen3-embedding:0.6b",  # 性价比高的模型
+    dimensions=1024  # 可选：减少维度以节省存储
+)
+```
 
 ## 基本概念
 
@@ -161,10 +202,6 @@ Milvus 中比较核心的概念有 3 个。它们与 MySQL 中的概念相似，
 | Collection | Table | 一组结构相同的数据集合 |
 | Field | Column | 描述数据的某个属性，例如标题、文本、向量 |
 | Entity | Row | Collection 中的一条完整数据 |
-
-下图展示了一个包含 8 个 Field 和 6 个 Entity 的 Collection：
-
-![1794573310642-341bcfe2-2e8e-4232-87c6-336d4c7795e2.png](./img/MwI1zHPbIVFEs1Lj/1794573310642-341bcfe2-2e8e-4232-87c6-336d4c7795e2-265462.png)
 
 ### Schema
 
@@ -193,11 +230,11 @@ MySQL中需要定义表结构，Milvus中也需要定义Collection结构。在Mi
 * `ARRAY`：数组，元素可以是其它类型，数组除了通用属性，还需要设定下列特有属性
   * `element_type`：数组中元素类型
   * `max_capacity`：数组元素数量
-* 向量类型：下一节再细讲
+* 向量类型：向量存储
 
 在实际开发中，我们要根据文档的数据特点来选择合适的字段类型，例如官网给出的示例：
 
-![1794573310714-13f1459c-1696-4853-9d3e-0fdcb70e236d.png](./img/MwI1zHPbIVFEs1Lj/1794573310714-13f1459c-1696-4853-9d3e-0fdcb70e236d-528855.png)
+![1794573310714-13f1459c-1696-4853-9d3e-0fdcb70e236d.png](./img/MwI1zHPbIVFEs1Lj/1794573310714-13f1459c-1696-4853-9d3e-0fdcb70e236d-362892.png)
 
 ### Index
 
@@ -241,7 +278,7 @@ MySQL中需要定义表结构，Milvus中也需要定义Collection结构。在Mi
 
 #### 稠密向量
 
-学习RAG时，我们使用 Embedding 模型将文本转换成向量，再根据向量相似度检索语义相近的文档。这里生成的就是**稠密向量**。
+学习RAG时，使用 Embedding 模型将文本转换成向量，再根据向量相似度检索语义相近的文档。这里生成的就是**稠密向量**。
 
 ```python
 [0.12, -0.35, 0.67, 0.28, ...]
@@ -263,21 +300,6 @@ MySQL中需要定义表结构，Milvus中也需要定义Collection结构。在Mi
 如果说稠密向量是基于语义的检索，那**稀疏向量**则是基于**关键词**的检索。
 
 稠密向量擅长理解语义，但在产品名称、疾病名称、条款编号等需要精确匹配的场景中不一定稳定。特别是一些专业词汇，一字之差意思就完全不同。
-
-例如，知识库中有两份保险条款：
-
-> * 文档 A：本产品保障甲状腺乳头状癌。
-> * 文档 B：本产品保障甲状腺髓样癌。
-
-用户询问：“甲状腺髓样癌是否可以赔付？”
-
-两份文档都包含“甲状腺”和“癌”，整体语义也非常接近。稠密向量检索可能认为它们都与问题高度相关，甚至把错误的文档 A 排在前面。
-
-稀疏向量检索则会重点关注“髓样癌”这个关键词，使包含完全匹配词语的文档 B 获得更高分。
-
-那么问题来了：
-
-> 什么是稀疏向量呢？它如何实现关键词检索呢？
 
 稀疏向量通常会有一份人类语言的**词表**。词表就是系统能够识别的所有词语集合，一个词表通常有几万到几十万词语，每个词语在向量中都有一个固定位置。例如下面这个简化的词表：
 
@@ -333,98 +355,12 @@ MySQL中需要定义表结构，Milvus中也需要定义Collection结构。在Mi
 
 稠密向量和稀疏向量不是替代关系，而是互补关系，实际中经常会同时使用两种检索方式，也就是**混合检索**。
 
-**说明**：
-
-* 在Milvus中内置了BM25的稀疏向量实现，所以等一会儿我们会直接使用基于BM25的稀疏向量来演示。
-* 想要了解更多 Milvus 的索引信息，可以参考官方文档：[Index Explained | Milvus Documentation](https://milvus.io/docs/zh/index-explained.md)
-
-###
-
-## 准备工作
-
-正式开始演示Milvus用法之前，我们要做一些准备工作：
-
-* 安装Milvus依赖
-* 准备文档
-* 初始化向量模型
-
-### 安装依赖
-
-首先是安装依赖：
-
-```plain
-uv add pymilvus
-```
-
-### 准备文档
-
-我们先把要写入索引库的文档准备好。
-
-在Notebook中新建一个Cell，把昨天的文档处理代码准备好：
-
-```python
-from langchain_text_splitters import MarkdownHeaderTextSplitter
-from langchain_core.documents import Document
-
-def prepare_docs():
-    # =============1.准备文档================
-    with open('./resources/评估.md', 'r', encoding='utf-8') as f:
-        doc = f.read()
-
-    # =============2.切分文档================
-    # 切分依据，这里是按照三级标题
-    headers_to_split_on = [
-        ("#", "h1"),
-        ("##", "h2"),
-        ("###", "h3"),
-    ]
-
-    # 创建切分器
-    markdown_splitter = MarkdownHeaderTextSplitter(
-        headers_to_split_on,
-        strip_headers=False  # 在正文中是否去除标题，False=标题保留在page_content里
-    )
-
-    # 切分文档, 返回的是 list[Document]
-    docs = markdown_splitter.split_text(doc)
-    return docs
-
-docs = prepare_docs()
-
-```
-
-切分好的文档结构是这样的：
-
-```json
-{
-  "id": null,
-  "metadata": {
-    "h1": "第一章 教育概述",
-    "h2": "第一节 中外教育家及其教育思想",
-    "h3": "（一）教育学萌芽时期代表作"
-  },
-  "page_content": "# 第一章 教育概述  \n## 第一节 中外教育家及其教育思想  \n### （一）教育学萌芽时期代表作  \n国内：《学记》，世界最早，成文于战国末期，作者是乐正克。  \n国外：昆体良《雄辩术原理》/《论演说家的教育》。",
-  "type": "Document"
-}
-```
-
-### 向量模型
-
-我们依然使用之前演示过的`OllamaEmbedding`：
-
-```python
-from langchain_ollama import OllamaEmbeddings
-
-# 1.初始化向量模型，可以把文档转稠密向量
-embeddings = OllamaEmbeddings(
-    model="qwen3-embedding:0.6b",  # 性价比高的模型
-    dimensions=1024  # 可选：减少维度以节省存储
-)
-```
+> **说明**：
+>
+> * 在Milvus中内置了BM25的稀疏向量实现，所以直接使用BM25的稀疏向量。
+> * 想要了解更多 Milvus 的索引信息，可以参考官方文档：[Index Explained | Milvus Documentation](https://milvus.io/docs/zh/index-explained.md)
 
 ## Collection操作
-
-接下来，我们来演示Milvus的客户端操作collection。
 
 创建一个Collection的操作分为3步：
 
@@ -437,7 +373,7 @@ embeddings = OllamaEmbeddings(
 
 ### Collection结构分析
 
-我们准备好的文档结构是这样的：
+文档结构是这样的：
 
 ```json
 {
@@ -452,18 +388,18 @@ embeddings = OllamaEmbeddings(
 }
 ```
 
-我们来分析下文档的Schema，也就是需要的Field：
+分析下文档的Schema，也就是需要的Field：
 
 * `id`：文档唯一标识，`INT`类型，一定需要，而且是主键
-* `metadata`：元数据，也就是标题信息，可以作为过滤字段，我们存储一个h2进去演示用，`VARCHAR`类型
+* `metadata`：元数据，也就是标题信息，可以作为过滤字段，存储一个h2进去演示用，`VARCHAR`类型
 * `page_content`：原始文档内容，`VARCHAR`类型，稀疏和稠密向量都根据它生成
 
-除了这3个基本字段，我们还需存储稀疏和稠密向量，用于检索文档。这两个字段属于是衍生字段，可以自定义：
+除了这3个基本字段，还需存储稀疏和稠密向量，用于检索文档。这两个字段属于是衍生字段，可以自定义：
 
 * `dense`：稠密向量，类型是`FLOAT_VECTOR`
 * `sparse`：稀疏向量，类型是`SPARSE_FLOAT_VECTOR`
 
-所以，最终我们向Collection中存入的数据结构应该是这样的：
+所以，最终向Collection中存入的数据结构应该是这样的：
 
 ```json
 {
@@ -477,15 +413,15 @@ embeddings = OllamaEmbeddings(
 
 ### GUI操作Collection
 
-在之前的部署脚本中，我们已经安装了Milvus的GUI工具，访问<http://192.168.150.101:3000> 即可查看到控制台：
+在之前的部署脚本中，已经安装了Milvus的GUI工具，访问<http://192.168.150.101:3000> 即可查看到控制台：
 
-![1794573310790-16955b2a-be86-4df7-8665-68652160cae2.png](./img/MwI1zHPbIVFEs1Lj/1794573310790-16955b2a-be86-4df7-8665-68652160cae2-727380.png)
+![1794573310790-16955b2a-be86-4df7-8665-68652160cae2.png](./img/MwI1zHPbIVFEs1Lj/1794573310790-16955b2a-be86-4df7-8665-68652160cae2-059889.png)
 
 #### 查看Collection
 
 进入后，点击侧边栏的【`数据浏览器`】按钮，可以查看Collection信息：
 
-![1794573310897-27f84199-1788-4f65-9d61-a1c266759422.png](./img/MwI1zHPbIVFEs1Lj/1794573310897-27f84199-1788-4f65-9d61-a1c266759422-989025.png)
+![1794573310897-27f84199-1788-4f65-9d61-a1c266759422.png](./img/MwI1zHPbIVFEs1Lj/1794573310897-27f84199-1788-4f65-9d61-a1c266759422-504078.png)
 
 初始状态没有任何Collection
 
@@ -493,27 +429,27 @@ embeddings = OllamaEmbeddings(
 
 鼠标悬停在【`default`】上，旁边会出现【`+`】，点击即可创建Collection：
 
-![1794573310971-44d726b4-fcc8-43c8-afb7-61883da555c4.png](./img/MwI1zHPbIVFEs1Lj/1794573310971-44d726b4-fcc8-43c8-afb7-61883da555c4-169103.png)
+![1794573310971-44d726b4-fcc8-43c8-afb7-61883da555c4.png](./img/MwI1zHPbIVFEs1Lj/1794573310971-44d726b4-fcc8-43c8-afb7-61883da555c4-539532.png)
 
 在弹出的窗口中，选择【`托管Collection`】：
 
-![1794573311041-db0fb82a-0fda-46a3-9c58-7a4992bd6b5e.png](./img/MwI1zHPbIVFEs1Lj/1794573311041-db0fb82a-0fda-46a3-9c58-7a4992bd6b5e-449026.png)
+![1794573311041-db0fb82a-0fda-46a3-9c58-7a4992bd6b5e.png](./img/MwI1zHPbIVFEs1Lj/1794573311041-db0fb82a-0fda-46a3-9c58-7a4992bd6b5e-119217.png)
 
 **A. 填写Collection信息**
 
 在弹出的窗口中填写信息：
 
-![1794573311113-3b7a56ee-98dc-423c-9848-c5ab4c0d9d87.png](./img/MwI1zHPbIVFEs1Lj/1794573311113-3b7a56ee-98dc-423c-9848-c5ab4c0d9d87-895859.png)
+![1794573311113-3b7a56ee-98dc-423c-9848-c5ab4c0d9d87.png](./img/MwI1zHPbIVFEs1Lj/1794573311113-3b7a56ee-98dc-423c-9848-c5ab4c0d9d87-199718.png)
 
 **B. 填写字段信息**
 
 然后继续添加新字段，例如添加一个存储原始文档内容的字段`content`，类型选文本-VarChar：
 
-![1794573311214-4af9565c-7ede-4d9e-912f-1325be506ee3.png](./img/MwI1zHPbIVFEs1Lj/1794573311214-4af9565c-7ede-4d9e-912f-1325be506ee3-918652.png)
+![1794573311214-4af9565c-7ede-4d9e-912f-1325be506ee3.png](./img/MwI1zHPbIVFEs1Lj/1794573311214-4af9565c-7ede-4d9e-912f-1325be506ee3-691249.png)
 
 继续填写信息：
 
-![1794573311360-de24b632-d2e0-4b49-b6c2-a5c362485590.png](./img/MwI1zHPbIVFEs1Lj/1794573311360-de24b632-d2e0-4b49-b6c2-a5c362485590-662036.png)
+![1794573311360-de24b632-d2e0-4b49-b6c2-a5c362485590.png](./img/MwI1zHPbIVFEs1Lj/1794573311360-de24b632-d2e0-4b49-b6c2-a5c362485590-630472.png)
 
 **C. 填写向量函数**
 
@@ -524,53 +460,45 @@ Milvus支持自动的文本转向量，需要定义对应的转换函数：
 
 首先是BM25函数：
 
-![1794573311440-c78d5abd-459a-4a85-9148-3a3e384658a8.png](./img/MwI1zHPbIVFEs1Lj/1794573311440-c78d5abd-459a-4a85-9148-3a3e384658a8-647302.png)
+![1794573311440-c78d5abd-459a-4a85-9148-3a3e384658a8.png](./img/MwI1zHPbIVFEs1Lj/1794573311440-c78d5abd-459a-4a85-9148-3a3e384658a8-434020.png)
 
 填写函数信息，最主要是输入字段名称：
 
-![1794573311511-7d2ebbe4-6bc9-4a88-9ca7-6305a0dbdece.png](./img/MwI1zHPbIVFEs1Lj/1794573311511-7d2ebbe4-6bc9-4a88-9ca7-6305a0dbdece-853673.png)
+![1794573311511-7d2ebbe4-6bc9-4a88-9ca7-6305a0dbdece.png](./img/MwI1zHPbIVFEs1Lj/1794573311511-7d2ebbe4-6bc9-4a88-9ca7-6305a0dbdece-836691.png)
 
 再添加一个`Embedding_Function`：
 
-![1794573311654-21cc2bac-2690-48fa-9e74-9b518db3f869.png](./img/MwI1zHPbIVFEs1Lj/1794573311654-21cc2bac-2690-48fa-9e74-9b518db3f869-942943.png)
+![1794573311654-21cc2bac-2690-48fa-9e74-9b518db3f869.png](./img/MwI1zHPbIVFEs1Lj/1794573311654-21cc2bac-2690-48fa-9e74-9b518db3f869-895837.png)
 
 **D. 创建Collection**
 
 最后，点击创建即可：
 
-![1794573311735-e8cbbbe9-259f-4d25-bd99-3245356f52b5.png](./img/MwI1zHPbIVFEs1Lj/1794573311735-e8cbbbe9-259f-4d25-bd99-3245356f52b5-846918.png)
+![1794573311735-e8cbbbe9-259f-4d25-bd99-3245356f52b5.png](./img/MwI1zHPbIVFEs1Lj/1794573311735-e8cbbbe9-259f-4d25-bd99-3245356f52b5-648941.png)
 
 可以看到，Collection创建成功了：
 
-![1794573311831-0158403b-fe38-423e-9109-0d51b2c8ca94.png](./img/MwI1zHPbIVFEs1Lj/1794573311831-0158403b-fe38-423e-9109-0d51b2c8ca94-028737.png)
+![1794573311831-0158403b-fe38-423e-9109-0d51b2c8ca94.png](./img/MwI1zHPbIVFEs1Lj/1794573311831-0158403b-fe38-423e-9109-0d51b2c8ca94-862450.png)
 
 **E. 添加索引**
 
 点击【**索引**】菜单，可以看到向量字段已经自动添加了索引：
 
-![1794573311929-00469ed8-1dce-48ef-8ad2-717a90ced2ba.png](./img/MwI1zHPbIVFEs1Lj/1794573311929-00469ed8-1dce-48ef-8ad2-717a90ced2ba-086348.png)
+![1794573311929-00469ed8-1dce-48ef-8ad2-717a90ced2ba.png](./img/MwI1zHPbIVFEs1Lj/1794573311929-00469ed8-1dce-48ef-8ad2-717a90ced2ba-496883.png)
 
-我们可以给任意字段添加新索引：
+可以给任意字段添加新索引：
 
-![1794573312048-c5e43066-83ee-4e51-82ad-b1c1c5830a12.png](./img/MwI1zHPbIVFEs1Lj/1794573312048-c5e43066-83ee-4e51-82ad-b1c1c5830a12-833533.png)
+![1794573312048-c5e43066-83ee-4e51-82ad-b1c1c5830a12.png](./img/MwI1zHPbIVFEs1Lj/1794573312048-c5e43066-83ee-4e51-82ad-b1c1c5830a12-110988.png)
 
 填写索引信息：
 
-![1794573312119-b19b0f1e-03a3-4b20-967c-eb02fe1ada99.png](./img/MwI1zHPbIVFEs1Lj/1794573312119-b19b0f1e-03a3-4b20-967c-eb02fe1ada99-269638.png)
-
-#### 其它操作
-
-创建Collection后，就可以向Collection插入数据，或者搜索数据了，当然也可以删除Collection：
-
-![1794573312198-a4b98015-b547-404b-bc51-3c6729d4d34a.png](./img/MwI1zHPbIVFEs1Lj/1794573312198-a4b98015-b547-404b-bc51-3c6729d4d34a-129794.png)
+![1794573312119-b19b0f1e-03a3-4b20-967c-eb02fe1ada99.png](./img/MwI1zHPbIVFEs1Lj/1794573312119-b19b0f1e-03a3-4b20-967c-eb02fe1ada99-978516.png)
 
 ### SDK操作Collection
 
-下面我们再看如何用Milvus的SDK操作Collection
-
 #### 连接客户端
 
-新建一个Cell，初始化Milvus的客户端，注意Milvus的地址写成你自己部署的机器IP：
+新建一个Cell，初始化Milvus的客户端，注意Milvus的地址写成自己部署的机器IP：
 
 ```python
 from pymilvus import MilvusClient
@@ -663,12 +591,12 @@ create_collection()
 
 **说明：**
 
-有关向量字段，我们不是手动把原始文档内容`content`转为稀疏向量，而是配置了Milvus内置的`bm25_function`和`embedding_function`，其关键配置是：
+有关向量字段，不是手动把原始文档内容`content`转为稀疏向量，而是配置了Milvus内置的`bm25_function`和`embedding_function`，其关键配置是：
 
 * `input_field_names`：输入字段，就是原始文档字段，本例中是`content`
 * `output_field_names`：输出字段，就是保存稀疏或稠密向量的字段，本例中是`sparse`和`dense`
 
-将来，Milvus会在存储阶段和检索阶段自动帮我们生成稀疏向量和稠密向量：
+将来，Milvus会在存储阶段和检索阶段自动生成稀疏向量和稠密向量：
 
 * 存储文档时：
   * `bm25_function`会自动根据`content`内容生成稀疏向量，存入`sparse`字段中
@@ -702,13 +630,7 @@ print(res)  # ['my_collection_1']
 client.drop_collection(collection_name=collection_name)
 ```
 
-进入GUI界面，可以查看新建的Collection
-
-![1794573312278-b6e27fe4-1190-48f2-ae09-d30150dc5e9a.png](./img/MwI1zHPbIVFEs1Lj/1794573312278-b6e27fe4-1190-48f2-ae09-d30150dc5e9a-576028.png)
-
 ## Entity操作
-
-准备好了Collection，就可以开始写入文档数据了，也就是Entity.
 
 Entity有三种常见操作：
 
@@ -737,7 +659,7 @@ Entity有三种常见操作：
 }
 ```
 
-最终我们向Collection中存入的数据结构应该是这样的：
+最终向Collection中存入的数据结构应该是这样的：
 
 ```json
 {
@@ -791,10 +713,6 @@ print(res)
 #{'insert_count': 21, 'ids': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]}
 ```
 
-查看GUI，也能看到数据已经插入：
-
-![1794573312356-40cbac32-e431-44b0-b174-2f1a5da16016.png](./img/MwI1zHPbIVFEs1Lj/1794573312356-40cbac32-e431-44b0-b174-2f1a5da16016-320409.png)
-
 ### upsert
 
 upsert会先根据id删除旧的，再新增一条数据：
@@ -818,14 +736,6 @@ res = client.upsert(collection_name, [data1, data2])
 print(res)# {'upsert_count': 2, 'ids': [1, 88]}
 ```
 
-打开GUI控制台，可以看到`id`为`1`的数据其字段`h2`已经被修改：
-
-![1794573312458-864ce866-05b3-44d7-9247-91458e976201.png](./img/MwI1zHPbIVFEs1Lj/1794573312458-864ce866-05b3-44d7-9247-91458e976201-058472.png)
-
-同时，翻到最后一页，可以看到新增一条id为88的数据：
-
-![1794573312577-770a42a9-77ea-4a8a-bb7b-266998fc5804.png](./img/MwI1zHPbIVFEs1Lj/1794573312577-770a42a9-77ea-4a8a-bb7b-266998fc5804-490686.png)
-
 ### delete
 
 ```python
@@ -844,7 +754,7 @@ ANN 和 k-Nearest Neighbors (kNN) 搜索是向量相似性搜索的常用方法�
 
 Milvus中ANN的索引方式有很多，比如最常用的：IVF_FLAT算法
 
-![1794573312656-daa53ad4-4ff1-47ee-82d5-ddda25117e13.png](./img/MwI1zHPbIVFEs1Lj/1794573312656-daa53ad4-4ff1-47ee-82d5-ddda25117e13-449511.png)
+![1794573312656-daa53ad4-4ff1-47ee-82d5-ddda25117e13.png](./img/MwI1zHPbIVFEs1Lj/1794573312656-daa53ad4-4ff1-47ee-82d5-ddda25117e13-878306.png)
 
 ### 参数速查
 
@@ -869,16 +779,9 @@ Milvus中ANN的索引方式有很多，比如最常用的：IVF_FLAT算法
 > * `search_params` 中的 `metric_type` 必须与集合索引构建时使用的类型一致。
 > * `ids` 与 `data` 是互斥的，只能提供其中一个。
 
-```sql
-select id, name             # output_fields
-from xxx                    # collection_name
-where name like "%xx%"      # anns_field data
-limit 10
-```
-
 ### 稠密向量检索
 
-我们先定义一个稠密检索的函数：
+先定义一个稠密检索的函数：
 
 ```python
 # 定义一个稠密检索的函数
@@ -901,7 +804,7 @@ def dense_search(query: str):
 
 ```
 
-#### 语义相似查询
+**语义相似查询**
 
 稠密检索擅长语义相似度查询，用户输入模糊信息，也能检索到：
 
@@ -915,22 +818,6 @@ dense_search("教育的负面作用是什么")
 {'id': 15, 'distance': 0.6306518912315369, 'entity': {'content': '# 第二章 教育基本原理  \n## 第一节 教育的功能  \n### （一）个体发展功能和社会发展功能  \n教育的正向功能（积极功能）指教育有助于社会进步和个体发展的积极影响和作用。  \n教育的负向功能（消极功能）指阻碍社会进步和个体发展的消极影响和作用。  \n教育的显性功能是指教育活动依照教育目的，在实际运行中所出现的与之相吻合的结果。  \n教育的隐性功能指伴随显性功能所出现的非预期性的功能。', 'h2': '第一节 教育的功能'}}
 {'id': 16, 'distance': 0.5928167104721069, 'entity': {'content': '## 第二节 教育和社会的关系  \n### （一）政治与教育的关系  \n政治（经济制度）对教育具有决定作用，是决定教育性质的直接因素。具体表现为：决定了教育的性质和目的；决定了教育的领导权；决定了哪部分社会成员享有受教育的权利；决定了部分的教育内容；决定了教育的管理体制。  \n教育对政治发展的作用表现在：教育促进人的政治社会化；教育培养现代政治法律人才；教育促进现代政治民主化。', 'h2': '第二节 教育和社会的关系'}}
 {'id': 21, 'distance': 0.5773072242736816, 'entity': {'content': '### （六）生产力与教育的关系  \n生产力对其它一切因素都起着决定的作用，是决定教育性质的根本因素。  \n生产力对教育的主要作用表现为：生产力发展水平决定着教育事业发展的规模和速度；生产力发展水平制约着人才培养的规格与教育结构；生产力的发展促进教育内容、教学方法和教学组织形式的发展与改革。  \n教育对生产力的作用表现为：教育再生产劳动力；教育是科学知识与技术发展的重要手段。', 'h2': '第二节 教育和社会的关系'}}
-```
-
-#### 专有名词查询
-
-如果用户搜索的内容是专有名称，就不一定能准确检索了：
-
-```python
-# 测试，《给教师的建议》是书的名字，属于专业名词
-dense_search("给教师的建议是谁写的")
-```
-
-结果：
-
-```json
-{'id': 1, 'distance': 0.48752158880233765, 'entity': {'content': '# 第一章 教育概述  \n## 第一节 中外教育家及其教育思想  \n### （一）教育学萌芽时期代表作  \n国内：《学记》，世界最早，成文于战国末期，作者是乐正克。  \n国外：昆体良《雄辩术原理》/《论演说家的教育》。', 'h2': '第一节 中外教育家及其教育思想'}}
-{'id': 6, 'distance': 0.45305097103118896, 'entity': {'content': '### （六）希腊三贤  \n**苏格拉底**：产婆术（谈话法），分三步：讽刺—定义—助产术。国外启发式教育第一人。  \n**柏拉图**：《理想国》提出普及教育的主张，教育目的是培养哲学王。  \n**亚里士多德**：提出自由教育，提倡对学生进行和谐全面发展的教育，灵魂说。', 'h2': '第一节 中外教育家及其教育思想'}}
 ```
 
 ### 稀疏向量检索
@@ -956,24 +843,7 @@ def sparse_search(query: str):
             print(hit)
 ```
 
-#### 语义相似查询
-
-如果用户搜索内容与文档意思接近，但内容不同，往往检索不到：
-
-```python
-# 测试模糊的语义搜索，稀疏检索不太擅长
-sparse_search("教育的负面作用是什么")
-```
-
-结果：
-
-```json
-{'id': 21, 'distance': 1.9043395519256592, 'entity': {'content': '### （六）生产力与教育的关系  \n生产力对其它一切因素都起着决定的作用，是决定教育性质的根本因素。  \n生产力对教育的主要作用表现为：生产力发展水平决定着教育事业发展的规模和速度；生产力发展水平制约着人才培养的规格与教育结构；生产力的发展促进教育内容、教学方法和教学组织形式的发展与改革。  \n教育对生产力的作用表现为：教育再生产劳动力；教育是科学知识与技术发展的重要手段。', 'h2': '第二节 教育和社会的关系'}}
-{'id': 20, 'distance': 1.871191143989563, 'entity': {'content': '### （五）人口与教育的关系  \n人口对教育的作用主要表现在：人口的数量和增长是决定教育事业的规模、速度的一个重要因素；人口的质量影响教育的质量；人口的结构影响着教育的发展；人口流动影响着教育的发展。  \n教育对人口的作用主要表现在：控制人口的数量；提高人口的质量；改善人口结构；调整人才构成与流动等作用。', 'h2': '第二节 教育和社会的关系'}}
-{'id': 5, 'distance': 1.8368871212005615, 'entity': {'content': '### （五）荀子主要思想  \n**人性论**：性恶论，化性起伪，善德是后天习得的，重视教育的作用。  \n**教学原则**：学以致用，锲而不舍。', 'h2': '第一节 中外教育家及其教育思想'}}
-```
-
-#### 专有名词查询
+**专有名词查询**
 
 如果用户搜索的内容是专有名称，恰好是稀疏检索擅长的：
 
@@ -990,78 +860,7 @@ sparse_search("给教师的建议是谁写的")
 {'id': 3, 'distance': 2.613140344619751, 'entity': {'h2': '第一节 中外教育家及其教育思想', 'content': '### （三）孔子及《论语》主要思想  \n**教育作用**：庶、富、教；性相近，习相远。  \n**教育对象**：“有教无类”，教育民主思想。  \n**教育目的**：以完善人格为教育的首要目的，培养士和君子。  \n**教学内容**：文、行、忠、义。  \n**教学过程**：学、思、习、行。  \n**教学原则**：因材施教、启发诱导、学思结合、谦虚笃实。  \n**教师观**：其身正，不令而行；其身不正，虽令不从。'}}
 ```
 
-### 混合检索
-
-正如前面所演示的，单一采用稀疏或稠密检索都会存在问题:
-
-* **稀疏检索**: 可以精确匹配专业名词，但会漏掉同义词或语义接近的内容
-* **稠密检索**: 擅长检索语义接近的内容，但可能错过专业名词，甚至错过关键词
-
-所以，最佳的方案就是把两种方案结合，也就是**混合检索**。
-
-#### 混合检索流程
-
-混合检索流程是这样的：
-
-1. **多路召回**：通过稀疏、稠密等多种方式分别查询文档列表，得到多个结果集
-2. **融合重排**：再将所有文档融合为一个列表，重新打分排序
-
-混合搜索结合了稠密、稀疏等方法，既能提供广泛的语义理解，又能提供精确的术语查询。混合搜索充分利用了每种方法的优势，克服了单独方法的局限性，为复杂查询提供了更好的性能。
-
-![1794573312736-d0c81fd3-0788-4997-9b32-9fda34dc8fd6.png](./img/MwI1zHPbIVFEs1Lj/1794573312736-d0c81fd3-0788-4997-9b32-9fda34dc8fd6-423432.png)
-
-但问题来了：
-
-> 多路召回的文档结果，该如何融合重排呢？
-
-常见的融合重排方式有：
-
-* **加权求和**: 首先需要对分数归一化，然后给不同的召回方案设置不同权重，然后合并分数
-* **RRF**：基于倒数排名求和，只与排名有关，与分数无关。公式：1/(k + rank)
-* **Cross**\*\*-\*\***Encoder**：利用神经网络模型，对多路结果做精排
-
-#### 加权融合
-
-**加权融合**顾名思义，就是给多路召回的文档分配不同的权重，然后将文档在每一路中的打分加权求和，重新排序。
-
-**原理**
-
-例如，我们设定**稠密**与**稀疏**的权重比例为：`[0.6, 0.4]`，假设一篇文档得分如下：
-
-* 稠密检索得分：0.5
-* 稀疏检索得分：0.8
-
-最终得分就是：
-
-```plain
-0.5 * 0.6 + 0.8 * 0.4 = 0.62
-─┬─   ─┬─   ─┬─   ─┬─
- │     │     │     │
- │     │     │     └──稀疏权重
- │     │     └──稀疏得分
- │     │     
- │     └─稠密权重
- └─ 稠密得分
-```
-
-不过，需要注意的是，由于不同的检索体系打分方式不同，分值差异可能较大：
-
-| **检索器** | **分数范围** | **典型值** |
-| --- | --- | --- |
-| **BM25** | 通常 0 ~ 10+ | 0.5, 1.2, 5.0 |
-| **向量余弦相似度** | 0 ~ 1（或 -1~1） | 0.85, 0.92 |
-
-直接做加权求和没有意义，分数尺度大的检索器会主导结果。
-
-通常，我们都会把**分数归一化**，使所有分数分布到特定范围，比如`[0,1]`，常见的归一化方法有：
-
-* **Min**\*\*-\*\***Max**: 计算简单，值范围固定为`[0,1]`，为公式为 score - min / (max - min)
-* **Z**\*\*-\*\***Score**: 转为均值为0，标准差为1的正态分布。公式是 (s - avg) / 标准差
-* **Softmax**: 将分数转为概率分布，所有值在 0~1 之间，且总和为 1，分布均匀程度取决于temperature
-
-整体流程如图：
-
-![1794573312854-8dad8e98-6a26-449f-95ef-3a7b0f38db41.png](./img/MwI1zHPbIVFEs1Lj/1794573312854-8dad8e98-6a26-449f-95ef-3a7b0f38db41-330911.png)
+### Ranker 排序
 
 **实现**
 
@@ -1070,6 +869,10 @@ Milvus默认支持混合检索，基本步骤如下：
 * 创建多路请求，比如：稀疏、稠密
 * 配置融合策略，比如：加权、RRF
 * 发起请求
+
+#### 加权融合
+
+加权融合顾名思义，就是给多路召回的文档分配不同的权重，然后将文档在每一路中的打分加权求和，重新排序。
 
 我们先定义一个混合检索函数，但融合重排策略作为参数传递：
 
@@ -1126,29 +929,6 @@ hybrid_search("教育的负面作用是什么", ranker)
 
 **RRF（Reciprocal Rank Fusion，倒数排名融合）** 是一种用于融合多个检索结果列表的算法，它与多路召回的文档得分无关，只关心排名。
 
-|  | 稠密 | 稀疏 |
-| --- | --- | --- |
-| A | 1 | 6 |
-| B | 4 | 3 |
-
-核心公式:$ {RRF}(d) = \sum\_{r=1}^{n}\frac{1}{k + \text{rank}\_r(d)} $
-
-| 符号 | 含义 |
-| --- | --- |
-| $ d $ | 某个文档 |
-| $ k $ | 常量，通常是60 |
-| $ \text{rank}\_r(d) $ | 文档 $ d $ 在第 $ r $ 个检索结果列表中的排名位置（从1开始） |
-| $ \text{RRF}(d) $ | 文档 $ d $ 的最终融合得分 |
-
-RRF 的特点：
-
-| 优点 | 缺点 |
-| --- | --- |
-| 无需归一化，因为与分数无关 | 对排名靠后的文档不敏感 |
-| 对离群值不敏感 | 无法处理得分/置信度信息 |
-| 计算简单、效率高 |  |
-| 可融合任意数量的检索列表 | 所有检索源权重相同 |
-
 Milvus同样提供了默认的RRF融合策略，用法如下：
 
 ```python
@@ -1164,56 +944,13 @@ hybrid_search("教育的负面作用是什么", ranker)
 
 **Cross-Encoder**，交叉编码，把用户问题和每个文档一起输入模型，精确打分。
 
-与之相对的是：**Bi**\*\*-\*\***Encoder**, 并行编码，把用户问题、文档分别交给模型，转为向量，然后比较相似度。
-
-Bi-Encoder由于是把文档和问题分开处理，所以可以把文档向量化放在离线阶段，存入向量库。检索时只需要把问题向量化，然后与文档向量比较即可。所以速度更快，能处理数以百万的文档，但精度略差，适合**初筛**。
-
-Cross-Encoder需要实时把文档和问题一起计算，效率较低，但精度较高，适合**精排**。
-
-我们之前所说的稀疏向量检索、稠密向量检索都属于是Bi-Encoder，相当于对文档做初步筛选。筛选后的结果再交给专业的Cross-Encoder模型做精排，检索的结果会更加精准。
-
-Cross-Encoder需要用专业的**Reranker**模型，比如：
-
-| 模型名称 | 研发机构 | 发布时间 | 参数量 | 上下文长度 | 授权协议 | 核心亮点 |
-| --- | --- | --- | --- | --- | --- | --- |
-| Qwen3-Reranker-4B    | 阿里通义 | 2025-06 | 4B    | 32k    | Apache 2.0 | MMTEB-R 评分 72.74（高精度），支持32K长文本，中英文均衡适配，适合企业级高精度RAG |
-| mxbai-rerank-large-v2 | MixedBread | 2025-07 | 1.5B | 8k | Apache 2.0 | BEIR 18项任务零样本SOTA，完美适配德/英/西/法等多语言场景，泛化性强 |
-| bge-reranker-v2-m3    | BAAI | 2024-03 | 567M | 8k    | Apache 2.0 | 中文社区主流选择，量化后体积<200MB，中英文混合场景表现突出，部署成本低 |
-| jina-reranker-v3 | Jina AI | 202510 | 0.6B | 默认8k | CC-BY-NC-4.0（商用需授权） | 支持100+语言，专为Agentic-RAG场景微调，listwise交叉交互机制，适配多轮检索决策 |
-| ms-marco-MiniLM-L6-v2 | Microsoft | 2021 | 22M | 512 | MIT | 超轻量架构，CPU/边缘端部署首选，英文通用场景标杆模型，推理速度快、集成成本低 |
-| ColBERT v2 | CMU/Stanford | 2021-12 | 110M | 原生512 | MIT | 预编码+后期交互架构，百万级文档低延迟重排，吞吐较传统模型提升10倍，适合大规模英文知识库，长文本需分块处理 |
-
 **实现方案**
 
-Milvus天然支持Cross-Encoder的重排序方案，不过由于Cross-Encoder方案依赖于Rerank模型，所以需要你有可访问的Rerank模型服务才行。
+Milvus天然支持Cross-Encoder的重排序方案，不过由于Cross-Encoder方案依赖于Rerank模型，所以需要有可访问的Rerank模型服务才行。
 
-Milvus的Cross-Encoder重排实现流程是这样的：
-
-![1794573313160-a66efbe0-4149-478b-a58e-3b7f6ee0687e.png](./img/MwI1zHPbIVFEs1Lj/1794573313160-a66efbe0-4149-478b-a58e-3b7f6ee0687e-933237.png)
-
-流程说明：
-
-1. 初始查询：您的应用向 Milvus 发送查询请求
-2. 向量检索：Milvus 执行标准向量检索（可以是混合检索模式），以识别候选文档
-3. 候选召回：系统根据向量相似度，初步筛选出一组候选文档
-4. 模型评估：Rerank模型（Model Ranker Function）对（**query**\*\*-\*\***document**）**对**进行处理：
-   * 将Query和Document发送至外部模型服务
-   * Rerank模型评估Query与每个Document之间的语义相关性
-   * 每个Document基于语义理解获得一个相关性分数
-5. 智能重排：根据模型生成的相关性分数对文档重新排序
-6. 结果增强：您的应用收到的结果是按语义相关性排序的，而非仅依赖向量相似度
+> 如果需要【RRF 融合 + Cross‑Encoder 精排】串联，则需要自己调用 Cross‑Encoder 服务打分重排。
 
 Milvus支持的外部Reranker模型有很多种，可以是自己部署的，也可以是云服务的：
-
-| **提供商** | 最适合 | 特点 |
-| --- | --- | --- |
-| **vLLM** | 需要深度语义理解和定制化的复杂应用 | - 支持各种大型语言模型   - 灵活的部署选项   - 更高的计算要求   - 更大的定制潜力 |
-| **TEI** | 快速实施，资源利用率高 | - 针对文本操作进行优化的轻量级服务   - 部署更简便，资源需求更低   - 预优化重新排序模型   - 基础设施开销极低 |
-| **Cohere**    | 优先考虑可靠性和集成便捷性的企业级应用 | - 企业级可靠性和可扩展性   - 无需基础设施维护的托管服务   - 多语言重新排序功能   - 内置速率限制和错误处理 |
-| **Voyage AI** | 具有特定性能和上下文要求的RAG应用 | - 专门针对重新排序任务训练的模型   - 针对不同文档长度的精细截断控制   - 针对生产环境工作负载优化的推理   - 多种模型变体（rerank-2、rerank-lite 等） |
-| **SiliconFlow** | 优先考虑成本效益的長文档处理应用 | - 支持可配置重叠度的先进文档分块技术   - 基于片段的评分   - 支持多种重新排序模型   - 提供标准版和专业版两种模型，性价比高 |
-| **DashScope** | 使用阿里云或Qwen重新排序模型的应用程序   Milvus 3.x版本才支持 | - 托管式 DashScope 重新排序 API   - 支持以下重新排序模型：`gte-rerank-v2`   - 基于 API 密钥的身份验证 |
-| **Hugging Face** | 使用托管版 Hugging Face 句子相似度模型的应用程序    | - 使用托管版`hf-inference` 提供商   - 从 Hugging Face Hub 中选择模型   - 为每个候选项计算一个句子相似度分数   - 使用 API 密钥进行身份验证 |
 
 有关各模型服务实现的详细信息，请参阅相关文档：
 
@@ -1225,11 +962,9 @@ Milvus支持的外部Reranker模型有很多种，可以是自己部署的，也
 * [DashScope 排名系统](https://milvus.io/docs/zh/dashscope-ranker.md)
 * [Hugging Face 排名器](https://milvus.io/docs/zh/hugging-face-ranker.md)
 
-**注意：**
-
-DashScope的重排方案仅在Milvus3.0.x的版本才开始才支持，如果是小于这个版本，建议在企业中使用vLLM部署私有模型。
-
-下面，我们以DashScope为例来说明这种重排方案的用法。
+> **注意：**
+>
+> DashScope的重排方案仅在Milvus3.0.x的版本才开始才支持，如果是小于这个版本，建议在企业中使用vLLM部署私有模型。
 
 **配置密钥**
 
@@ -1253,7 +988,7 @@ docker compose restart milvus
 
 **定义RerankFunction**
 
-接着，我们回到Notebook，定义一个Cross-Encoder的Function：
+接着，定义一个Cross-Encoder的Function：
 
 ```python
 # cross-encoder rerank
@@ -1275,7 +1010,7 @@ def create_cross_encoder_ranker(query: str):
 
 ```
 
-这段代码是通用的代码，将来你的模型提供商会变化，但这段代码基本不变。
+这段代码是通用的代码，将来模型提供商会变化，但这段代码基本不变。
 
 Milvus中Cross-Encoder这种策略的Function定义是固定代码，变化的仅仅是模型的提供商、模型的名称。核心代码参数是这样的：
 
@@ -1306,10 +1041,6 @@ cross_encoder_hybrid_search("教育的负面作用是什么")
 ### 过滤
 
 除了向量搜索，Milvus也支持普通字段过滤。Milvus 收到携带过滤条件的搜索请求后，会将搜索范围限制在符合指定过滤条件的实体内，再进行向量检索，从而提高查询效率。
-
-如图：
-
-![1794573313244-29b8c7d8-fa75-4de3-9ad9-203ba0ec3c53.png](./img/MwI1zHPbIVFEs1Lj/1794573313244-29b8c7d8-fa75-4de3-9ad9-203ba0ec3c53-443063.png)
 
 Milvus中的混合检索条件就是一个普通字符串，其语法与MySQL的where条件几乎一样：
 
@@ -1391,8 +1122,6 @@ hybrid_search("教育的负面作用是什么", ranker, filter_query="h2 == '第
 
 ### 准备工作
 
-正式开始之前，我们先做一些准备工作。
-
 #### 安装依赖
 
 LangChain提供了Milvus的特有依赖，需要单独安装：
@@ -1403,47 +1132,43 @@ uv add langchain-milvus
 
 #### 准备文档
 
-为了不与之前的Milvus测试冲突，我们会重新准备文档，创建新的Collection.
-
-首先，在`notebooks/day08`下新建一个`02.LangChain-Milvus.ipynb`文件：
-
-![1794573313327-bc089adb-09eb-4aec-a09e-7745044cf11f.png](./img/MwI1zHPbIVFEs1Lj/1794573313327-bc089adb-09eb-4aec-a09e-7745044cf11f-124950.png)
-
 在第一个Cell中读取文档：
 
-```plain
-*# 一、准备文档*
+```python
+# 一、准备文档
 from langchain_text_splitters import MarkdownHeaderTextSplitter
 
 
 def prepare_docs():
-    *# =============1.准备文档================*
-*    *with open('./resources/评估.md', 'r', encoding='utf-8') as f:
+    # =============1.准备文档================
+    with open('./resources/评估.md', 'r', encoding='utf-8') as f:
         doc = f.read()
 
-    *# =============2.切分文档================*
-*    # 切分依据，这里是按照三级标题*
-*    *headers_to_split_on = [
+    # =============2.切分文档================
+    # 切分依据，这里是按照三级标题
+    headers_to_split_on = [
         ("#", "h1"),
         ("##", "h2"),
         ("###", "h3"),
     ]
 
-    *# 创建切分器*
-*    *markdown_splitter = MarkdownHeaderTextSplitter(
+    # 创建切分器
+    markdown_splitter = MarkdownHeaderTextSplitter(
         headers_to_split_on,
-        strip_headers=False  *# 在正文中是否去除标题，False，不去除*
-*    *)
+        strip_headers=False  # 在正文中是否去除标题，False，不去除
+    )
 
-    *# 切分文档, 返回的是 list[Document]*
-*    *docs = markdown_splitter.split_text(doc)
+    # 切分文档, 返回的是 list[Document]
+    docs = markdown_splitter.split_text(doc)
 
-    *# 为了方便查看，给每个Document加一个id，从1开始递增，但要注意的是LangChain的文档id要求是str*
-*    *for i, doc in enumerate(docs, start=1):
+    # 为了方便查看，给每个Document加一个id，从1开始递增，但要注意的是LangChain的文档id要求是str
+    for i, doc in enumerate(docs, start=1):
         doc.id = str(i)
     return docs
 
+
 docs = prepare_docs()
+
 ```
 
 **注意：**
@@ -1453,24 +1178,23 @@ docs = prepare_docs()
 
 #### 向量模型
 
-与之前类似，我们还是使用Ollama的向量模型：
+使用Ollama的向量模型，LangChain-Milvus 这种方式可以手动指定向量模型：
 
-```plain
-*# 二、初始化向量模型*
+```python
+# 二、初始化向量模型
 from langchain_ollama import OllamaEmbeddings
 
-*# 1.初始化向量模型*
+# 1.初始化向量模型
 embeddings = OllamaEmbeddings(
-    model="qwen3-embedding:0.6b",  *# 性价比高的模型*
-*    *dimensions=1024  *# 可选：减少维度以节省存储*
+    model="qwen3-embedding:0.6b",  # 性价比高的模型
+    dimensions=1024  # 可选：减少维度以节省存储
 )
-```
 
-OK，准备工作都完成了。
+```
 
 ### VectorStore
 
-LangChain中的操作是基于VectorStore的，当我们初始化VectorStore时，它可以自动帮我完成下列事情：
+LangChain中的操作是基于VectorStore的，当初始化VectorStore时，它可以自动完成下列事情：
 
 * 自动根据`Document`中的数据生成schema，有一些固定的字段：
   * `pk`：也就是主键，如果你提供了id，就用你的id值，没有的话会由Milvus自动生成
@@ -1485,8 +1209,8 @@ LangChain中的操作是基于VectorStore的，当我们初始化VectorStore时�
 
 示例代码：
 
-```plain
-*# 三、初始化Collection，或者叫VectorStore
+```python
+# 三、初始化Collection，或者叫VectorStore
 from langchain_milvus import Milvus, BM25BuiltInFunction
 from app.core.config import settings
 
@@ -1502,44 +1226,44 @@ vectorstore = Milvus(
     },
     # index_params=[index_param],             # 可选，索引参数，必须与vector_field对应
     drop_old=True,                          # 是否删除旧的collection，避免重复创建
-**)*
+)
 ```
 
 #### 批量新增
 
 新增调用`add_documents()`直接 传入`list[Document]`即可，LangChain会自动根据Document生成Schema、Index、Collection，完全不用我们操心。
 
-```plain
-*# 四、添加数据*
+```python
+# 四、添加数据
 vectorstore.add_documents(docs)
 ```
 
 此时，查看GUI界面，会发现Collection创建完毕了：
 
-![1794573313404-67037406-3597-45f9-9ef5-c8f80cf66d26.png](./img/MwI1zHPbIVFEs1Lj/1794573313404-67037406-3597-45f9-9ef5-c8f80cf66d26-141521.png)
+![1794573313404-67037406-3597-45f9-9ef5-c8f80cf66d26.png](./img/MwI1zHPbIVFEs1Lj/1794573313404-67037406-3597-45f9-9ef5-c8f80cf66d26-490431.png)
 
 而且数据页已经导入：
 
-![1794573313490-be88e150-4a3d-4236-adaf-fcc2a9eac226.png](./img/MwI1zHPbIVFEs1Lj/1794573313490-be88e150-4a3d-4236-adaf-fcc2a9eac226-443088.png)
+![1794573313490-be88e150-4a3d-4236-adaf-fcc2a9eac226.png](./img/MwI1zHPbIVFEs1Lj/1794573313490-be88e150-4a3d-4236-adaf-fcc2a9eac226-444493.png)
 
 #### 删除
 
 支持基于id的删除：
 
-```plain
-*# 1.删除，传入id集合*
+```python
+# 1.删除，传入id集合
 vectorstore.delete([468439912009399490])
 ```
 
 查看GUI界面，可以发现id为`468439912009399490`的文档已经没有了，总数量只有20了：
 
-![1794573313566-65325a66-2499-4d8b-8ef7-67dcfbe8e97b.png](./img/MwI1zHPbIVFEs1Lj/1794573313566-65325a66-2499-4d8b-8ef7-67dcfbe8e97b-444308.png)
+![1794573313566-65325a66-2499-4d8b-8ef7-67dcfbe8e97b.png](./img/MwI1zHPbIVFEs1Lj/1794573313566-65325a66-2499-4d8b-8ef7-67dcfbe8e97b-473989.png)
 
 ### 检索
 
-LangChain-Milvus实现了VectorStore接口，所以用法与昨天讲的VectorStore基本一样，并且也支持混合检索和融合策略了。
+LangChain-Milvus实现了VectorStore接口，所以用法与VectorStore基本一样，并且也支持混合检索和融合策略。
 
-我们以`similarity_search_with_score`为例，它接收参数：
+以`similarity_search_with_score`为例，它接收参数：
 
 * `query`：查询条件
 * `k`：查询文档数量
@@ -1552,11 +1276,11 @@ LangChain-Milvus实现了VectorStore接口，所以用法与昨天讲的VectorSt
 
 #### 基于权重的混合检索
 
-```plain
-*# 五、基于权重的混合检索*
+```python
+# 五、基于权重的混合检索
 query = "给教师的建议是谁写的"
 
-*# 带得分的相似度检索，返回值是list[tuple[Document, float]]*
+# 带得分的相似度检索，返回值是list[tuple[Document, float]]
 result = vectorstore.similarity_search_with_score(
     query,
     ranker_type="weighted",
@@ -1566,15 +1290,16 @@ result = vectorstore.similarity_search_with_score(
 for doc, score in result:
     print(f"============score: {score}==============")
     print(doc.model_dump_json(indent=2))
+
 ```
 
 #### 基于RRF的混合检索
 
-```plain
-*# 六、基于RRF的混合检索*
+```python
+# 六、基于RRF的混合检索
 query = "给教师的建议是谁写的"
 
-*# 带得分的相似度检索，返回值是list[tuple[Document, float]]*
+# 带得分的相似度检索，返回值是list[tuple[Document, float]]
 result = vectorstore.similarity_search_with_score(
     query,
     ranker_type="rrf",
@@ -1590,10 +1315,10 @@ for doc, score in result:
 
 LangChain是支持过滤检索的，表达式与Milvus一样：
 
-```plain
+```python
 query = "给教师的建议是谁写的"
 
-*# 带得分的相似度检索，返回值是list[tuple[Document, float]]*
+# 带得分的相似度检索，返回值是list[tuple[Document, float]]
 result = vectorstore.similarity_search_with_score(
     query,
     ranker_type="rrf",
@@ -1616,29 +1341,28 @@ rrf和加权是LangChain默认支持的重排方案，因此可以用`ranker_typ
 
 1. 先定义生成ranker的函数
 
-```plain
-
+```python
 def create_cross_encoder_ranker(queries: list[str]):
     return Function(
-        name="dashscope_semantic_ranker",  *# ranker名词，唯一即可*
-*        *input_field_names=["text"],  *# 原始文档字段*
-*        *function_type=FunctionType.RERANK,  *# ranker类型，这里是固定值*
-*        *params={
-            "reranker": "model",  *# rerank类型，基于模型rerank，也就是cross-encoder*
-*            *"provider": "ali",  *# rerank模型提供者*
-*            *"model_name": "gte-rerank-v2",  *# rerank模型名称*
-*            *"queries": queries,  *# 查询条件*
-*            *"max_client_batch_size": 5,  *# 向模型发送请求时的批处理限制*
-*        *},
+        name="dashscope_semantic_ranker",  # ranker名词，唯一即可
+        input_field_names=["text"],  # 原始文档字段
+        function_type=FunctionType.RERANK,  # ranker类型，这里是固定值
+        params={
+            "reranker": "model",  # rerank类型，基于模型rerank，也就是cross-encoder
+            "provider": "ali",  # rerank模型提供者
+            "model_name": "gte-rerank-v2",  # rerank模型名称
+            "queries": queries,  # 查询条件
+            "max_client_batch_size": 5,  # 向模型发送请求时的批处理限制
+        },
     )
 ```
 
 2. 再定义混合检索函数：
 
-```plain
+```python
 def cross_encoder_hybrid_search(query: str, filter: str = ""):
-    *# 1.混合搜索*
-*    *_search_results = vectorstore.similarity_search_with_score(
+    # 1.混合搜索
+    _search_results = vectorstore.similarity_search_with_score(
         query,
         k=3,            # 最终返回的TopK
         fetch_k=5,      # 初筛时召回的文档的数量
@@ -1646,18 +1370,19 @@ def cross_encoder_hybrid_search(query: str, filter: str = ""):
         reranker=create_cross_encoder_ranker([query])
     )
     return _search_results
+
 ```
 
 测试：
 
-```plain
+```python
 query = "教育的负面作用是什么"
 results = cross_encoder_hybrid_search(query, 'h2 like "%教育的功能%"')
 ```
 
 结果：
 
-```plain
+```json
 ============score: 0.29470494389533997==============
 {
   "id": null,
