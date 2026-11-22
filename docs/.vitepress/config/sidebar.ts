@@ -12,4 +12,34 @@ export const sidebar={
             items: getCategoryItems('VitePress搭建')
         }
     ],
+    //===========================环 境 安 装 导 航================================
+
+    '/环境安装/': [
+        {
+            text: '目录',
+            items: getCategoryItems('环境安装')
+        }
+    ],
+
+
+
+    //===========================DevOps 导 航================================
+    '/DevOps/Docker/': [
+        {
+            text: '目录',
+            items: getCategoryItems('DevOps/Docker')
+        }
+    ],
+    '/DevOps/Git/': [
+        {
+            text: '目录',
+            items: getCategoryItems('DevOps/Git')
+        }
+    ],
+    '/DevOps/Maven/': [
+        {
+            text: '目录',
+            items: getCategoryItems('DevOps/Maven')
+        }
+    ],
 }

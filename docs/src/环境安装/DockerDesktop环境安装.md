@@ -4,8 +4,6 @@
 
 ## 一、前提条件
 
-- 部署过程中，项目官方文档站点、镜像源及资源检索链接大多依赖外网访问，需配置网络环境。 所以必须使用“魔法”，并全程开启“魔法”，这是最重要的门槛。
-
 - Docker Desktop 运行**必须开启 CPU 硬件虚拟化**：虚拟化开关在主板 BIOS 内配置，不同品牌主板的 BIOS 进入方式存在差异，可根据主板型号自行查阅对应教程。
 
 > 重要提示：开启硬件虚拟化后，Docker Desktop 默认占用本机半数内存与部分 CPU 算力；若额外开启 GPU 加速，还会耗用部分显卡资源，请结合自身硬件配置酌情决定是否长期启用虚拟化。
@@ -70,7 +68,7 @@ wsl --import RockyLinux10 "D:\DevelopmentEnvironment\RockyLinux" "D:\BrowserDown
 
 选择自定义目录的原因：日常使用该系统不可避免的文件会变大（RockyLinux的所有文件都在安装目录的   **ext4.vhdx**   文件中）
 
-**如果你想在Windows中直接使用Rocky Linux的话，可以在命令行启动**
+**如果想在Windows中直接使用Rocky Linux的话，可以在命令行启动**
 
 ------
 
